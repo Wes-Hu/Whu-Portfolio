@@ -1,7 +1,8 @@
+
 function HomePage() {
     return (
         <div>
-            Hello
+            <div className="text-white">hello</div>
         </div>
     );
 }
