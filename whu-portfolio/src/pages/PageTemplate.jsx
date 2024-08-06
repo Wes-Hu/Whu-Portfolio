@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function HomePage() {
+function PageTemplate() {
   const [mouseX, setMouseX] = useState(0);
   const [mouseY, setMouseY] = useState(0);
 
@@ -30,4 +30,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default PageTemplate;

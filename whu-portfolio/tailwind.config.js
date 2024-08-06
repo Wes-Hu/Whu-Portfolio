@@ -7,6 +7,9 @@ export default {
     extend: {
       colors: {
         'night': '#090A0C',
+        'blood-red': '#70110A',
+        'burnt-sienna': '#EE6C4D',
+        'coral': '#F38D68',
       },
     },
   },
