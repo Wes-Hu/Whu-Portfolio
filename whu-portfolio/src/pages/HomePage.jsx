@@ -1,5 +1,4 @@
 import React from 'react';
-import DotGrid from '../components/DotGrid';
 
 function HomePage() {
     return (
