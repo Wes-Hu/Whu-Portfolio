@@ -8,7 +8,6 @@ const HomeButton = () => {
   return (
     <motion.a
       whileHover={{ scale: 1.2 }}
-      whileTap={{ scale: 0.9 }}
       href="/"
       className="group relative bg-blood-red w-16 h-16 p-2 rounded-xl"
       onMouseEnter={() => setIsHovered(true)}
