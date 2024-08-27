@@ -57,7 +57,7 @@ const Cursor = () => {
         <div
           key={index}
           ref={(el) => (circlesRef.current[index] = el)}
-          className="h-6 w-6 rounded-3xl bg-blood-red absolute top-0 left-0 circle"
+          className="h-8 w-8 rounded-3xl bg-blood-red absolute top-0 left-0 circle"
           style={{ pointerEvents: 'none', transform: 'scale(1)' }}
         />
       ))}
