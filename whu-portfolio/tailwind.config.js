@@ -12,6 +12,12 @@ export default {
         'burnt-sienna': '#EE6C4D',
         'coral': '#F38D68',
       },
+      fontFamily: {
+        rubik: ['Rubik', 'sans-serif'],
+        lora: ['Lora', 'serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        raleway: ['Raleway', 'sans-serif'],
+      },
     },
   },
   plugins: [],

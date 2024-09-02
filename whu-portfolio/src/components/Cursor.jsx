@@ -52,12 +52,12 @@ const Cursor = () => {
   }, []);
 
   return (
-    <div>
+    <div className="mix-blend-difference">
       {[...Array(30)].map((_, index) => (
         <div
           key={index}
           ref={(el) => (circlesRef.current[index] = el)}
-          className="h-8 w-8 rounded-3xl bg-blood-red absolute top-0 left-0 circle opacity-0 lg:opacity-100"
+          className="h-8 w-8 z-0 rounded-3xl bg-blood-red absolute top-0 left-0 circle opacity-0 lg:opacity-100"
           style={{ pointerEvents: 'none', transform: 'scale(1)' }}
         />
       ))}
