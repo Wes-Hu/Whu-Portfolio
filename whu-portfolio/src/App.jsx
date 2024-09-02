@@ -9,17 +9,25 @@ function App() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen z-10">
+    <div className="flex flex-col z-10">
       <Cursor/>
       <header className="fixed top-0 left-0 w-screen h-24 z-50 flex flex-row justify-between px-10 items-center">
         <HomeButton/>
         <NavMenu/>
       </header>
-      <main className="">
-        <h1 className="font-rubik text-blood-red text-9xl">Hello</h1>
-        <h1 className="font-lora text-blood-red text-9xl">Hello</h1>
-        <h1 className="font-montserrat text-blood-red text-9xl">Hello</h1>
-        <h1 className="font-raleway text-blood-red text-9xl">Hello</h1>
+      <main className="flex flex-col">
+        <div id="Home" className=" h-screen">
+
+        </div>
+        <div id="About" className=" h-screen">
+
+        </div>
+        <div id="Projects" className=" h-screen">
+
+        </div>
+        <div id="Experience" className=" h-screen">
+
+        </div>
       </main>
     </div>
   );
