@@ -84,19 +84,45 @@ const NavMenu = () => {
                 <AnimatePresence>
                         {active && (
                             <motion.div
-                                className="fixed top-0 right-0 w-screen md:w-[45%] lg:w-[30%] 2xl:w-1/5 h-screen z-40 bg-blood-red pl-10 pt-24"
-                                initial={{ scale: 0, x: "100%", y: "-100%", borderRadius: "100%"}}
-                                animate={{ scale: 1, x:  0, y: 0, borderRadius: "0%"}}
-                                exit={{scale: 0, x: "100%", y: "-100%", borderRadius: "100%" }}
+                                className="fixed top-0 right-0 w-screen md:w-[45%] lg:w-[30%] 2xl:w-1/5 h-screen z-40 bg-blood-red px-10 pt-24"
+                                initial={{x: "100%", borderRadius: "100%"}}
+                                animate={{x:  0, y: 0, borderRadius: "0%"}}
+                                exit={{x: "100%", borderRadius: "100%" }}
                                 transition={{
                                     duration: 0.7,
                                     ease: "easeInOut",
                                 }}
                             >
-                                <nav className="flex flex-col gap-10">
-                                    <motion.a href="#About" className="font-raleway text-4xl text-white w-full">About</motion.a>
-                                    <motion.a href="#Projects" className="font-raleway text-4xl text-white">Projects</motion.a>
-                                    <motion.a href="#Experience" className="font-raleway text-4xl text-white">Experience</motion.a>
+                                <nav className="flex flex-col gap-8">
+                                    <motion.a 
+                                        href="#About" 
+                                        className="font-raleway text-4xl text-white w-full flex flex-col"
+                                        initial="rest"
+                                        whileHover="hover"
+                                        animate="rest"
+                                    >
+                                        <motion.p>ABOUT</motion.p>
+                                        <motion.span 
+                                            className="w-full h-2 bg-gradient-to-r from-white to-blood-red" 
+                                            variants={{
+                                                rest: { scaleX: 0, originX: 0 },
+                                                hover: { scaleX: 1, originX: 0 },
+                                            }}
+                                            transition={{
+                                                type: "spring",
+                                                stiffness: 100,
+                                                damping: 20
+                                            }}
+                                        />
+                                    </motion.a>
+                                    <motion.a href="#Projects" className="font-raleway text-4xl text-white flex flex-col">
+                                        <motion.p>PROJECTS</motion.p>
+                                        <motion.span className="w-full h-2 bg-white" />
+                                    </motion.a>
+                                    <motion.a href="#Experience" className="font-raleway text-4xl text-white flex flex-col">
+                                        <motion.p>EXPERIENCE</motion.p>
+                                        <motion.span className="w-full h-2 bg-white" />
+                                    </motion.a>
                                 </nav>    
                             </motion.div>
                         )}
