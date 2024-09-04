@@ -126,7 +126,7 @@ const NavMenu = () => {
                 <AnimatePresence>
                     {active && (
                         <motion.div
-                            className="fixed top-0 right-0 w-screen md:w-[45%] 2xl:w-1/5 h-screen z-40 bg-blood-red px-10 py-24 flex flex-col justify-between"
+                            className="fixed top-0 right-0 w-screen md:w-[45%] lg:w-[30%] xl:w-[25%] 2xl:w-1/5 h-screen z-40 bg-blood-red px-10 py-24 flex flex-col justify-between"
                             initial={{x: "100%", borderRadius: "50%"}}
                             animate={{x:  0, y: 0, borderRadius: "0%"}}
                             exit={{x: "100%", borderRadius: "50%" }}
@@ -136,31 +136,27 @@ const NavMenu = () => {
                             }}
                         >
                             <motion.nav
-                                className="flex flex-col gap-8"
+                                className="flex flex-col gap-6"
                                 variants={navVariants}
                                 initial="initial"
                                 animate="animate"
                                 exit="exit"
                             >
-                                <motion.a href="#About" className="flex flex-col" variants={itemVariants}>
+                                <motion.a href="#About" className="" variants={itemVariants}>
                                     <FlipLink>About</FlipLink>
-                                    <motion.span className="w-full h-2 bg-gradient-to-r from-white to-blood-red"/>
                                 </motion.a>
-                                <motion.a href="#Projects" className="flex flex-col" variants={itemVariants}>
+                                <motion.a href="#Projects" className="" variants={itemVariants}>
                                     <FlipLink>Projects</FlipLink>
-                                    <motion.span className="w-full h-2 bg-gradient-to-r from-white to-blood-red" />
                                 </motion.a>
-                                <motion.a href="#Experience" className="flex flex-col" variants={itemVariants}>
+                                <motion.a href="#Experience" className="" variants={itemVariants}>
                                     <FlipLink>Experience</FlipLink>
-                                    <motion.span className="w-full h-2 bg-gradient-to-r from-white to-blood-red" />
                                 </motion.a>
-                                <motion.a href="#Contact" className="flex flex-col" variants={itemVariants}>
+                                <motion.a href="#Contact" className="" variants={itemVariants}>
                                     <FlipLink>Contact&nbsp;me</FlipLink>
-                                    <motion.span className="w-full h-2 bg-gradient-to-r from-white to-blood-red" />
                                 </motion.a>
                             </motion.nav>
                             <motion.nav
-                                className="flex flex-row gap-8"
+                                className="flex flex-row justify-between"
                                 variants={navVariantsTwo}
                                 initial="initial"
                                 animate="animate"
