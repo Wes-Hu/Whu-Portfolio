@@ -8,7 +8,7 @@ const HomeButton = () => {
   return (
     <motion.a
       whileHover={{ scale: 1.2 }}
-      href="/"
+      href="#Home"
       className="group relative bg-blood-red w-16 h-16 p-2 rounded-xl"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
