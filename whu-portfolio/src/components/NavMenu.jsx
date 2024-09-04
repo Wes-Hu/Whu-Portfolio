@@ -88,11 +88,11 @@ const NavMenu = () => {
                 >
                     <motion.button
                         onClick={() => setActive((prevState) => !prevState)}
-                        className="relative w-16 h-16 rounded-full z-50 bg-blood-red hover:bg-blood-red-light transition-all ease"
+                        className="relative w-16 h-16 rounded-full z-50 bg-blood-red group"
                         animate={active ? "open" : "closed"}
                     >
                         <motion.span
-                            className="absolute w-8 h-1 bg-white rounded-full"
+                            className="absolute w-8 h-1 bg-white rounded-full group-hover:bg-burnt-sienna transition-all ease-in-out duration-300"
                             style={{
                                 left: "50%",
                                 top: "35%",
@@ -102,7 +102,7 @@ const NavMenu = () => {
                             variants={BUTTON_VARIANTS.top}
                         />
                         <motion.span
-                            className="absolute w-8 h-1 bg-white rounded-full"
+                            className="absolute w-8 h-1 bg-white rounded-full group-hover:bg-burnt-sienna transition-all ease-in-out duration-300"
                             style={{
                                 left: "50%",
                                 top: "50%",
@@ -112,7 +112,7 @@ const NavMenu = () => {
                             variants={BUTTON_VARIANTS.middle}
                         />
                         <motion.span
-                            className="absolute w-8 h-1 bg-white rounded-full"
+                            className="absolute w-8 h-1 bg-white rounded-full group-hover:bg-burnt-sienna transition-all ease-in-out duration-300"
                             style={{
                                 left: "50%",
                                 bottom: "35%",
@@ -186,13 +186,13 @@ const NavMenu = () => {
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
                                                 initial: {y: "100%", x: "100%", opacity: 0},
-                                                hovered: {y: 0, x: 0, opacity: 1 },
+                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 300,  // Same stiffness to keep animation consistent
-                                                damping: 30,     // Same damping to ensure smooth transition
-                                                mass: 1,         // Consistency in movement weight
+                                                stiffness: 300,
+                                                damping: 30,
+                                                mass: 1,
                                                 duration: 1
                                             }}
                                         >
@@ -202,13 +202,13 @@ const NavMenu = () => {
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
                                                 initial: {y: "-100%", x: "-100%", opacity: 0},
-                                                hovered: {y: 0, x: 0, opacity: 1 },
+                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 300,  // Same stiffness to keep animation consistent
-                                                damping: 30,     // Same damping to ensure smooth transition
-                                                mass: 1,         // Consistency in movement weight
+                                                stiffness: 300,
+                                                damping: 30,
+                                                mass: 1,
                                                 duration: 1
                                             }}
                                         >
@@ -217,14 +217,14 @@ const NavMenu = () => {
                                         <motion.div 
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
-                                                initial: {y: "-100%", x: "100%", opacity: 0},
-                                                hovered: {y: 0, x: 0, opacity: 1 },
+                                                initial: {y: "-100%", x: "100%", opacity: 0, color: "white" },
+                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 300,  // Same stiffness to keep animation consistent
-                                                damping: 30,     // Same damping to ensure smooth transition
-                                                mass: 1,         // Consistency in movement weight
+                                                stiffness: 300,
+                                                damping: 30,
+                                                mass: 1,
                                                 duration: 1
                                             }}
                                         >
@@ -234,13 +234,13 @@ const NavMenu = () => {
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
                                                 initial: {y: "100%", x: "-100%", opacity: 0},
-                                                hovered: {y: 0, x: 0, opacity: 1 },
+                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 300,  // Same stiffness to keep animation consistent
-                                                damping: 30,     // Same damping to ensure smooth transition
-                                                mass: 1,         // Consistency in movement weight
+                                                stiffness: 300,
+                                                damping: 30,
+                                                mass: 1,
                                                 duration: 1
                                             }}
                                         >
@@ -272,13 +272,13 @@ const NavMenu = () => {
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
                                                 initial: {y: "100%", x: "100%", opacity: 0},
-                                                hovered: {y: 0, x: 0, opacity: 1 },
+                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 300,  // Same stiffness to keep animation consistent
-                                                damping: 30,     // Same damping to ensure smooth transition
-                                                mass: 1,         // Consistency in movement weight
+                                                stiffness: 300,
+                                                damping: 30,
+                                                mass: 1,
                                                 duration: 1
                                             }}
                                         >
@@ -288,13 +288,13 @@ const NavMenu = () => {
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
                                                 initial: {y: "-100%", x: "-100%", opacity: 0},
-                                                hovered: {y: 0, x: 0, opacity: 1 },
+                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 300,  // Same stiffness to keep animation consistent
-                                                damping: 30,     // Same damping to ensure smooth transition
-                                                mass: 1,         // Consistency in movement weight
+                                                stiffness: 300,
+                                                damping: 30,
+                                                mass: 1,
                                                 duration: 1
                                             }}
                                         >
@@ -303,14 +303,14 @@ const NavMenu = () => {
                                         <motion.div 
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
-                                                initial: {y: "-100%", x: "100%", opacity: 0},
-                                                hovered: {y: 0, x: 0, opacity: 1 },
+                                                initial: {y: "-100%", x: "100%", opacity: 0, color: "white" },
+                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 300,  // Same stiffness to keep animation consistent
-                                                damping: 30,     // Same damping to ensure smooth transition
-                                                mass: 1,         // Consistency in movement weight
+                                                stiffness: 300,
+                                                damping: 30,
+                                                mass: 1,
                                                 duration: 1
                                             }}
                                         >
@@ -320,13 +320,13 @@ const NavMenu = () => {
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
                                                 initial: {y: "100%", x: "-100%", opacity: 0},
-                                                hovered: {y: 0, x: 0, opacity: 1 },
+                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 300,  // Same stiffness to keep animation consistent
-                                                damping: 30,     // Same damping to ensure smooth transition
-                                                mass: 1,         // Consistency in movement weight
+                                                stiffness: 300,
+                                                damping: 30,
+                                                mass: 1,
                                                 duration: 1
                                             }}
                                         >
@@ -358,13 +358,13 @@ const NavMenu = () => {
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
                                                 initial: {y: "100%", x: "100%", opacity: 0},
-                                                hovered: {y: 0, x: 0, opacity: 1 },
+                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 300,  // Same stiffness to keep animation consistent
-                                                damping: 30,     // Same damping to ensure smooth transition
-                                                mass: 1,         // Consistency in movement weight
+                                                stiffness: 300,
+                                                damping: 30,
+                                                mass: 1,
                                                 duration: 1
                                             }}
                                         >
@@ -374,13 +374,13 @@ const NavMenu = () => {
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
                                                 initial: {y: "-100%", x: "-100%", opacity: 0},
-                                                hovered: {y: 0, x: 0, opacity: 1 },
+                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 300,  // Same stiffness to keep animation consistent
-                                                damping: 30,     // Same damping to ensure smooth transition
-                                                mass: 1,         // Consistency in movement weight
+                                                stiffness: 300,
+                                                damping: 30,
+                                                mass: 1,
                                                 duration: 1
                                             }}
                                         >
@@ -389,14 +389,14 @@ const NavMenu = () => {
                                         <motion.div 
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
-                                                initial: {y: "-100%", x: "100%", opacity: 0},
-                                                hovered: {y: 0, x: 0, opacity: 1 },
+                                                initial: {y: "-100%", x: "100%", opacity: 0, color: "white" },
+                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 300,  // Same stiffness to keep animation consistent
-                                                damping: 30,     // Same damping to ensure smooth transition
-                                                mass: 1,         // Consistency in movement weight
+                                                stiffness: 300,
+                                                damping: 30,
+                                                mass: 1,
                                                 duration: 1
                                             }}
                                         >
@@ -406,13 +406,13 @@ const NavMenu = () => {
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
                                                 initial: {y: "100%", x: "-100%", opacity: 0},
-                                                hovered: {y: 0, x: 0, opacity: 1 },
+                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
                                                 type: "spring",
-                                                stiffness: 300,  // Same stiffness to keep animation consistent
-                                                damping: 30,     // Same damping to ensure smooth transition
-                                                mass: 1,         // Consistency in movement weight
+                                                stiffness: 300,
+                                                damping: 30,
+                                                mass: 1,
                                                 duration: 1
                                             }}
                                         >
@@ -447,7 +447,7 @@ const NavMenu = () => {
                     {children.split("").map((l, i) => {
                         return <motion.span
                         variants={{
-                            initial: {y: 0},
+                            initial: {y: 0,},
                             hovered: {y: "-100%"},
                         }}
                         transition={{
@@ -463,8 +463,8 @@ const NavMenu = () => {
                     {children.split("").map((l, i) => {
                         return <motion.span
                         variants={{
-                            initial: {y: "100%"},
-                            hovered: {y: 0 },
+                            initial: {y: "100%", color: "white"},
+                            hovered: {y: 0, color: "#EE6C4D" },
                         }}
                         transition={{
                             duration: DURATION,
