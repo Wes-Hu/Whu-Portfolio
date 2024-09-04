@@ -45,17 +45,17 @@ const NavMenu = () => {
                 x: 0,
                 transition: {
                     delayChildren: 0.5,
-                    staggerChildren: 0.2, // Adjust the delay between each child animation
-                    duration: 1, // Duration for each item's animation
+                    staggerChildren: 0.2,
+                    duration: 1,
                 },
             },
             exit: { opacity: 0, x: +20 },
         };
 
         const itemVariants = {
-            initial: { opacity: 0, x: -20 , scale: 0 },
-            animate: { opacity: 1, x: 0, scale: 1 },
-            exit: { opacity: 0, x: +20, scale: 0  },
+            initial: { opacity: 0, x: -20 , scale: 0, scaleX: 0 },
+            animate: { opacity: 1, x: 0, scale: 1, scaleX: 1 },
+            exit: { opacity: 0, x: +20, scale: 0, scaleX: 0  },
         };
 
         const navVariantsTwo = {
@@ -65,17 +65,17 @@ const NavMenu = () => {
                 x: 0,
                 transition: {
                     delayChildren: 0.5,
-                    staggerChildren: 0.2, // Adjust the delay between each child animation
-                    duration: 1, // Duration for each item's animation
+                    staggerChildren: 0.3,
+                    duration: 1,
                 },
             },
             exit: { opacity: 0, x: +20 },
         };
 
         const itemVariantsTwo = {
-            initial: { opacity: 0, x: -20 , scale: 0 },
-            animate: { opacity: 1, x: 0, scale: 1 },
-            exit: { opacity: 0, x: +20, scale: 0  },
+            initial: { opacity: 0, x: -20 , scale: 0, rotate: 180 },
+            animate: { opacity: 1, x: 0, scale: 1, rotate: 0 },
+            exit: { opacity: 0, x: +20, scale: 0, rotate: 180  },
         };
 
         return (
@@ -185,7 +185,7 @@ const NavMenu = () => {
                                         <motion.div 
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
-                                                initial: {y: "100%", x: "100%", opacity: 0},
+                                                initial: {y: "100%", x: "100%", opacity: 0, color: "white" },
                                                 hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
@@ -201,7 +201,7 @@ const NavMenu = () => {
                                         <motion.div 
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
-                                                initial: {y: "-100%", x: "-100%", opacity: 0},
+                                                initial: {y: "-100%", x: "-100%", opacity: 0, color: "white" },
                                                 hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
@@ -233,7 +233,7 @@ const NavMenu = () => {
                                         <motion.div 
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
-                                                initial: {y: "100%", x: "-100%", opacity: 0},
+                                                initial: {y: "100%", x: "-100%", opacity: 0, color: "white" },
                                                 hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
@@ -271,7 +271,7 @@ const NavMenu = () => {
                                         <motion.div 
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
-                                                initial: {y: "100%", x: "100%", opacity: 0},
+                                                initial: {y: "100%", x: "100%", opacity: 0, color: "white" },
                                                 hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
@@ -287,7 +287,7 @@ const NavMenu = () => {
                                         <motion.div 
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
-                                                initial: {y: "-100%", x: "-100%", opacity: 0},
+                                                initial: {y: "-100%", x: "-100%", opacity: 0, color: "white" },
                                                 hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
@@ -319,7 +319,7 @@ const NavMenu = () => {
                                         <motion.div 
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
-                                                initial: {y: "100%", x: "-100%", opacity: 0},
+                                                initial: {y: "100%", x: "-100%", opacity: 0, color: "white" },
                                                 hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
@@ -357,7 +357,7 @@ const NavMenu = () => {
                                         <motion.div 
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
-                                                initial: {y: "100%", x: "100%", opacity: 0},
+                                                initial: {y: "100%", x: "100%", opacity: 0, color: "white" },
                                                 hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
@@ -373,7 +373,7 @@ const NavMenu = () => {
                                         <motion.div 
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
-                                                initial: {y: "-100%", x: "-100%", opacity: 0},
+                                                initial: {y: "-100%", x: "-100%", opacity: 0, color: "white" },
                                                 hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
@@ -405,7 +405,7 @@ const NavMenu = () => {
                                         <motion.div 
                                             className="absolute inset-0 bg-blood-red"
                                             variants={{
-                                                initial: {y: "100%", x: "-100%", opacity: 0},
+                                                initial: {y: "100%", x: "-100%", opacity: 0, color: "white" },
                                                 hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
                                             }}
                                             transition={{
