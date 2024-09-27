@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const Encrypt = () => {
   return (
     <div>
-      <EncryptText texts={["COMP SCI STUDENT", "SOFTWARE DEVELOPER"]} />
+      <EncryptText texts={["UNDERGRADUATE STUDENT", "SOFTWARE DEVELOPER"]} />
     </div>
   );
 };
@@ -66,7 +66,7 @@ const EncryptText = ({ texts }) => {
   }, [currentTextIndex]);
 
   return (
-    <motion.div className="font-rubik text-blood-red text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold text-nowrap select-none">
+    <motion.div className="font-rubik text-blood-red text-xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold text-nowrap select-none">
       {text}
     </motion.div>
   );
