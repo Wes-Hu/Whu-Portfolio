@@ -9,15 +9,15 @@ const Encrypt = () => {
   );
 };
 
-const CYCLES_PER_LETTER = 2;
-const SHUFFLE_TIME = 50;
-const CYCLE_INTERVAL = 2000;
+const CYCLES_PER_LETTER =2;
+const SHUFFLE_TIME = 30;
+const CYCLE_INTERVAL = 3000;
 const CHARS = "!@#$%^&*():{};|,.<>/?";
 
 const EncryptText = ({ texts }) => {
   const scrambleIntervalRef = useRef(null);
   const cycleIntervalRef = useRef(null);
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [currentTextIndex, setCurrentTextIndex] = useState(1);
   const [text, setText] = useState(texts[0]);
 
   const scramble = () => {
@@ -48,6 +48,8 @@ const EncryptText = ({ texts }) => {
 
   const stopScramble = () => {
     clearInterval(scrambleIntervalRef.current || undefined);
+
+
     setText(texts[currentTextIndex]);
     setCurrentTextIndex((prevIndex) =>
       prevIndex === texts.length - 1 ? 0 : prevIndex + 1
@@ -55,6 +57,7 @@ const EncryptText = ({ texts }) => {
   };
 
   useEffect(() => {
+
     cycleIntervalRef.current = setInterval(() => {
       scramble();
     }, CYCLE_INTERVAL);
@@ -66,7 +69,7 @@ const EncryptText = ({ texts }) => {
   }, [currentTextIndex]);
 
   return (
-    <motion.div className="font-rubik text-blood-red text-xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold text-nowrap select-none">
+    <motion.div className="font-rubik text-blood-red text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-extrabold text-nowrap select-none">
       {text}
     </motion.div>
   );
