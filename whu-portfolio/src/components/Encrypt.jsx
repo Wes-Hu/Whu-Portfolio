@@ -9,7 +9,7 @@ const Encrypt = () => {
   );
 };
 
-const CYCLES_PER_LETTER =2;
+const CYCLES_PER_LETTER = 2;
 const SHUFFLE_TIME = 30;
 const CYCLE_INTERVAL = 3000;
 const CHARS = "!@#$%^&*():{};|,.<>/?";
