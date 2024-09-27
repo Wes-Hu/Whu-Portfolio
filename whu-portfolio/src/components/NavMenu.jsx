@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, MotionConfig, AnimatePresence, easeIn } from "framer-motion";
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { MdEmail } from "react-icons/md";
+import { MdEmail} from "react-icons/md";
 
 const NavMenu = () => {
     const MainMenu = () => {
@@ -164,260 +164,38 @@ const NavMenu = () => {
                             >
                                 <motion.a href="https://www.linkedin.com/in/wesley-hu-1bb739268/" target="_blank" className="text-white" variants={itemVariantsTwo}>
                                     <motion.div 
-                                        className="relative block overflow-hidden whitespace-nowrap"
-                                        initial="initial"
-                                        whileHover="hovered"
-                                        transition={{
-                                            staggerChildren: 0.05,
-                                        }}
+                                        className="relative block overflow-hidden whitespace-nowrap hover:text-burnt-sienna transition-colors duration-300 ease-in-out"
+                                        initial={{scale: 1 }}
+                                        whileHover={{scale: 1.5, rotate: '360deg'}}
                                     >
-                                        <motion.div 
-                                            variants={{
-                                                initial: {opacity: 1},
-                                                hovered: {opacity: 0},
-                                            }}
-                                            transition={{
-                                                duration: 0.5,
-                                            }}
-                                        >
+                                        <motion.div>
                                             <FaLinkedin size={50}/>
                                         </motion.div>
-                                        <motion.div 
-                                            className="absolute inset-0 bg-blood-red"
-                                            variants={{
-                                                initial: {y: "100%", x: "100%", opacity: 0, color: "white" },
-                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
-                                            }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                                mass: 1,
-                                                duration: 1
-                                            }}
-                                        >
-                                            <FaLinkedin size={50}/>
-                                        </motion.div>
-                                        <motion.div 
-                                            className="absolute inset-0 bg-blood-red"
-                                            variants={{
-                                                initial: {y: "-100%", x: "-100%", opacity: 0, color: "white" },
-                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
-                                            }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                                mass: 1,
-                                                duration: 1
-                                            }}
-                                        >
-                                            <FaLinkedin size={50}/>
-                                        </motion.div>
-                                        <motion.div 
-                                            className="absolute inset-0 bg-blood-red"
-                                            variants={{
-                                                initial: {y: "-100%", x: "100%", opacity: 0, color: "white" },
-                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
-                                            }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                                mass: 1,
-                                                duration: 1
-                                            }}
-                                        >
-                                            <FaLinkedin size={50}/>
-                                        </motion.div>
-                                        <motion.div 
-                                            className="absolute inset-0 bg-blood-red"
-                                            variants={{
-                                                initial: {y: "100%", x: "-100%", opacity: 0, color: "white" },
-                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
-                                            }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                                mass: 1,
-                                                duration: 1
-                                            }}
-                                        >
-                                            <FaLinkedin size={50}/>
-                                        </motion.div>
+                                       
                                     </motion.div>
                                 </motion.a>
                                 <motion.a href="https://github.com/Wes-Hu" target="_blank" className="text-white" variants={itemVariantsTwo}>
                                     <motion.div 
-                                        className="relative block overflow-hidden whitespace-nowrap"
-                                        initial="initial"
-                                        whileHover="hovered"
-                                        transition={{
-                                            staggerChildren: 0.05,
-                                        }}
+                                        className="relative block overflow-hidden whitespace-nowrap hover:text-burnt-sienna transition-colors duration-300 ease-in-out"
+                                        initial={{scale: 1 }}
+                                        whileHover={{scale: 1.5, rotate: '360deg'}}
                                     >
-                                        <motion.div 
-                                            variants={{
-                                                initial: {opacity: 1},
-                                                hovered: {opacity: 0},
-                                            }}
-                                            transition={{
-                                                duration: 0.5,
-                                            }}
-                                        >
+                                        <motion.div>
                                             <FaGithub size={50}/>
                                         </motion.div>
-                                        <motion.div 
-                                            className="absolute inset-0 bg-blood-red"
-                                            variants={{
-                                                initial: {y: "100%", x: "100%", opacity: 0, color: "white" },
-                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
-                                            }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                                mass: 1,
-                                                duration: 1
-                                            }}
-                                        >
-                                            <FaGithub size={50}/>
-                                        </motion.div>
-                                        <motion.div 
-                                            className="absolute inset-0 bg-blood-red"
-                                            variants={{
-                                                initial: {y: "-100%", x: "-100%", opacity: 0, color: "white" },
-                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
-                                            }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                                mass: 1,
-                                                duration: 1
-                                            }}
-                                        >
-                                            <FaGithub size={50}/>
-                                        </motion.div>
-                                        <motion.div 
-                                            className="absolute inset-0 bg-blood-red"
-                                            variants={{
-                                                initial: {y: "-100%", x: "100%", opacity: 0, color: "white" },
-                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
-                                            }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                                mass: 1,
-                                                duration: 1
-                                            }}
-                                        >
-                                            <FaGithub size={50}/>
-                                        </motion.div>
-                                        <motion.div 
-                                            className="absolute inset-0 bg-blood-red"
-                                            variants={{
-                                                initial: {y: "100%", x: "-100%", opacity: 0, color: "white" },
-                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
-                                            }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                                mass: 1,
-                                                duration: 1
-                                            }}
-                                        >
-                                            <FaGithub size={50}/>
-                                        </motion.div>
+                                       
                                     </motion.div>
                                 </motion.a>
                                 <motion.a href="mailto:wes.hu@comcast.net" className="text-white" variants={itemVariantsTwo}>
-                                    <motion.div 
-                                        className="relative block overflow-hidden whitespace-nowrap"
-                                        initial="initial"
-                                        whileHover="hovered"
-                                        transition={{
-                                            staggerChildren: 0.05,
-                                        }}
+                                <motion.div 
+                                        className="relative block overflow-hidden whitespace-nowrap hover:text-burnt-sienna transition-colors duration-300 ease-in-out"
+                                        initial={{scale: 1 }}
+                                        whileHover={{scale: 1.5, rotate: '360deg'}}
                                     >
-                                        <motion.div 
-                                            variants={{
-                                                initial: {opacity: 1},
-                                                hovered: {opacity: 0},
-                                            }}
-                                            transition={{
-                                                duration: 0.5,
-                                            }}
-                                        >
+                                        <motion.div>
                                             <MdEmail size={50}/>
                                         </motion.div>
-                                        <motion.div 
-                                            className="absolute inset-0 bg-blood-red"
-                                            variants={{
-                                                initial: {y: "100%", x: "100%", opacity: 0, color: "white" },
-                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
-                                            }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                                mass: 1,
-                                                duration: 1
-                                            }}
-                                        >
-                                            <MdEmail size={50}/>
-                                        </motion.div>
-                                        <motion.div 
-                                            className="absolute inset-0 bg-blood-red"
-                                            variants={{
-                                                initial: {y: "-100%", x: "-100%", opacity: 0, color: "white" },
-                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
-                                            }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                                mass: 1,
-                                                duration: 1
-                                            }}
-                                        >
-                                            <MdEmail size={50}/>
-                                        </motion.div>
-                                        <motion.div 
-                                            className="absolute inset-0 bg-blood-red"
-                                            variants={{
-                                                initial: {y: "-100%", x: "100%", opacity: 0, color: "white" },
-                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
-                                            }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                                mass: 1,
-                                                duration: 1
-                                            }}
-                                        >
-                                            <MdEmail size={50}/>
-                                        </motion.div>
-                                        <motion.div 
-                                            className="absolute inset-0 bg-blood-red"
-                                            variants={{
-                                                initial: {y: "100%", x: "-100%", opacity: 0, color: "white" },
-                                                hovered: {y: 0, x: 0, opacity: 1, color: "#EE6C4D"   },
-                                            }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 300,
-                                                damping: 30,
-                                                mass: 1,
-                                                duration: 1
-                                            }}
-                                        >
-                                            <MdEmail size={50}/>
-                                        </motion.div>
+                                       
                                     </motion.div>
                                     
                                 </motion.a>
