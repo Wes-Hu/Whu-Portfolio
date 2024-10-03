@@ -17,12 +17,12 @@ function App() {
         <NavMenu/>
       </header>
       <main className="flex flex-col">
-        <div id="Home" className="w-screen h-screen flex justify-center items-center px-5">
+        <div id="Home" className="w-screen h-screen flex flex-col justify-center items-center px-5">
           <motion.div 
             initial={{x: -300, opacity: 0}}
             animate={{x: 0, opacity: 1}}
             transition={{duration: 0.5, ease: "easeInOut"}}
-            className="w-full md:w-11/12 xl:w-4/5 2xl:w-3/4 h-1/2 md:h-auto"
+            className="w-full md:w-11/12 xl:w-4/5 2xl:w-3/4"
           >
             {/* H1 animation */}
             <motion.h1
@@ -42,11 +42,13 @@ function App() {
               <Encrypt />
             </motion.div>
           </motion.div>
-          <Canvas style={{width: '100vw', height: '50vh', position:'fixed',}} camera={{ position: [0, 0, 2], fov: 75 }}>
-            <OrbitControls enableZoom={false} enablePan={false} enableRotate/>
-            <directionalLight position={[1, 1, 1]} intensity={100} color={0x9CDBA6}/>
-            <Eye/>
-          </Canvas>
+          <div className="w-screen h-screen absolute"> 
+            <Canvas className="" camera={{ position: [0, 0, 2], fov: 75 }}>
+              <directionalLight  position={[1, 1, 1]} intensity={10} />
+              <Eye/>
+            </Canvas>
+          </div>
+
         </div>
         <div id="About" className="h-screen"></div>
         <div id="Projects" className="h-screen"></div>
