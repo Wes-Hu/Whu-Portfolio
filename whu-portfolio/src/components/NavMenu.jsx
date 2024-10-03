@@ -136,22 +136,22 @@ const NavMenu = () => {
                             }}
                         >
                             <motion.nav
-                                className="flex flex-col gap-6"
+                                className="flex flex-col gap-6 items-start"
                                 variants={navVariants}
                                 initial="initial"
                                 animate="animate"
                                 exit="exit"
                             >
-                                <motion.a href="#About" className="" variants={itemVariants}>
+                                <motion.a href="#About" variants={itemVariants}>
                                     <FlipLink>About</FlipLink>
                                 </motion.a>
-                                <motion.a href="#Projects" className="" variants={itemVariants}>
+                                <motion.a href="#Projects" variants={itemVariants}>
                                     <FlipLink>Projects</FlipLink>
                                 </motion.a>
-                                <motion.a href="#Experience" className="" variants={itemVariants}>
+                                <motion.a href="#Experience" variants={itemVariants}>
                                     <FlipLink>Experience</FlipLink>
                                 </motion.a>
-                                <motion.a href="#Contact" className="" variants={itemVariants}>
+                                <motion.a href="#Contact" variants={itemVariants}>
                                     <FlipLink>Contact&nbsp;me</FlipLink>
                                 </motion.a>
                             </motion.nav>
@@ -214,7 +214,7 @@ const NavMenu = () => {
     const FlipLink = ({ children }) => {
         return (
             <motion.span 
-                className="relative block overflow-hidden whitespace-nowrap uppercase font-raleway font-semibold text-4xl text-white  w-full"
+                className="relative inline-block overflow-hidden whitespace-nowrap uppercase font-raleway font-semibold text-4xl text-white"
                 initial="initial"
                 whileHover="hovered"
                 style={{

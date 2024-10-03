@@ -5,54 +5,51 @@ import NavMenu from './components/NavMenu';
 import Encrypt from './components/Encrypt';
 import { motion } from 'framer-motion';
 import { OrbitControls, useGLTF } from '@react-three/drei';
-import { useEffect, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
+import { Canvas} from '@react-three/fiber';
+import Eye from './components/Eye';
 
-const RotatingCube = () => {
-  const meshRef = useRef();
-  const mousePosition = useRef({ x: 0, y: 0 });
+const ResponsiveCanvas = () => {
+  const canvasRef = useRef();
 
-  // Load the custom 3D model (GLTF/GLB file)
-  const { scene } = useGLTF('/public/test.glb');  // Replace with the correct path to your model
-
-  // Capture mouse movement
   useEffect(() => {
-    const handleMouseMove = (event) => {
-      // Normalize mouse position between -1 and 1
-      mousePosition.current.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mousePosition.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+      const handleResize = () => {
+          if (canvasRef.current) {
+              canvasRef.current.style.width = '100%';
+              canvasRef.current.style.height = `${window.innerHeight * 0.5}px`; // 50% of the viewport height
+          }
+      };
+
+      window.addEventListener('resize', handleResize);
+      handleResize(); // Call it once to set the initial size
+
+      return () => {
+          window.removeEventListener('resize', handleResize);
+      };
   }, []);
 
-  useFrame(({ camera }) => {
-    if (meshRef.current) {
-      // Create a vector that points to the mouse position in 3D space
-      const vector = new THREE.Vector3(mousePosition.current.x, mousePosition.current.y, 0.5); // Set z value accordingly
-      vector.unproject(camera); // Unproject to convert to world coordinates
-      
-      // Calculate direction from the cube to the mouse position
-      const direction = vector.sub(meshRef.current.position).normalize();
-      
-      // Set the cube's rotation to look at the direction of the mouse
-      meshRef.current.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), direction); // Adjust if the model's front is not aligned to the Z-axis
-    }
-  });
-
   return (
-    <primitive ref={meshRef} object={scene} scale={0.5}></primitive>
+      <Canvas
+          ref={canvasRef}
+          style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+          }}
+          camera={{ position: [0, 0, 2], fov: 75 }}
+      >
+          <OrbitControls enableZoom={false} enablePan={false} enableRotate />
+          <directionalLight position={[1, 1, 1]} intensity={100} color={0x9CDBA6} />
+          <Eye />
+      </Canvas>
   );
 };
+
 
 function App() {  
   return (
     <div className="flex flex-col z-10 cursor-none">
       <Cursor/>
-      <header className="fixed top-0 left-0 w-screen h-24 z-50 flex flex-row justify-between px-3 md:px-10 items-center">
+      <header className="fixed top-0 left-0 w-screen h-24 z-50 flex flex-row justify-between px-3 md:px-10 items-center cursor-auto">
         <HomeButton/>
         <NavMenu/>
       </header>
@@ -82,10 +79,10 @@ function App() {
               <Encrypt />
             </motion.div>
           </motion.div>
-          <Canvas style={{width: '100vw', height: '50vh', position:'fixed',}} camera={{ position: [0, 0, 2], fov: 75 }}>
+          <Canvas camera={{ position: [0, 0, 2], fov: 75 }}>
             <OrbitControls enableZoom={false} enablePan={false} enableRotate/>
             <directionalLight position={[1, 1, 1]} intensity={100} color={0x9CDBA6}/>
-            <RotatingCube/>
+            <Eye/>
           </Canvas>
         </div>
         <div id="About" className="h-screen"></div>
@@ -96,5 +93,7 @@ function App() {
     </div>
   );
 }
+
+useGLTF.preload('/public/test.glb');
 
 export default App;
