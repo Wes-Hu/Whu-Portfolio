@@ -8,43 +8,6 @@ import { OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas} from '@react-three/fiber';
 import Eye from './components/Eye';
 
-const ResponsiveCanvas = () => {
-  const canvasRef = useRef();
-
-  useEffect(() => {
-      const handleResize = () => {
-          if (canvasRef.current) {
-              canvasRef.current.style.width = '100%';
-              canvasRef.current.style.height = `${window.innerHeight * 0.5}px`; // 50% of the viewport height
-          }
-      };
-
-      window.addEventListener('resize', handleResize);
-      handleResize(); // Call it once to set the initial size
-
-      return () => {
-          window.removeEventListener('resize', handleResize);
-      };
-  }, []);
-
-  return (
-      <Canvas
-          ref={canvasRef}
-          style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-          }}
-          camera={{ position: [0, 0, 2], fov: 75 }}
-      >
-          <OrbitControls enableZoom={false} enablePan={false} enableRotate />
-          <directionalLight position={[1, 1, 1]} intensity={100} color={0x9CDBA6} />
-          <Eye />
-      </Canvas>
-  );
-};
-
-
 function App() {  
   return (
     <div className="flex flex-col z-10 cursor-none">
@@ -79,7 +42,7 @@ function App() {
               <Encrypt />
             </motion.div>
           </motion.div>
-          <Canvas camera={{ position: [0, 0, 2], fov: 75 }}>
+          <Canvas style={{width: '100vw', height: '50vh', position:'fixed',}} camera={{ position: [0, 0, 2], fov: 75 }}>
             <OrbitControls enableZoom={false} enablePan={false} enableRotate/>
             <directionalLight position={[1, 1, 1]} intensity={100} color={0x9CDBA6}/>
             <Eye/>
