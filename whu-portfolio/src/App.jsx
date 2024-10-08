@@ -44,7 +44,7 @@ function App() {
           </motion.div>
           <div className="w-screen h-screen absolute"> 
             <Canvas className="" camera={{ position: [0, 0, 2], fov: 75 }}>
-              <directionalLight  position={[1, 1, 1]} intensity={10} />
+              <ambientLight  position={[1, 1, 1]} intensity={1} />
               <Eye/>
             </Canvas>
           </div>
