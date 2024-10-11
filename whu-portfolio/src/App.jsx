@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas} from '@react-three/fiber';
 import Eye from './components/Eye';
+import ScrollDownButton from './components/ScrollDownButton';
 
 function App() {  
   return (
@@ -17,12 +18,12 @@ function App() {
         <NavMenu/>
       </header>
       <main className="flex flex-col">
-        <div id="Home" className="w-screen h-screen flex flex-col justify-center items-center px-5">
+        <div id="Home" className="w-screen h-screen flex flex-col justify-center items-center px-5 2xl:px-0">
           <motion.div 
             initial={{x: -300, opacity: 0}}
             animate={{x: 0, opacity: 1}}
             transition={{duration: 0.5, ease: "easeInOut"}}
-            className="w-full md:w-11/12 xl:w-4/5 2xl:w-3/4"
+            className="w-full md:w-11/12 xl:w-4/5 2xl:w-3/4 pb-40 lg:pb-0"
           >
             {/* H1 animation */}
             <motion.h1
@@ -47,9 +48,10 @@ function App() {
               <Eye/>
             </Canvas>
           </div>
-
+          <ScrollDownButton/>
         </div>
-        <div id="About" className="h-screen text-white">About Under Construction</div>
+        <div id="About" className="h-screen text-white">About Under Construction
+        </div>
         <div id="Projects" className="h-screen text-white">Projects Under Construction</div>
         <div id="Experience" className="h-screen text-white">Experience Under Construction</div>
         <div id="Contact" className="h-screen text-white">Contact Form Under Construction</div>

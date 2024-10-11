@@ -1,9 +1,74 @@
 import { useGLTF } from '@react-three/drei';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
+function useWindowSize() {
+  // Initialize state with undefined width/height so server and client renders match
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    // Handler to call on window resize
+    const handleResize = () => {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []); // Empty array ensures that effect is only run on mount
+
+  return windowSize;
+}
+
+
 const Eye = () => {
+  const windowSize = useWindowSize();
+  const width = windowSize.width || 0;
+
+  // Adjusted values based on breakpoints
+  let positionX = 0;
+  let positionY = 0;
+  let eyeScale = 1;
+
+  if (width <= 640) {
+    // sm
+    positionX = 0;
+    positionY = -1;
+    eyeScale = 0.8;
+  } else if (width <= 768) {
+    // md
+    positionX = 0;
+    positionY = -1;
+    eyeScale = 0.9;
+  } else if (width <= 1024) {
+    // lg
+    positionX = 2;
+    positionY = 0;
+    eyeScale = 1.0;
+  } else if (width <= 1440) {
+    // xl
+    positionX = 2.5;
+    positionY = 0;
+    eyeScale = 1.2;
+  } else {
+    positionX = 2.2;
+    positionY = 0;
+    eyeScale = 1.5;
+  }
+
   const meshRef = useRef();
   const targetQuaternion = useRef(new THREE.Quaternion());
   const { camera } = useThree(); // Access the camera directly
@@ -64,7 +129,7 @@ const Eye = () => {
   });
 
   return (
-    <primitive ref={meshRef} object={scene} scale={1} />
+    <primitive ref={meshRef} position={[positionX, positionY, 0]} object={scene} scale={eyeScale} />
   );
 };
 
