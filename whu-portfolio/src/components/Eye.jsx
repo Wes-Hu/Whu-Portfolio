@@ -15,8 +15,9 @@ const Eye = () => {
   useEffect(() => {
     const handleMouseMove = (event) => {
       // Normalize mouse position between -1 and 1
-      const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-      const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+      const factor = 4; // Increase this value to make the eye rotate more
+      const mouseX = ((event.clientX / window.innerWidth) * 2 - 1) * factor;
+      const mouseY = (-(event.clientY / window.innerHeight) * 2 + 1) * factor;
 
       // Calculate the target rotation based on mouse position
       const vector = new THREE.Vector3(mouseX, mouseY, 0.5);
@@ -30,10 +31,10 @@ const Eye = () => {
     };
 
     const handleTouchStart = (event) => {
+      const factor = 4;
       const touch = event.touches[0];
-      // Normalize touch position between -1 and 1
-      const mouseX = (touch.clientX / window.innerWidth) * 2 - 1;
-      const mouseY = -(touch.clientY / window.innerHeight) * 2 + 1;
+      const mouseX = ((touch.clientX / window.innerWidth) * 2 - 1) * factor;
+      const mouseY = (-(touch.clientY / window.innerHeight) * 2 + 1) * factor;
 
       // Calculate the target rotation based on touch position
       const vector = new THREE.Vector3(mouseX, mouseY, 0.5);
@@ -58,7 +59,7 @@ const Eye = () => {
   useFrame(() => {
     if (meshRef.current) {
       // Smoothly interpolate the eye's rotation to the target quaternion
-      meshRef.current.quaternion.slerp(targetQuaternion.current, 0.1); // Adjust the slerp factor for speed
+      meshRef.current.quaternion.slerp(targetQuaternion.current, 0.3); // Adjust the slerp factor for speed
     }
   });
 
