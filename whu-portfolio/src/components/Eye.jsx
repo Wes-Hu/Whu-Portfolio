@@ -9,7 +9,7 @@ const Eye = () => {
   const { camera } = useThree(); // Access the camera directly
 
   // Load the custom 3D model (GLTF/GLB file)
-  const { scene } = useGLTF('/public/test.glb'); // Replace with the correct path to your model
+  const { scene } = useGLTF('Eye.glb'); // Replace with the correct path to your model
 
   // Capture mouse movement and touch events
   useEffect(() => {
@@ -63,7 +63,7 @@ const Eye = () => {
   });
 
   return (
-    <primitive ref={meshRef} object={scene} scale={0.5} />
+    <primitive ref={meshRef} object={scene} scale={1} />
   );
 };
 
