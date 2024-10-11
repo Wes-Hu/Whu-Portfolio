@@ -49,10 +49,10 @@ function App() {
           </div>
 
         </div>
-        <div id="About" className="h-screen"></div>
-        <div id="Projects" className="h-screen"></div>
-        <div id="Experience" className="h-screen"></div>
-        <div id="Contact" className="h-screen bg-white"></div>
+        <div id="About" className="h-screen text-white">About Under Construction</div>
+        <div id="Projects" className="h-screen text-white">Projects Under Construction</div>
+        <div id="Experience" className="h-screen text-white">Experience Under Construction</div>
+        <div id="Contact" className="h-screen text-white">Contact Form Under Construction</div>
       </main>
     </div>
   );
