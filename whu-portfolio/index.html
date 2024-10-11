@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/HuLogoWhite.png" />
+    <link id="icon" rel="icon" type="image/svg+xml" href="/HuLogoWhite.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wesley Hu Portfolio</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&family=Lora:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&display=swap">
     <script>
       function updateFavicon() {
-        const favicon = document.getElementById("favicon");
+        const favicon = document.getElementById("icon");
         const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
         if (isDarkMode) {
           favicon.href = "/HuLogoWhite.png"; // Dark mode favicon
