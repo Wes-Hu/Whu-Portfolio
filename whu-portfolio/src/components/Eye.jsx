@@ -46,7 +46,7 @@ const Eye = () => {
   if (width <= 640) {
     // sm
     positionX = 0;
-    positionY = -1;
+    positionY = -0.5;
     eyeScale = 0.8;
   } else if (width <= 768) {
     // md

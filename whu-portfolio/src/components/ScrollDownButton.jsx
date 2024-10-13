@@ -40,7 +40,7 @@ const ScrollDownButton = ({ targetRef }) => {
   return (
     <motion.button
       onClick={handleClick}
-      className="border-2 bg-night border-blood-red text-blood-red cursor-pointer z-10 px-1 py-5 rounded-full absolute bottom-5 lg:bottom-20 group"
+      className="border-2 bg-night border-blood-red text-blood-red cursor-pointer z-10 px-1 py-5 rounded-full absolute bottom-20 group"
       style={{ opacity: opacity, pointerEvents: isVisible ? 'auto' : 'none' }}
       initial={{ opacity: 1 }}
       animate={{ opacity: opacity }}

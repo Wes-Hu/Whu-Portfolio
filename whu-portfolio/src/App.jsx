@@ -23,7 +23,7 @@ function App() {
             initial={{x: -300, opacity: 0}}
             animate={{x: 0, opacity: 1}}
             transition={{duration: 0.5, ease: "easeInOut"}}
-            className="w-full md:w-11/12 xl:w-4/5 2xl:w-3/4 pb-40 lg:pb-0"
+            className="w-full md:w-11/12 xl:w-4/5 2xl:w-3/4 pb-64 lg:pb-0"
           >
             {/* H1 animation */}
             <motion.h1
@@ -51,6 +51,7 @@ function App() {
           <ScrollDownButton/>
         </div>
         <div id="About" className="h-screen text-white">About Under Construction
+
         </div>
         <div id="Projects" className="h-screen text-white">Projects Under Construction</div>
         <div id="Experience" className="h-screen text-white">Experience Under Construction</div>

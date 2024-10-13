@@ -79,7 +79,7 @@ const NavMenu = () => {
         };
 
         return (
-            <div>
+            <div className="overflow-hidden">
                 <MotionConfig
                     transition={{
                         duration: 0.5,
@@ -142,16 +142,16 @@ const NavMenu = () => {
                                 animate="animate"
                                 exit="exit"
                             >
-                                <motion.a href="#About" variants={itemVariants}>
+                                <motion.a href="#About" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
                                     <FlipLink>About</FlipLink>
                                 </motion.a>
-                                <motion.a href="#Projects" variants={itemVariants}>
+                                <motion.a href="#Projects" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
                                     <FlipLink>Projects</FlipLink>
                                 </motion.a>
-                                <motion.a href="#Experience" variants={itemVariants}>
+                                <motion.a href="#Experience" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
                                     <FlipLink>Experience</FlipLink>
                                 </motion.a>
-                                <motion.a href="#Contact" variants={itemVariants}>
+                                <motion.a href="#Contact" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
                                     <FlipLink>Contact&nbsp;me</FlipLink>
                                 </motion.a>
                             </motion.nav>
