@@ -18,7 +18,7 @@ function App() {
         <NavMenu/>
       </header>
       <main className="flex flex-col">
-        <div id="Home" className="w-screen h-screen flex flex-col justify-center items-center px-5 2xl:px-0">
+        <div id="Home" className="w-screen min-h-screen h-screen flex flex-col justify-center items-center px-5 2xl:px-0">
           <motion.div 
             initial={{x: -300, opacity: 0}}
             animate={{x: 0, opacity: 1}}
