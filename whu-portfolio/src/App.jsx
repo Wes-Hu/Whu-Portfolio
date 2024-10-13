@@ -30,7 +30,7 @@ function App() {
               initial={{ x: -300, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="font-rubik text-blood-red text-5xl lg:text-6xl xl:text-6xl 2xl:text-8xl font-extrabold mb-1 select-none"
+              className="font-rubik text-blood-red text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold mb-1 select-none"
             >
               WESLEY HU
             </motion.h1>
