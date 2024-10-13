@@ -55,7 +55,7 @@ function App() {
             <legend className="font-rubik font-extrabold text-4xl text-center md:text">ABOUT ME</legend>
             <h2 className="font-montserrat font-bold text-xl mb-2">Hey, I'm Wes!</h2>
             <p className="font-lora font-semibold leading-relaxed mb-5">I am a senior undergraduate student at the Colorado School of Mines pursuing a degree in Computer Science, set to graduate in December 2024. I am passionate about software development, game development, and have recently developed an interest in web development this past year. I am always excited to grow and learn new skills while adapting to new tech stacks and tools. As I prepare for graduation, I look forward to pursuing a career in software development, with a keen interest in exploring opportunities in front-end, full-stack, and other areas of the field.</p>
-            <a href="/Hu_Wesley_Resume.pdf" target="_blank" className="inline-block self-center font-bold text-2xl font-raleway border-2 rounded-full border-blood-red px-10 py-5">My Resume</a>
+            <a href="/public/Hu_Wesley_Resume.pdf" target="_blank" className="inline-block self-center font-bold text-2xl font-raleway border-2 rounded-full border-blood-red px-10 py-5">My Resume</a>
           </fieldset>
         </div>
         <div id="Projects" className="h-screen text-white">Projects Under Construction</div>
