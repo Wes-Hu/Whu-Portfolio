@@ -69,7 +69,7 @@ const EncryptText = ({ texts }) => {
   }, [currentTextIndex]);
 
   return (
-    <motion.div className="font-rubik text-blood-red text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold text-nowrap select-none">
+    <motion.div className="font-montserrat italic text-blood-red text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold text-nowrap select-none">
       {text}
     </motion.div>
   );

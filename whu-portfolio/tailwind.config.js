@@ -13,10 +13,10 @@ export default {
         'coral': '#F38D68',
       },
       fontFamily: {
-        rubik: ['Rubik', 'sans-serif'],
-        lora: ['Lora', 'serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
-        raleway: ['Raleway', 'sans-serif'],
+        rubik: ['Rubik', 'sans-serif'], //Headers
+        lora: ['Lora', 'serif'], //Body
+        montserrat: ['Montserrat', 'sans-serif'], //Subheaders
+        raleway: ['Raleway', 'sans-serif'], //Buttons and captions
       },
     },
   },
