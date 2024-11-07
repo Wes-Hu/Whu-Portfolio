@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react';
 import HomeButton from "./components/HomeButton";
 import Cursor from "./components/Cursor";
 import NavMenu from './components/NavMenu';
@@ -8,12 +9,14 @@ import { OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas} from '@react-three/fiber';
 import Eye from './components/Eye';
 import ScrollDownButton from './components/ScrollDownButton';
+import Marquee from 'react-fast-marquee';
+import MarqueeChild from './components/MarqueeChild';
 
 function App() {  
   return (
     <div className="flex flex-col z-10 cursor-none">
       <Cursor/>
-      <header className="fixed top-0 left-0 w-screen h-24 z-50 flex flex-row justify-between px-3 md:px-10 items-center cursor-auto">
+      <header className="fixed top-0 left-0 w-screen h-24 z-50 flex flex-row justify-between px-3 md:px-10 items-center cursor-auto overflow-hidden">
         <HomeButton/>
         <NavMenu/>
       </header>
@@ -50,14 +53,53 @@ function App() {
           </div>
           <ScrollDownButton/>
         </div>
-        <div id="About" className="min-h-screen text-white px-3 md:px-28 py-28 bg-black">
-          <fieldset className="text-blood-red border-4 border-blood-red h-full rounded-3xl px-5 py-4 flex flex-col">
-            <legend className="font-rubik font-extrabold text-4xl text-center md:text">ABOUT ME</legend>
-            <h2 className="font-montserrat font-bold text-xl mb-2">Hey, I'm Wes!</h2>
-            <p className="font-lora font-semibold leading-relaxed mb-5">I am a senior undergraduate student at the Colorado School of Mines pursuing a degree in Computer Science, set to graduate in December 2024. I am passionate about software development, game development, and have recently developed an interest in web development this past year. I am always excited to grow and learn new skills while adapting to new tech stacks and tools. As I prepare for graduation, I look forward to pursuing a career in software development, with a keen interest in exploring opportunities in front-end, full-stack, and other areas of the field.</p>
-            <a href="/Hu_Wesley_Resume.pdf" target="_blank" className="inline-block self-center font-bold text-2xl font-raleway border-2 rounded-full border-blood-red px-10 py-5">My Resume</a>
-          </fieldset>
+
+        <div id="About" className="w-screen min-h-screen pt-28 flex flex-col items-center">
+          <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">ABOUT ME</h1>              
+          <div className="w-screen lg:w-4/5 px-3 lg:px-0  text-blood-red flex flex-col md:flex-row gap-10">
+            <div className="w-full md:w-1/2 flex flex-col justify-center px-3 md:px-6 border-2 border-blood-red py-6 rounded-3xl shadow-lg shadow-blood-red">
+              <h2 className="font-montserrat text-center font-bold text-2xl lg:text-4xl mb-5">Hey, I'm Wes!</h2>
+              <p className="font-lora text-base lg:text-xl font-semibold leading-relaxed mb-5">I am a senior undergraduate student at the Colorado School of Mines pursuing a degree in Computer Science, set to graduate in December 2024. I am passionate about software development, game development, and have recently developed an interest in web development this past year. I am always excited to grow and learn new skills while adapting to new tech stacks and tools. As I prepare for graduation, I look forward to pursuing a career in software development, with a keen interest in exploring opportunities in front-end, full-stack, and other areas of the field.</p>
+              <a href="/Hu_Wesley_Resume.pdf" target="_blank" className="self-center font-bold text-2xl font-raleway border-2 rounded-full border-blood-red px-10 py-3">My Resume</a>      
+            </div>              
+            <div className="w-full md:w-1/2 flex flex-col items-center h-auto">
+              <h1 className="font-montserrat text-center text-blood-red font-semibold text-3xl lg:text-4xl mb-5">Skills</h1>
+              <div className="max-w-full overflow-hidden flex text-night">
+                <Marquee autoFill pauseOnClick gradient speed={20} gradientColor="#090A0C" gradientWidth={100}>
+                  <MarqueeChild>Java</MarqueeChild>
+                  <MarqueeChild>Python</MarqueeChild>
+                  <MarqueeChild>C++</MarqueeChild>
+                  <MarqueeChild>C#</MarqueeChild>
+                  <MarqueeChild>Linux</MarqueeChild>
+                  <MarqueeChild>PostgreSQL</MarqueeChild>
+                  <MarqueeChild>MySQL</MarqueeChild>
+                  <MarqueeChild>Supabase</MarqueeChild>
+                </Marquee>
+              </div>
+              <div className="max-w-full overflow-hidden flex text-night">
+                <Marquee autoFill pauseOnClick gradient direction='right' speed={20} gradientColor="#090A0C" gradientWidth={100}>
+                  <MarqueeChild>Javascript</MarqueeChild>
+                  <MarqueeChild>Typescript</MarqueeChild>
+                  <MarqueeChild>React</MarqueeChild>
+                  <MarqueeChild>Tailwind CSS</MarqueeChild>
+                  <MarqueeChild>CSS</MarqueeChild>
+                  <MarqueeChild>Figma</MarqueeChild>
+                  <MarqueeChild>Framer Motion</MarqueeChild>
+                </Marquee>
+              </div>
+              <div className="max-w-full overflow-hidden flex text-night">
+                <Marquee autoFill pauseOnClick gradient speed={20} gradientColor="#090A0C" gradientWidth={100}>
+                  <MarqueeChild>GameMaker Studio</MarqueeChild>
+                  <MarqueeChild>Unity</MarqueeChild>
+                  <MarqueeChild>Blender</MarqueeChild>
+                  <MarqueeChild>Cascadeur</MarqueeChild>
+
+                </Marquee>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div id="Projects" className="h-screen text-white">Projects Under Construction</div>
         <div id="Experience" className="h-screen text-white">Experience Under Construction</div>
         <div id="Contact" className="h-screen text-white">Contact Form Under Construction</div>
