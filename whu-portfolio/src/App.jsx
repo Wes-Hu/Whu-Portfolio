@@ -77,15 +77,15 @@ function App() {
                   as="a"
                   href="/Hu_Wesley_Resume.pdf"
                   target="_blank"
-                  translateZ="30"
+                  translateZ="60"
                   className="self-center font-bold text-2xl font-raleway border-2 rounded-full border-blood-red px-10 py-3"
                 >
                   My Resume
                 </CardItem>
               </CardBody>
             </CardContainer>
-            <div className="w-full md:w-1/2 flex flex-col justify-center items-center h-auto">
-              <h1 className="font-montserrat text-center text-blood-red font-semibold text-3xl lg:text-4xl mb-5 pb-10">Skills</h1>
+            <div className="w-full md:w-1/2 flex flex-col justify-center items-center h-auto hover:shadow-[0_0_20px_5px_#70110A]">
+              <h1 className="font-montserrat text-center text-blood-red font-semibold text-3xl lg:text-4xl mb-5">Skills</h1>
               <div className="max-w-full overflow-hidden flex text-night">
                 <Marquee autoFill pauseOnClick gradient speed={20} gradientColor="#090A0C" gradientWidth={100}>
                   <MarqueeChild>Java</MarqueeChild>
