@@ -11,6 +11,7 @@ import Eye from './components/Eye';
 import ScrollDownButton from './components/ScrollDownButton';
 import Marquee from 'react-fast-marquee';
 import MarqueeChild from './components/MarqueeChild';
+import { CardBody, CardContainer, CardItem } from "./components/3DCard";
 
 function App() {  
   return (
@@ -56,12 +57,34 @@ function App() {
 
         <div id="About" className="w-screen min-h-screen pt-28 flex flex-col items-center">
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">ABOUT ME</h1>              
-          <div className="w-screen lg:w-4/5 px-3 lg:px-0  text-blood-red flex flex-col md:flex-row gap-10">
-            <div className="w-full md:w-1/2 flex flex-col justify-center px-3 md:px-6 border-2 border-blood-red py-6 rounded-3xl shadow-lg shadow-blood-red">
-              <h2 className="font-montserrat text-center font-bold text-2xl lg:text-4xl mb-5">Hey, I'm Wes!</h2>
-              <p className="font-lora text-base lg:text-xl font-semibold leading-relaxed mb-5">I am a senior undergraduate student at the Colorado School of Mines pursuing a degree in Computer Science, set to graduate in December 2024. I am passionate about software development, game development, and have recently developed an interest in web development this past year. I am always excited to grow and learn new skills while adapting to new tech stacks and tools. As I prepare for graduation, I look forward to pursuing a career in software development, with a keen interest in exploring opportunities in front-end, full-stack, and other areas of the field.</p>
-              <a href="/Hu_Wesley_Resume.pdf" target="_blank" className="self-center font-bold text-2xl font-raleway border-2 rounded-full border-blood-red px-10 py-3">My Resume</a>      
-            </div>              
+          <div className="w-screen lg:w-4/5 xl:w-3/4 px-3 lg:px-0  text-blood-red flex flex-col md:flex-row gap-10">
+          <CardContainer className="bg-night cursor-pointer z-50 w-full md:w-1/2 justify-center border-2 border-blood-red rounded-3xl">
+            <CardBody className="h-auto w-full flex flex-col px-3 md:px-6 py-6 rounded-3xl items-center transition duration-300 ease-in-out hover:shadow-[0_0_20px_5px_#70110A]">
+              <CardItem
+                translateZ="50"
+                className="font-montserrat text-center font-bold text-2xl lg:text-4xl mb-5"
+              >
+                <h2>Hey, I'm Wes!</h2>
+              </CardItem>
+              <CardItem
+                as="p"
+                translateZ="40"
+                className="font-lora text-base lg:text-xl font-semibold leading-relaxed mb-5"
+              >
+                I am a senior undergraduate student at the Colorado School of Mines pursuing a degree in Computer Science, set to graduate in December 2024. I am passionate about software development, game development, and have recently developed an interest in web development this past year. I am always excited to grow and learn new skills while adapting to new tech stacks and tools. As I prepare for graduation, I look forward to pursuing a career in software development, with a keen interest in exploring opportunities in front-end, full-stack, and other areas of the field.
+              </CardItem>
+              <CardItem
+                as="a"
+                href="/Hu_Wesley_Resume.pdf"
+                target="_blank"
+                translateZ="30"
+                className="self-center font-bold text-2xl font-raleway border-2 rounded-full border-blood-red px-10 py-3"
+              >
+                My Resume
+              </CardItem>
+            </CardBody>
+          </CardContainer>
+
             <div className="w-full md:w-1/2 flex flex-col items-center h-auto">
               <h1 className="font-montserrat text-center text-blood-red font-semibold text-3xl lg:text-4xl mb-5">Skills</h1>
               <div className="max-w-full overflow-hidden flex text-night">
@@ -100,7 +123,45 @@ function App() {
           </div>
         </div>
 
-        <div id="Projects" className="h-screen text-white">Projects Under Construction</div>
+        <div id="Projects" className="h-screen text-white">Projects Under Construction
+        <CardContainer className="inter-var">
+      <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+        <CardItem
+          translateZ="50"
+          className="text-xl font-bold text-neutral-600 dark:text-white"
+        >
+          Make things float in air
+        </CardItem>
+        <CardItem
+          as="p"
+          translateZ="60"
+          className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+        >
+          Hover over this card to unleash the power of CSS perspective
+        </CardItem>
+        <CardItem translateZ="100" className="w-full mt-4">
+
+        </CardItem>
+        <div className="flex justify-between items-center mt-20">
+          <CardItem
+            translateZ={20}
+            href="https://twitter.com/mannupaaji"
+            target="__blank"
+            className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+          >
+            Try now →
+          </CardItem>
+          <CardItem
+            translateZ={20}
+            as="button"
+            className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+          >
+            Sign up
+          </CardItem>
+        </div>
+      </CardBody>
+    </CardContainer>
+        </div>
         <div id="Experience" className="h-screen text-white">Experience Under Construction</div>
         <div id="Contact" className="h-screen text-white">Contact Form Under Construction</div>
       </main>
