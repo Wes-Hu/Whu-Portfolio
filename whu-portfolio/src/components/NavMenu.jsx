@@ -4,6 +4,8 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail} from "react-icons/md";
 
 const NavMenu = () => {
+
+    
     const MainMenu = () => {
         const [active, setActive] = useState(false);
 
@@ -265,3 +267,5 @@ const NavMenu = () => {
 };
 
 export default NavMenu;
+
+

@@ -12,6 +12,7 @@ import ScrollDownButton from './components/ScrollDownButton';
 import Marquee from 'react-fast-marquee';
 import MarqueeChild from './components/MarqueeChild';
 import { CardBody, CardContainer, CardItem } from "./components/3DCard";
+import RippleButton from './components/RippleButton';
 
 function App() {  
   return (
@@ -57,7 +58,7 @@ function App() {
 
         <div id="About" className="w-screen min-h-screen pt-28 flex flex-col items-center">
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">ABOUT ME</h1>              
-          <div className="w-screen md:10/12 xl:w-4/5 px-6 lg:px-0 text-blood-red flex flex-col md:flex-row gap-10">
+          <div className="w-screen md:10/12 xl:w-4/5 px-6 lg:px-0 text-blood-red flex flex-col md:flex-row gap-10 xl:gap-20">
             <CardContainer className="bg-night cursor-pointer z-50 w-full border-2 border-night hover:border-blood-red rounded-3xl">
               <CardBody className="h-auto w-full flex flex-col gap-5 px-3 md:px-6 py-6 rounded-3xl items-center transition duration-300 ease-in-out hover:shadow-[0_0_20px_5px_#70110A]">
                 <CardItem
@@ -78,51 +79,56 @@ function App() {
                   href="/Hu_Wesley_Resume.pdf"
                   target="_blank"
                   translateZ="60"
-                  className="self-center font-bold text-2xl font-raleway border-2 rounded-full border-blood-red px-10 py-3"
+                  className="self-center font-bold text-2xl font-raleway"
                 >
-                  My Resume
+                  <RippleButton>My Resume</RippleButton>
                 </CardItem>
               </CardBody>
             </CardContainer>
-            <div className="w-full md:w-1/2 flex flex-col justify-center items-center h-auto hover:shadow-[0_0_20px_5px_#70110A]">
-              <h1 className="font-montserrat text-center text-blood-red font-semibold text-3xl lg:text-4xl mb-5">Skills</h1>
-              <div className="max-w-full overflow-hidden flex text-night">
-                <Marquee autoFill pauseOnClick gradient speed={20} gradientColor="#090A0C" gradientWidth={100}>
-                  <MarqueeChild>Java</MarqueeChild>
-                  <MarqueeChild>Python</MarqueeChild>
-                  <MarqueeChild>C++</MarqueeChild>
-                  <MarqueeChild>C#</MarqueeChild>
-                  <MarqueeChild>Linux</MarqueeChild>
-                  <MarqueeChild>PostgreSQL</MarqueeChild>
-                  <MarqueeChild>MySQL</MarqueeChild>
-                  <MarqueeChild>Supabase</MarqueeChild>
-                </Marquee>
-              </div>
-              <div className="max-w-full overflow-hidden flex text-night">
-                <Marquee autoFill pauseOnClick gradient direction='right' speed={20} gradientColor="#090A0C" gradientWidth={100}>
-                  <MarqueeChild>Javascript</MarqueeChild>
-                  <MarqueeChild>Typescript</MarqueeChild>
-                  <MarqueeChild>React</MarqueeChild>
-                  <MarqueeChild>Tailwind CSS</MarqueeChild>
-                  <MarqueeChild>CSS</MarqueeChild>
-                  <MarqueeChild>Figma</MarqueeChild>
-                  <MarqueeChild>Framer Motion</MarqueeChild>
-                </Marquee>
-              </div>
-              <div className="max-w-full overflow-hidden flex text-night">
-                <Marquee autoFill pauseOnClick gradient speed={20} gradientColor="#090A0C" gradientWidth={100}>
-                  <MarqueeChild>GameMaker Studio</MarqueeChild>
-                  <MarqueeChild>Unity</MarqueeChild>
-                  <MarqueeChild>Blender</MarqueeChild>
-                  <MarqueeChild>Cascadeur</MarqueeChild>
+            <div className="w-full md:w-1/2 z-30  flex flex-col justify-center items-center h-auto ">
+              <div className="w-full bg-night border-2 py-6 border-night hover:border-blood-red rounded-3xl transition duration-300 ease-in-out hover:shadow-[0_0_20px_5px_#70110A] cursor-auto">
+                <h1 className="font-montserrat text-center text-blood-red font-semibold text-3xl lg:text-4xl mb-5">Skills</h1>
+                <div className="max-w-full overflow-hidden flex text-night">
+                  <Marquee autoFill pauseOnClick gradient speed={20} gradientColor="#090A0C" gradientWidth={100}>
+                    <MarqueeChild>Java</MarqueeChild>
+                    <MarqueeChild>Python</MarqueeChild>
+                    <MarqueeChild>C++</MarqueeChild>
+                    <MarqueeChild>C#</MarqueeChild>
+                    <MarqueeChild>Linux</MarqueeChild>
+                    <MarqueeChild>PostgreSQL</MarqueeChild>
+                    <MarqueeChild>MySQL</MarqueeChild>
+                    <MarqueeChild>Supabase</MarqueeChild>
+                  </Marquee>
+                </div>
+                <div className="max-w-full overflow-hidden flex text-night">
+                  <Marquee autoFill pauseOnClick gradient direction='right' speed={20} gradientColor="#090A0C" gradientWidth={100}>
+                    <MarqueeChild>Javascript</MarqueeChild>
+                    <MarqueeChild>Typescript</MarqueeChild>
+                    <MarqueeChild>React</MarqueeChild>
+                    <MarqueeChild>Tailwind CSS</MarqueeChild>
+                    <MarqueeChild>CSS</MarqueeChild>
+                    <MarqueeChild>Figma</MarqueeChild>
+                    <MarqueeChild>Framer Motion</MarqueeChild>
+                  </Marquee>
+                </div>
+                <div className="max-w-full overflow-hidden flex text-night">
+                  <Marquee autoFill pauseOnClick gradient speed={20} gradientColor="#090A0C" gradientWidth={100}>
+                    <MarqueeChild>GameMaker Studio</MarqueeChild>
+                    <MarqueeChild>Unity</MarqueeChild>
+                    <MarqueeChild>Blender</MarqueeChild>
+                    <MarqueeChild>Cascadeur</MarqueeChild>
 
-                </Marquee>
+                  </Marquee>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div id="Projects" className="h-screen text-white">Projects Under Construction
+          <div className="w-20 h-20">
+              <RippleButton>hello</RippleButton>
+          </div>
         </div>
         <div id="Experience" className="h-screen text-white">Experience Under Construction</div>
         <div id="Contact" className="h-screen text-white">Contact Form Under Construction</div>
