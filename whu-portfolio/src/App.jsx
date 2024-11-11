@@ -126,9 +126,6 @@ function App() {
         </div>
 
         <div id="Projects" className="h-screen text-white">Projects Under Construction
-          <div className="w-20 h-20">
-              <RippleButton>hello</RippleButton>
-          </div>
         </div>
         <div id="Experience" className="h-screen text-white">Experience Under Construction</div>
         <div id="Contact" className="h-screen text-white">Contact Form Under Construction</div>
