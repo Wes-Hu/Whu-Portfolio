@@ -104,6 +104,7 @@ function App() {
                   <Marquee autoFill pauseOnClick gradient direction='right' speed={20} gradientColor="#090A0C" gradientWidth={100}>
                     <MarqueeChild>Javascript</MarqueeChild>
                     <MarqueeChild>Typescript</MarqueeChild>
+                    <MarqueeChild>HTML</MarqueeChild>
                     <MarqueeChild>React</MarqueeChild>
                     <MarqueeChild>Tailwind CSS</MarqueeChild>
                     <MarqueeChild>CSS</MarqueeChild>
