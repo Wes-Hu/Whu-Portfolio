@@ -20,7 +20,7 @@
 
 /* Customize the scrollbar handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #EE6C4D;
 }
 
 ::selection {
