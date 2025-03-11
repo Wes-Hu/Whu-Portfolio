@@ -6,7 +6,7 @@ const STAGGER = 0.025;
 const FlipLink = ({ children }) => {
     return (
         <motion.span 
-            className="relative inline-block overflow-hidden whitespace-nowrap uppercase font-raleway font-semibold text-4xl text-blood-red"
+            className="relative inline-block overflow-hidden whitespace-nowrap uppercase font-raleway font-semibold lg:text-2xl xl:text-3xl 2xl:text-4xl text-blood-red"
             initial="initial"
             whileHover="hovered"
             style={{

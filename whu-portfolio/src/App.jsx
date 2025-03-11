@@ -1,11 +1,11 @@
 import './App.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HomeButton from "./components/HomeButton";
 import Cursor from "./components/Cursor";
 import NavMenu from './components/NavMenu';
 import Encrypt from './components/Encrypt';
 import { motion } from 'framer-motion';
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import { OrbitControls, useGLTF, useScroll } from '@react-three/drei';
 import { Canvas} from '@react-three/fiber';
 import Eye from './components/Eye';
 import ScrollDownButton from './components/ScrollDownButton';
@@ -15,33 +15,52 @@ import { CardBody, CardContainer, CardItem } from "./components/3DCard";
 import RippleButton from './components/RippleButton';
 import FlipLink from './components/FlipLink';
 
-const itemVariants = {
-  initial: { opacity: 0, x: -20 , scale: 0, scaleX: 0 },
-  animate: { opacity: 1, x: 0, scale: 1, scaleX: 1 },
-  exit: { opacity: 0, x: +20, scale: 0, scaleX: 0  },
-};
-
 function App() {  
+  const[navVisiblility, setNavVisibility] = useState(true);
+  const[navMenuVisibility, setNavMenuVisibility] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if(window.scrollY < window.innerHeight / 4) {
+        setNavVisibility(true);
+      } else {
+        setNavVisibility(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="flex flex-col z-10 cursor-none">
       <Cursor/>
       <header className="fixed top-0 left-0 w-screen h-24 z-50 flex flex-row justify-between px-3 md:px-10 items-center cursor-auto">
         <HomeButton/>
-        <NavMenu className="lg:hidden"/>
-        <nav className="text-blood-red hidden lg:flex gap-6">
+        <motion.div
+          initial={{ x: '100%', opacity: 0}}
+          animate={{ x: navVisiblility ? '100%' : 0, opacity: navVisiblility ? 0 : 1, display: navVisiblility ? 'none' : 'flex' }} // Show on top, hide when scrolling down
+          transition={{ duration: 0.5, delay: navVisiblility ? 0 : 0.6 }}
+        >
+          <NavMenu className=""/>
+        </motion.div>
+        <motion.nav 
+          className="text-blood-red hidden lg:flex gap-6 h-full justify-center items-center relative"
+          initial={{ x: 0, opacity: 1}}
+          animate={{ x: navVisiblility ? 0 : '100%', opacity: navVisiblility ? 1 : 0, display: navVisiblility ? 'flex' : 'none' }} // Show on top, hide when scrolling down
+          transition={{ duration: 0.5, delay: navVisiblility ? 0.6 : 0 }}
+        >
           <motion.a href="#About" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
               <FlipLink>About</FlipLink>
           </motion.a>
-          <motion.a href="#About" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
+          <motion.a href="#Projects" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
               <FlipLink>Projects</FlipLink>
           </motion.a>
-          <motion.a href="#About" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
+          <motion.a href="#Experience" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
               <FlipLink>Experience</FlipLink>
           </motion.a>
-          <motion.a href="#About" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
+          <motion.a href="#Contact" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
               <FlipLink>Contact</FlipLink>
           </motion.a>
-        </nav>
+        </motion.nav>
       </header>
       <main className="flex flex-col">
         <div id="Home" className="w-screen min-h-screen h-screen flex flex-col justify-center items-center px-5 2xl:px-0">
@@ -147,7 +166,8 @@ function App() {
           </div>
         </div>
 
-        <div id="Projects" className="h-screen text-white">Projects Under Construction
+        <div id="Projects" className="w-screen min-h-screen pt-28 flex flex-col items-center">
+          <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">MY PROJECTS</h1>  
         </div>
         <div id="Experience" className="h-screen text-white">Experience Under Construction</div>
         <div id="Contact" className="h-screen text-white">Contact Form Under Construction</div>
@@ -155,6 +175,12 @@ function App() {
     </div>
   );
 }
+
+const itemVariants = {
+  initial: { opacity: 0, x: -20 , scale: 0, scaleX: 0 },
+  animate: { opacity: 1, x: 0, scale: 1, scaleX: 1 },
+  exit: { opacity: 0, x: +20, scale: 0, scaleX: 0  },
+};
 
 useGLTF.preload('/public/test.glb');
 
