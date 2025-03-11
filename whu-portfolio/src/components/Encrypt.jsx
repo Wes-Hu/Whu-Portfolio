@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const Encrypt = () => {
   return (
     <div>
-      <EncryptText texts={["RECENT GRADUATE", "SOFTWARE DEVELOPER"]} />
+      <EncryptText texts={["SOFTWARE DEVELOPER", "FRONT-END DEVELOPER"]} />
     </div>
   );
 };

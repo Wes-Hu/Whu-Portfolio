@@ -13,6 +13,13 @@ import Marquee from 'react-fast-marquee';
 import MarqueeChild from './components/MarqueeChild';
 import { CardBody, CardContainer, CardItem } from "./components/3DCard";
 import RippleButton from './components/RippleButton';
+import FlipLink from './components/FlipLink';
+
+const itemVariants = {
+  initial: { opacity: 0, x: -20 , scale: 0, scaleX: 0 },
+  animate: { opacity: 1, x: 0, scale: 1, scaleX: 1 },
+  exit: { opacity: 0, x: +20, scale: 0, scaleX: 0  },
+};
 
 function App() {  
   return (
@@ -20,7 +27,21 @@ function App() {
       <Cursor/>
       <header className="fixed top-0 left-0 w-screen h-24 z-50 flex flex-row justify-between px-3 md:px-10 items-center cursor-auto">
         <HomeButton/>
-        <NavMenu/>
+        <NavMenu className="lg:hidden"/>
+        <nav className="text-blood-red hidden lg:flex gap-6">
+          <motion.a href="#About" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
+              <FlipLink>About</FlipLink>
+          </motion.a>
+          <motion.a href="#About" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
+              <FlipLink>Projects</FlipLink>
+          </motion.a>
+          <motion.a href="#About" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
+              <FlipLink>Experience</FlipLink>
+          </motion.a>
+          <motion.a href="#About" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
+              <FlipLink>Contact</FlipLink>
+          </motion.a>
+        </nav>
       </header>
       <main className="flex flex-col">
         <div id="Home" className="w-screen min-h-screen h-screen flex flex-col justify-center items-center px-5 2xl:px-0">

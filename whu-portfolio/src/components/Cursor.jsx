@@ -53,7 +53,7 @@ const Cursor = () => {
 
   return (
     <div className="mix-blend-difference">
-      {[...Array(30)].map((_, index) => (
+      {[...Array(20)].map((_, index) => (
         <div
           key={index}
           ref={(el) => (circlesRef.current[index] = el)}

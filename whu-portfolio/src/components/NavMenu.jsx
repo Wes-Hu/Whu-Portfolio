@@ -3,7 +3,7 @@ import { motion, MotionConfig, AnimatePresence, easeIn } from "framer-motion";
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail} from "react-icons/md";
 
-const NavMenu = () => {
+const NavMenu = ({className}) => {
 
     
     const MainMenu = () => {
@@ -81,7 +81,7 @@ const NavMenu = () => {
         };
 
         return (
-            <div className="overflow-hidden">
+            <div className={`overflow-hidden ${className}`}>
                 <MotionConfig
                     transition={{
                         duration: 0.5,
