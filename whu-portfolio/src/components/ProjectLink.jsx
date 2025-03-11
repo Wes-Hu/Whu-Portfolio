@@ -47,7 +47,7 @@ const ProjectLink = ({ heading, subheading, imgSrc}) => {
                         whileHover: { y: -16 },
                     }}
                     transition ={{ type: "spring", delayChildren: 0.25, staggerChildren: 0.075 }}
-                    className="relative z-10 block font-rubik font-bold text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-blood-red transition-colors duration-500 group-hover:text-blood-red-light"
+                    className="relative z-10 block font-rubik font-bold text-3xl lg:text-4xl xl:text-5xl text-blood-red transition-colors duration-500 group-hover:text-blood-red-light"
                 >
                     {heading.split("").map((l, i) => {
                         return (
