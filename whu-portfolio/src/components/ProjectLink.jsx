@@ -1,8 +1,10 @@
 import { FaChevronRight } from 'react-icons/fa';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { useRef, useState } from 'react';
 
-const ProjectLink = ({ heading, subheading, imgSrc}) => {
+const ProjectLink = ({ heading, subheading, imgSrc, description}) => {
+    const [isOpen, setIsOpen] = useState(false);
+
     const ref = useRef(null);
 
     const x = useMotionValue(0);
@@ -34,12 +36,14 @@ const ProjectLink = ({ heading, subheading, imgSrc}) => {
 
     return (
         <motion.div
+            onClick={() => setIsOpen(true)}
             ref={ref}
             initial="initial"
             onMouseMove={handleMouseMove}
             whileHover="whileHover"
             className="group relative flex items-center justify-between border-b-2 border-blood-red py-4 transition-colors duration-500 hover:border-blood-red-light md:py-8"
-        >
+        >   
+            <ProjectModal isOpen={isOpen} setIsOpen={setIsOpen} heading={heading} imgSrc={imgSrc} description={description}/>
             <div>
                 <motion.span 
                     variants={{
@@ -47,7 +51,7 @@ const ProjectLink = ({ heading, subheading, imgSrc}) => {
                         whileHover: { y: -16 },
                     }}
                     transition ={{ type: "spring", delayChildren: 0.25, staggerChildren: 0.075 }}
-                    className="relative z-10 block font-rubik font-bold text-3xl lg:text-4xl xl:text-5xl text-blood-red transition-colors duration-500 group-hover:text-blood-red-light"
+                    className="relative z-10 block font-rubik font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-blood-red transition-colors duration-500 group-hover:text-blood-red- text-nowrap"
                 >
                     {heading.split("").map((l, i) => {
                         return (
@@ -95,5 +99,63 @@ const ProjectLink = ({ heading, subheading, imgSrc}) => {
         </motion.div>
     );
 };
+
+const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, type: "spring" }}
+            onClick={() => setIsOpen(false)}
+            className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center overflow-y-scroll"
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0 }}
+              transition={{ duration: 0.5, type: "spring" }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-[90%] h-[90%] bg-night rounded-3xl border-2 border-blood-red"
+            >
+              <div className="relative flex flex-col py-10 px-6 z-10">
+                {/* Fix button position */}
+                <button
+                    onClick={() => setIsOpen(false)}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    className="scale-50 md:scale-100 absolute top-0 right-0 md:top-5 md:right-5 w-16 h-16 flex items-center justify-center rounded-full bg-blood-red z-20"
+                >
+                    <div className="relative flex items-center justify-center w-full h-full">
+                        <motion.span
+                            initial={{ rotate: "45deg" }}
+                            animate={{ backgroundColor: isHovered ? "#E97451" : "#FFFFFF" }} // Burnt Sienna when hovered
+                            className="absolute w-8 h-1 bg-white rounded-full transition-all ease-in-out duration-300"
+                        ></motion.span>
+                        <motion.span
+                            initial={{ rotate: "-45deg" }}
+                            animate={{ backgroundColor: isHovered ? "#E97451" : "#FFFFFF" }}
+                            className="absolute w-8 h-1 bg-white rounded-full transition-all ease-in-out duration-300"
+                        ></motion.span>
+                    </div>
+                </button>
+                <h1 className="text-center font-rubik font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-blood-red transition-colors duration-500 group-hover:text-blood-red mb-10">
+                    {heading}
+                </h1>
+                
+                <img src={imgSrc} alt={`Image Representing ${heading}`} className="rounded-3xl object-cove border-2 border-blood-red mb-10"/>
+                <p className="font-lora text-blood-red text-base font-semibold leading-relaxed">{description}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    );
+};
+
 
 export default ProjectLink;

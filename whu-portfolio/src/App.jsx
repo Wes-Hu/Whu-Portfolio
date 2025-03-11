@@ -173,8 +173,8 @@ function App() {
         <div id="Projects" className="w-screen min-h-screen pt-28 flex flex-col items-center">
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">MY PROJECTS</h1>
           <div className="w-screen md:w-3/4">
-            <div className="mx-auto cursor-pointer overflow-hidden py-20">
-              <ProjectLink heading="PERSONAL PORTFOLIO" subheading="The Website You Are Viewing" imgSrc="portfolio.png"/>
+            <div className="px-6 md:px-0 mx-auto cursor-pointer overflow-hidden py-20">
+              <ProjectLink heading="PERSONAL PORTFOLIO" subheading="The Website You Are Viewing" imgSrc="portfolio.png" description="This is my personal portfolio website. I wanted to "/>
               <ProjectLink heading="LINE DODGE" subheading="Simple Arcade Style Web Game" imgSrc="linedodge.png"/>
               <ProjectLink heading="SIPWARS" subheading="Multiplayer Party Trivia Game" imgSrc="sipwars.png"/>              
               <ProjectLink heading="ATO WEBSITE" subheading="Website for Local Fraternity Chapter" imgSrc="ATO.png"/>
@@ -200,3 +200,4 @@ const itemVariants = {
 useGLTF.preload('/public/test.glb');
 
 export default App;
+
