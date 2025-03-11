@@ -174,6 +174,7 @@ function App() {
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">MY PROJECTS</h1>
           <div className="w-screen md:w-3/4">
             <div className="mx-auto cursor-pointer overflow-hidden py-20">
+              <ProjectLink heading="PERSONAL PORTFOLIO" subheading="The Website You Are Viewing" imgSrc="portfolio.png"/>
               <ProjectLink heading="LINE DODGE" subheading="Simple Arcade Style Web Game" imgSrc="linedodge.png"/>
               <ProjectLink heading="SIPWARS" subheading="Multiplayer Party Trivia Game" imgSrc="sipwars.png"/>              
               <ProjectLink heading="ATO WEBSITE" subheading="Website for Local Fraternity Chapter" imgSrc="ATO.png"/>

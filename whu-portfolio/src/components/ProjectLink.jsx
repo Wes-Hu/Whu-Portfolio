@@ -78,7 +78,7 @@ const ProjectLink = ({ heading, subheading, imgSrc}) => {
                 transition ={{ type: "spring" }}
                 style={{ top, left, translateX: "-50%", translateY: "-50%" }}
                 src={imgSrc}
-                className="absolute z-0 h-24 w-32 rounded-lg object-cover md:h-48 md:w-64 lg:h-64 lg:w-96"
+                className="absolute z-0 h-24 w-32 rounded-3xl object-cover md:h-48 md:w-64 lg:h-64 lg:w-96 border-2 border-blood-red"
                 alt={`Image Representing ${heading}`}
             />
 
