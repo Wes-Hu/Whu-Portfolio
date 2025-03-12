@@ -15,6 +15,8 @@ import { CardBody, CardContainer, CardItem } from "./components/3DCard";
 import RippleButton from './components/RippleButton';
 import FlipLink from './components/FlipLink';
 import ProjectLink from './components/ProjectLink';
+import Experience from './components/Experience';
+
 
 function App() {  
   const[navVisiblility, setNavVisibility] = useState(true);
@@ -202,9 +204,14 @@ function App() {
             
           </div>
         </div>
-        <div id="Experience" className="h-screen">
-          <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">WORK EXPERIENCE</h1>
-
+        <div id="Experience" className="w-screen min-h-screen pt-28 flex flex-col items-center">
+          <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">EXPERIENCE</h1>
+          <div className="relative w-screen px-8">
+            <div className="w-1 h-6 bg-blood-red rounded-t-full"/>
+            <Experience position={"Software Engineering Intern"} company={"Modyfi"} year={"2024"}/>
+            <Experience position={"Teaching Assistant"} company={"Colorado School of Mines"} year={"2024"}/>
+            <div className="w-1 h-12 bg-blood-red rounded-b-full"/>
+          </div>
         </div>
         <div id="Contact" className="h-screen text-white">Contact Form Under Construction</div>
       </main>
