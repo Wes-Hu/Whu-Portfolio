@@ -146,8 +146,8 @@ function App() {
                 </div>
                 <div className="max-w-full overflow-hidden flex text-night">
                   <Marquee autoFill pauseOnClick gradient direction='right' speed={20} gradientColor="#090A0C" gradientWidth={100}>
-                    <MarqueeChild>Javascript</MarqueeChild>
-                    <MarqueeChild>Typescript</MarqueeChild>
+                    <MarqueeChild>JavaScript</MarqueeChild>
+                    <MarqueeChild>TypeScript</MarqueeChild>
                     <MarqueeChild>HTML</MarqueeChild>
                     <MarqueeChild>React</MarqueeChild>
                     <MarqueeChild>Tailwind CSS</MarqueeChild>
@@ -174,10 +174,30 @@ function App() {
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">MY PROJECTS</h1>
           <div className="w-screen md:w-3/4">
             <div className="px-6 md:px-0 mx-auto cursor-pointer overflow-hidden py-20">
-              <ProjectLink heading="PERSONAL PORTFOLIO" subheading="The Website You Are Viewing" imgSrc="portfolio.png" description="This is my personal portfolio website. I wanted to "/>
-              <ProjectLink heading="LINE DODGE" subheading="Simple Arcade Style Web Game" imgSrc="linedodge.png"/>
-              <ProjectLink heading="SIPWARS" subheading="Multiplayer Party Trivia Game" imgSrc="sipwars.png"/>              
-              <ProjectLink heading="ATO WEBSITE" subheading="Website for Local Fraternity Chapter" imgSrc="ATO.png"/>
+              <ProjectLink 
+                heading="LINE DODGE" 
+                subheading="Simple Arcade Style Web Game" 
+                imgSrc="linedodge.png" 
+                description="Line Dodge is a simple web game that I worked on for the final project in a Web Development class. I primarily focused on the UI and managing menu and game states. For the design I thought an arcade game theme would suit the simple nature of the game so I added a CRT effect and pixel text."
+                techStack={"JavaScript,HTML,CSS"}
+                link={"https://linedodge.pro/"}
+              />
+              <ProjectLink 
+                heading="SIPWARS" 
+                subheading="Multiplayer Party Trivia Game" 
+                imgSrc="sipwars.png"
+                description="SipWars is a party trivia game that was designed to be similar to kahoot or jackbox where people can create lobbies and play with their friends on. The game utilizes WebSockets for device communication as well as Redis to manage game states. I worked on the front-end side of this project making sure that the WebSockets worked properly on the client-side and that the game states were updating correctly. Currently, the game is best designed for mobile use."
+                techStack={"JavaScript, React, TailwindCSS, WebSockets, Redis"}
+                link={"https://sipwars.lol/"}
+              />              
+              <ProjectLink 
+                heading="ATO WEBSITE" 
+                subheading="Website for Local Fraternity Chapter" 
+                imgSrc="ATO.png"
+                description={"This was a website I designed using Figma and created for my fraternity's local chapter. The purpose of the website is to showcase what the chapter is about and to help with recruitment. I implemented Supabase to manage the entire backend of the website including the databases, authentication, file/image storage. To allow for easy modification and updates, an admin login and page is implmented to easily change pictures and other parts of the website with ease through the front-end."}
+                techStack={"TypeScript, React, TailwindCSS, Supabase"}
+                link={"https://atocsm.com/"}
+              />
             </div>
             
           </div>

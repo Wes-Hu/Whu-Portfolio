@@ -1,8 +1,9 @@
 import { FaChevronRight } from 'react-icons/fa';
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
+import RippleButton from './RippleButton';
 
-const ProjectLink = ({ heading, subheading, imgSrc, description}) => {
+const ProjectLink = ({ heading, subheading, imgSrc, description, techStack, link}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const ref = useRef(null);
@@ -43,7 +44,7 @@ const ProjectLink = ({ heading, subheading, imgSrc, description}) => {
             whileHover="whileHover"
             className="group relative flex items-center justify-between border-b-2 border-blood-red py-4 transition-colors duration-500 hover:border-blood-red-light md:py-8"
         >   
-            <ProjectModal isOpen={isOpen} setIsOpen={setIsOpen} heading={heading} imgSrc={imgSrc} description={description}/>
+            <ProjectModal isOpen={isOpen} setIsOpen={setIsOpen} heading={heading} imgSrc={imgSrc} description={description} techStack={techStack} link={link}/>
             <div>
                 <motion.span 
                     variants={{
@@ -100,7 +101,7 @@ const ProjectLink = ({ heading, subheading, imgSrc, description}) => {
     );
 };
 
-const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description }) => {
+const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description, techStack, link }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -112,7 +113,7 @@ const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description }) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, type: "spring" }}
             onClick={() => setIsOpen(false)}
-            className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center overflow-y-scroll"
+            className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center"
           >
             <motion.div
               initial={{ scale: 0 }}
@@ -120,9 +121,9 @@ const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description }) => {
               exit={{ scale: 0 }}
               transition={{ duration: 0.5, type: "spring" }}
               onClick={(e) => e.stopPropagation()}
-              className="w-[90%] h-[90%] bg-night rounded-3xl border-2 border-blood-red"
+              className="w-[90%] h-[90%] bg-night rounded-3xl border-2 border-blood-red overflow-y-scroll"
             >
-              <div className="relative flex flex-col py-10 px-6 z-10">
+              <div className="relative flex flex-col items-center py-10 px-6 z-10">
                 {/* Fix button position */}
                 <button
                     onClick={() => setIsOpen(false)}
@@ -148,7 +149,26 @@ const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description }) => {
                 </h1>
                 
                 <img src={imgSrc} alt={`Image Representing ${heading}`} className="rounded-3xl object-cove border-2 border-blood-red mb-10"/>
-                <p className="font-lora text-blood-red text-base font-semibold leading-relaxed">{description}</p>
+                <h2 className="text-center mb-5 font-montserrat font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl text-blood-red">
+                    Tech Stack
+                </h2>
+                <div className="flex gap-2 flex-wrap justify-center items-center mb-10">
+                    {techStack.split(",").map((tech, i) => {
+                        return (
+                            <div className="bg-blood-red px-3 py-2 italic rounded-xl font-semibold z-30 font-raleway select-none hover:shadow-[0_0_20px_5px_#70110A] shadow-blood-red cursor-pointer" key={i}>
+                                {tech}
+                            </div>
+                        );
+                    })}
+                </div>
+                <p className="font-lora text-blood-red text-base font-semibold leading-relaxed mb-10">{description}</p>
+                <a
+                    href={link}
+                    target="_blank"
+                    className="w-24"
+                >
+                    <RippleButton>Visit</RippleButton>
+                </a>
               </div>
             </motion.div>
           </motion.div>

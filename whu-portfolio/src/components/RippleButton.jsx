@@ -34,7 +34,7 @@ const RippleButton = ({ children }) => {
         transition={{ duration: 0.6, ease: "circInOut" }}
         className="absolute transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-blood-red rounded-full z-0"
       ></motion.div>
-      <div className="relative z-10 font-bold">{children}</div>
+      <div className="text-center relative z-10 font-bold">{children}</div>
     </div>
   );
 };
