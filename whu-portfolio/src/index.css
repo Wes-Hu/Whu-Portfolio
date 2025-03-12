@@ -26,4 +26,14 @@
 ::selection {
     background: #70110A; /* Highlight background color */
     color: #090A0C;      /* Highlight text color */
-  }
+}
+
+/* Hide scrollbar for Chrome, Safari, Edge */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.scrollbar-hidden {
+  scrollbar-width: none;
+}

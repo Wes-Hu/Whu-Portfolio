@@ -172,7 +172,7 @@ function App() {
 
         <div id="Projects" className="w-screen min-h-screen pt-28 flex flex-col items-center">
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">MY PROJECTS</h1>
-          <div className="w-screen md:w-3/4">
+          <div className="w-screen md:w-3/4 xl:w-[60%]">
             <div className="px-6 md:px-0 mx-auto cursor-pointer overflow-hidden py-20">
               <ProjectLink 
                 heading="LINE DODGE" 
@@ -202,7 +202,10 @@ function App() {
             
           </div>
         </div>
-        <div id="Experience" className="h-screen text-white">Experience Under Construction</div>
+        <div id="Experience" className="h-screen">
+          <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">WORK EXPERIENCE</h1>
+
+        </div>
         <div id="Contact" className="h-screen text-white">Contact Form Under Construction</div>
       </main>
     </div>

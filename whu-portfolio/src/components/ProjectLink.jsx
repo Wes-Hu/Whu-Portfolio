@@ -52,7 +52,7 @@ const ProjectLink = ({ heading, subheading, imgSrc, description, techStack, link
                         whileHover: { y: -16 },
                     }}
                     transition ={{ type: "spring", delayChildren: 0.25, staggerChildren: 0.075 }}
-                    className="relative z-10 block font-rubik font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-blood-red transition-colors duration-500 group-hover:text-blood-red- text-nowrap"
+                    className="relative z-10 block font-rubik font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-blood-red transition-colors duration-500 group-hover:text-blood-red-light text-nowrap"
                 >
                     {heading.split("").map((l, i) => {
                         return (
@@ -113,7 +113,7 @@ const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description, techSta
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, type: "spring" }}
             onClick={() => setIsOpen(false)}
-            className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center"
+            className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center overflow-hidden"
           >
             <motion.div
               initial={{ scale: 0 }}
@@ -121,10 +121,9 @@ const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description, techSta
               exit={{ scale: 0 }}
               transition={{ duration: 0.5, type: "spring" }}
               onClick={(e) => e.stopPropagation()}
-              className="w-[90%] h-[90%] bg-night rounded-3xl border-2 border-blood-red overflow-y-scroll"
+              className="max-w-[90%] max-h-[90%] lg:max-w-[75%] bg-night rounded-3xl border-2 border-blood-red overflow-y-auto scrollbar-hidden"
             >
-              <div className="relative flex flex-col items-center py-10 px-6 z-10">
-                {/* Fix button position */}
+              <div className="w-full relative flex flex-col justify-center items-center py-10 px-6 z-10">
                 <button
                     onClick={() => setIsOpen(false)}
                     onMouseEnter={() => setIsHovered(true)}
@@ -134,7 +133,7 @@ const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description, techSta
                     <div className="relative flex items-center justify-center w-full h-full">
                         <motion.span
                             initial={{ rotate: "45deg" }}
-                            animate={{ backgroundColor: isHovered ? "#E97451" : "#FFFFFF" }} // Burnt Sienna when hovered
+                            animate={{ backgroundColor: isHovered ? "#E97451" : "#FFFFFF" }}
                             className="absolute w-8 h-1 bg-white rounded-full transition-all ease-in-out duration-300"
                         ></motion.span>
                         <motion.span
@@ -147,27 +146,36 @@ const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description, techSta
                 <h1 className="text-center font-rubik font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-blood-red transition-colors duration-500 group-hover:text-blood-red mb-10">
                     {heading}
                 </h1>
-                
-                <img src={imgSrc} alt={`Image Representing ${heading}`} className="rounded-3xl object-cove border-2 border-blood-red mb-10"/>
-                <h2 className="text-center mb-5 font-montserrat font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl text-blood-red">
-                    Tech Stack
-                </h2>
-                <div className="flex gap-2 flex-wrap justify-center items-center mb-10">
-                    {techStack.split(",").map((tech, i) => {
-                        return (
-                            <div className="bg-blood-red px-3 py-2 italic rounded-xl font-semibold z-30 font-raleway select-none hover:shadow-[0_0_20px_5px_#70110A] shadow-blood-red cursor-pointer" key={i}>
-                                {tech}
-                            </div>
-                        );
-                    })}
+                <div className="w-full flex flex-col lg:flex-row justify-center gap-10">
+                    <img src={imgSrc} alt={`Image Representing ${heading}`} className="w-full lg:w-1/2 rounded-3xl object-cover border-2 border-blood-red mb-10"/>
+                    <div className="w-full lg:w-1/2">
+                        <h2 className="text-center mb-5 font-montserrat font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl text-blood-red">
+                            Tech Stack
+                        </h2>
+                        <div className="flex gap-3 flex-wrap justify-center items-center mb-10">
+                            {techStack.split(",").map((tech, i) => {
+                                return (
+                                    <motion.div
+                                        initial={{ scale: 1, color: "#090A0C", rotate: 0}}
+                                        whileHover={{ scale: 1.2, color: "#EE6C4D", rotate: "3deg" }}
+                                        transition={{ duration: 0.1, ease: 'easeInOut'}} 
+                                        className="bg-blood-red px-3 py-2 italic rounded-xl font-semibold z-30 font-raleway select-none hover:shadow-[0_0_20px_5px_#70110A] shadow-blood-red cursor-pointer" 
+                                        key={i}
+                                    >
+                                        {tech}
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+                        <p className="font-lora text-blood-red text-base lg:text-xl font-semibold leading-relaxed mb-10">{description}</p>
+                    </div>
                 </div>
-                <p className="font-lora text-blood-red text-base font-semibold leading-relaxed mb-10">{description}</p>
                 <a
                     href={link}
                     target="_blank"
-                    className="w-24"
+                    className="w-26 block font-bold text-xl lg:text-2xl font-raleway"
                 >
-                    <RippleButton>Visit</RippleButton>
+                    <RippleButton>VISIT</RippleButton>
                 </a>
               </div>
             </motion.div>
