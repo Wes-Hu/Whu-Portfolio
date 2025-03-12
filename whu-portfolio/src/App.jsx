@@ -206,7 +206,7 @@ function App() {
         </div>
         <div id="Experience" className="w-screen min-h-screen pt-28 flex flex-col items-center">
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">EXPERIENCE</h1>
-          <div className="relative w-screen px-8">
+          <div className="relative w-full md:w-3/4 xl:w-[60%] px-8 py-20">
             <div className="w-1 h-6 bg-blood-red rounded-t-full"/>
             <Experience position={"Software Engineering Intern"} company={"Modyfi"} year={"2024"}/>
             <Experience position={"Teaching Assistant"} company={"Colorado School of Mines"} year={"2024"}/>
