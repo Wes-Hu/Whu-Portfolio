@@ -2,14 +2,14 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Drip from "./Drip";
 
-const HomeButton = () => {
+const HomeButton = ({className}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.a
       whileHover={{ scale: 1.2 }}
       href="#Home"
-      className="group relative bg-blood-red w-16 h-16 p-2 rounded-xl"
+      className={`group relative bg-blood-red w-16 h-16 p-2 rounded-xl ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

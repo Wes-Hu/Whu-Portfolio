@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
-const Cursor = () => {
+const Cursor = ({ hideCursor }) => {
   const coords = { x: 0, y: 0 };
   const circlesRef = useRef([]);
 
@@ -52,16 +53,20 @@ const Cursor = () => {
   }, []);
 
   return (
-    <div className="mix-blend-difference">
+    <motion.div 
+      animate={{ opacity: hideCursor ? 0 : 1 }}
+      transition={{ duration: 0.2, ease: "easeOut" }} 
+      className="mix-blend-difference z-0"
+    >
       {[...Array(20)].map((_, index) => (
         <div
           key={index}
           ref={(el) => (circlesRef.current[index] = el)}
-          className="h-8 w-8 z-0 rounded-full bg-blood-red absolute top-0 left-0 circle opacity-0 lg:opacity-100"
+          className="h-8 w-8  rounded-full bg-blood-red absolute top-0 left-0 circle opacity-0 lg:opacity-100"
           style={{ pointerEvents: 'none', transform: 'scale(1)' }}
         />
       ))}
-    </div>
+    </motion.div>
   );
 };
 

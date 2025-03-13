@@ -51,7 +51,7 @@ const ProjectLink = ({ heading, subheading, imgSrc, description, techStack, link
                         initial: { y: 0},
                         whileHover: { y: -16 },
                     }}
-                    transition ={{ type: "spring", delayChildren: 0.25, staggerChildren: 0.075 }}
+                    transition ={{ type: "spring", delayChildren: 0.25, staggerChildren: 0.075}}
                     className="relative z-10 block font-rubik font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-blood-red transition-colors duration-500 group-hover:text-blood-red-light text-nowrap"
                 >
                     {heading.split("").map((l, i) => {
@@ -61,7 +61,7 @@ const ProjectLink = ({ heading, subheading, imgSrc, description, techStack, link
                                     initial: { y: 0},
                                     whileHover: { y: 16 },
                                 }}
-                                transition ={{ type: "spring" }}
+                                transition ={{ type: "spring"}}
                                 className="inline-block" 
                                 key={i}
                             >
@@ -113,7 +113,7 @@ const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description, techSta
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, type: "spring" }}
             onClick={() => setIsOpen(false)}
-            className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center overflow-hidden"
+            className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center overflow-hidden cursor-auto"
           >
             <motion.div
               initial={{ scale: 0 }}

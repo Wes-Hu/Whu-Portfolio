@@ -20,7 +20,7 @@ import Experience from './components/Experience';
 
 function App() {  
   const[navVisiblility, setNavVisibility] = useState(true);
-  const[navMenuVisibility, setNavMenuVisibility] = useState(true);
+  const [shrinkCursor, setShrinkCursor] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className="flex flex-col z-10 cursor-none">
-      <Cursor/>
+      <Cursor hideCursor={shrinkCursor}/>
       <header className="fixed top-0 left-0 w-screen h-24 z-50 flex flex-row justify-between px-3 md:px-10 items-center cursor-auto">
         <HomeButton/>
         <NavMenu className="lg:hidden"/>
@@ -105,7 +105,7 @@ function App() {
         <div id="About" className="w-screen min-h-screen pt-28 flex flex-col items-center">
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">ABOUT ME</h1>              
           <div className="w-screen md:w-10/12 xl:w-4/5 px-6 lg:px-0 text-blood-red flex flex-col md:flex-row gap-10 xl:gap-20">
-            <CardContainer className="bg-night cursor-pointer z-50 w-full border-2 border-night hover:border-blood-red rounded-3xl">
+            <CardContainer className="bg-night cursor-pointer  w-full border-2 border-night hover:border-blood-red rounded-3xl" >
               <CardBody className="h-auto w-full flex flex-col gap-5 px-3 md:px-6 py-6 rounded-3xl items-center transition duration-300 ease-in-out hover:shadow-[0_0_20px_5px_#70110A]">
                 <CardItem
                   translateZ="50"
@@ -175,7 +175,11 @@ function App() {
         <div id="Projects" className="w-screen min-h-screen pt-28 flex flex-col items-center">
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">MY PROJECTS</h1>
           <div className="w-screen md:w-3/4 xl:w-[60%]">
-            <div className="px-6 md:px-0 mx-auto cursor-pointer overflow-hidden py-20">
+            <div 
+              onMouseEnter={() => setShrinkCursor(true)} 
+              onMouseLeave={() => setShrinkCursor(false)}  
+              className="px-6 md:px-0 mx-auto cursor-pointer overflow-hidden py-20"
+            >
               <ProjectLink 
                 heading="LINE DODGE" 
                 subheading="Simple Arcade Style Web Game" 
@@ -206,11 +210,15 @@ function App() {
         </div>
         <div id="Experience" className="w-screen min-h-screen pt-28 flex flex-col items-center">
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">EXPERIENCE</h1>
-          <div className="relative w-full md:w-3/4 xl:w-[60%] px-8 py-20">
+          <div 
+            onMouseEnter={() => setShrinkCursor(true)} 
+            onMouseLeave={() => setShrinkCursor(false)} 
+            className="relative w-full md:w-3/4 xl:w-[60%] px-8 cursor-auto"
+          >
             <div className="w-1 h-6 bg-blood-red rounded-t-full"/>
             <Experience position={"Software Engineering Intern"} company={"Modyfi"} year={"2024"}/>
             <Experience position={"Teaching Assistant"} company={"Colorado School of Mines"} year={"2024"}/>
-            <div className="w-1 h-12 bg-blood-red rounded-b-full"/>
+            <div className="w-1 h-6 bg-blood-red rounded-b-full"/>
           </div>
         </div>
         <div id="Contact" className="h-screen text-white">Contact Form Under Construction</div>
@@ -218,8 +226,6 @@ function App() {
     </div>
   );
 }
-
-
 
 const itemVariants = {
   initial: { opacity: 0, x: -20 , scale: 0, scaleX: 0 },
