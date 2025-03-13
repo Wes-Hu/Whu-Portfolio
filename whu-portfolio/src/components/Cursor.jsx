@@ -30,7 +30,6 @@ const Cursor = ({ hideCursor }) => {
         circle.style.left = x - 12 + "px";
         circle.style.top = y - 12 + "px";
 
-        // Apply the scale effect
         const scale = (circles.length - index) / circles.length;
         circle.style.transform = `scale(${scale})`;
 
@@ -55,7 +54,7 @@ const Cursor = ({ hideCursor }) => {
   return (
     <motion.div 
       animate={{ opacity: hideCursor ? 0 : 1 }}
-      transition={{ duration: 0.2, ease: "easeOut" }} 
+      transition={{ duration: 0.5, ease: "easeOut" }} 
       className="mix-blend-difference z-0"
     >
       {[...Array(20)].map((_, index) => (

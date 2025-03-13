@@ -21,6 +21,11 @@ import Experience from './components/Experience';
 function App() {  
   const[navVisiblility, setNavVisibility] = useState(true);
   const [shrinkCursor, setShrinkCursor] = useState(false);
+  const [openExperience, setOpenExperience] = useState(null);
+
+  const toggleExperience = (position) => {
+    setOpenExperience((prev) => (prev === position ? null : position));
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +41,7 @@ function App() {
   return (
     <div className="flex flex-col z-10 cursor-none">
       <Cursor hideCursor={shrinkCursor}/>
-      <header className="fixed top-0 left-0 w-screen h-24 z-50 flex flex-row justify-between px-3 md:px-10 items-center cursor-auto">
+      <header className="fixed top-0 left-0 w-screen h-24 z-50 flex flex-row justify-between px-3 md:px-10 items-center">
         <HomeButton/>
         <NavMenu className="lg:hidden"/>
         <div className="hidden lg:flex">
@@ -47,7 +52,9 @@ function App() {
           >
             <NavMenu/>
           </motion.div>
-          <motion.nav 
+          <motion.nav
+            onMouseEnter={() => setShrinkCursor(true)} 
+            onMouseLeave={() => setShrinkCursor(false)}  
             className="text-blood-red hidden lg:flex gap-6 h-full justify-center items-center relative"
             initial={{ x: 0, opacity: 1}}
             animate={{ x: navVisiblility ? 0 : '100%', opacity: navVisiblility ? 1 : 0, display: navVisiblility ? 'flex' : 'none' }} // Show on top, hide when scrolling down
@@ -76,7 +83,6 @@ function App() {
             transition={{duration: 0.5, ease: "easeInOut"}}
             className="w-full md:w-11/12 xl:w-4/5 2xl:w-3/4 pb-64 lg:pb-0"
           >
-            {/* H1 animation */}
             <motion.h1
               initial={{ x: -300, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -85,7 +91,6 @@ function App() {
             >
               WESLEY HU
             </motion.h1>
-            {/* Encrypt animation starts with delay */}
             <motion.div
               initial={{ x: -300, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -105,7 +110,9 @@ function App() {
         <div id="About" className="w-screen min-h-screen pt-28 flex flex-col items-center">
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">ABOUT ME</h1>              
           <div className="w-screen md:w-10/12 xl:w-4/5 px-6 lg:px-0 text-blood-red flex flex-col md:flex-row gap-10 xl:gap-20">
-            <CardContainer className="bg-night cursor-pointer  w-full border-2 border-night hover:border-blood-red rounded-3xl" >
+            <CardContainer 
+              className="bg-night cursor-pointer  w-full border-2 border-night hover:border-blood-red rounded-3xl"
+            >
               <CardBody className="h-auto w-full flex flex-col gap-5 px-3 md:px-6 py-6 rounded-3xl items-center transition duration-300 ease-in-out hover:shadow-[0_0_20px_5px_#70110A]">
                 <CardItem
                   translateZ="50"
@@ -132,7 +139,11 @@ function App() {
               </CardBody>
             </CardContainer>
             <div className="w-full md:w-1/2 z-30  flex flex-col justify-center items-center h-auto ">
-              <div className="w-full bg-night border-2 py-6 border-night hover:border-blood-red rounded-3xl transition duration-300 ease-in-out hover:shadow-[0_0_20px_5px_#70110A] cursor-auto">
+              <div
+                onMouseEnter={() => setShrinkCursor(true)} 
+                onMouseLeave={() => setShrinkCursor(false)}  
+                className="w-full bg-night border-2 py-6 border-night hover:border-blood-red rounded-3xl transition duration-300 ease-in-out hover:shadow-[0_0_20px_5px_#70110A] cursor-auto"
+              >
                 <h1 className="font-montserrat text-center text-blood-red font-semibold text-3xl lg:text-4xl mb-5">Skills</h1>
                 <div className="max-w-full overflow-hidden flex text-night">
                   <Marquee autoFill pauseOnClick gradient speed={20} gradientColor="#090A0C" gradientWidth={100}>
@@ -216,8 +227,20 @@ function App() {
             className="relative w-full md:w-3/4 xl:w-[60%] px-8 cursor-auto"
           >
             <div className="w-1 h-6 bg-blood-red rounded-t-full"/>
-            <Experience position={"Software Engineering Intern"} company={"Modyfi"} year={"2024"}/>
-            <Experience position={"Teaching Assistant"} company={"Colorado School of Mines"} year={"2024"}/>
+            <Experience 
+              position={"Software Engineering Intern"} 
+              company={"Modyfi"}
+              year={"2024"}
+              isOpen={openExperience === "2"}
+              toggleExperience={() => toggleExperience("2")} 
+            />
+            <Experience 
+              position={"Teaching Assistant"} 
+              company={"Colorado School of Mines"} 
+              year={"2024"}
+              isOpen={openExperience === "1"}
+              toggleExperience={() => toggleExperience("1")}  
+            />
             <div className="w-1 h-6 bg-blood-red rounded-b-full"/>
           </div>
         </div>

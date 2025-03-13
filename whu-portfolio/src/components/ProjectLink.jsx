@@ -42,7 +42,7 @@ const ProjectLink = ({ heading, subheading, imgSrc, description, techStack, link
             initial="initial"
             onMouseMove={handleMouseMove}
             whileHover="whileHover"
-            className="group relative flex items-center justify-between border-b-2 border-blood-red py-4 transition-colors duration-500 hover:border-blood-red-light md:py-8"
+            className="group relative flex items-center justify-between border-b-2 border-blood-red py-4 transition-colors duration-500 hover:border-blood-red-light md:py-8 select-none"
         >   
             <ProjectModal isOpen={isOpen} setIsOpen={setIsOpen} heading={heading} imgSrc={imgSrc} description={description} techStack={techStack} link={link}/>
             <div>
@@ -113,7 +113,7 @@ const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description, techSta
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, type: "spring" }}
             onClick={() => setIsOpen(false)}
-            className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center overflow-hidden cursor-auto"
+            className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center overflow-hidden cursor-auto select-all"
           >
             <motion.div
               initial={{ scale: 0 }}
