@@ -2,22 +2,22 @@ import { GoDotFill } from 'react-icons/go';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
-const Experience = ({position, company, year, isOpen, toggleExperience}) => {
+const Experience = ({position, company, year, description, isOpen, toggleExperience}) => {
     return(
         <motion.div
-            initial="initial"
-            whileHover="whileHover"
             className="select-none" 
         >
             <div className="group relative w-1 h-24 bg-blood-red">
                 <div className="absolute z-10 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-blood-red border-4"></div>  
-                <div 
+                <motion.div
+                    initial="initial"
+                    whileHover="whileHover" 
                     onClick={toggleExperience}
                     className="cursor-pointer absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-night"
                 >   
                     <motion.div
                         initial = {{ x: "-50%", y: "-50%", scale: 0 }}
-                        animate = {{ x: "-50%", y: "-50%", scale: isOpen ? 1 : 0}}
+                        animate = {{ x: "-50%", y: "-50%", scale: isOpen ? 1 : 0 }}
                         style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
                         transition={{duration: 0.5, ease: "easeInOut" }}
                         className="absolute w-5 h-5 bg-blood-red rounded-full"
@@ -40,8 +40,34 @@ const Experience = ({position, company, year, isOpen, toggleExperience}) => {
                             {company}<GoDotFill className="mx-1"/>{year}
                         </h2>
                     </div>
-                </div>
+                </motion.div>
             </div>
+            <AnimatePresence>
+                {isOpen&& (
+                    <motion.div
+                        initial = {{ height: 0 }}
+                        animate = {{ height: "auto"}}
+                        exit = {{ height: 0 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }} 
+                        className="lg:hidden relative w-auto h-auto flex flex-row gap-7 overflow-hidden"
+                    >
+                        <div className='w-1 h-auto bg-blood-red'></div>
+                        <div className="w-full border-2 flex flex-col gap-2 border-blood-red rounded-3xl p-6">
+                            {description.split("|").map((section, i) => {
+                                return(
+                                    <div
+                                        key={i} 
+                                        className="font-lora text-base font-semibold text-blood-red"
+                                    >
+                                        {section}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
         </motion.div>
       
     );

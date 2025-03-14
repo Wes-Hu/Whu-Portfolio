@@ -232,12 +232,14 @@ function App() {
               company={"Modyfi"}
               year={"2024"}
               isOpen={openExperience === "2"}
+              description={"Developed Modyfi Print, an E-Commerce platform to sell generative art prints with a focus on the front-end of the application.|Utilized React, Typescript, and TailwindCSS to create responsive web pages based on Figma Designs.|Incorperated Supabase and API's such as Stripe, Prodigi, and Google address verification to create the platform's functionality."}
               toggleExperience={() => toggleExperience("2")} 
             />
             <Experience 
               position={"Teaching Assistant"} 
               company={"Colorado School of Mines"} 
               year={"2024"}
+              description={"Developed Modyfi Print, an E-Commerce platform to sell generative art prints with a focus on the front-end of the application.|Utilized React, Typescript, and TailwindCSS to create responsive web pages based on Figma Designs.|Incorperated Supabase and API's such as Stripe, Prodigi, and Google address verification to create the platform's functionality."}
               isOpen={openExperience === "1"}
               toggleExperience={() => toggleExperience("1")}  
             />
