@@ -56,6 +56,7 @@ const Cursor = ({ hideCursor }) => {
       animate={{ opacity: hideCursor ? 0 : 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }} 
       className="mix-blend-difference z-0"
+      initial={false}
     >
       {[...Array(20)].map((_, index) => (
         <div

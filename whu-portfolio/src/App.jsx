@@ -20,12 +20,27 @@ import Experience from './components/Experience';
 
 function App() {  
   const[navVisiblility, setNavVisibility] = useState(true);
-  const [shrinkCursor, setShrinkCursor] = useState(false);
+  const [hideCursor, setHideCursor] = useState(false);
   const [openExperience, setOpenExperience] = useState(null);
 
   const toggleExperience = (position) => {
     setOpenExperience((prev) => (prev === position ? null : position));
   }
+
+  const experiences = [
+    {
+      position: "Software Engineering Intern",
+      company: "Modyfi",
+      year: "2024",
+      description: "Developed Modyfi Print, an E-Commerce platform to sell generative art prints with a focus on the front-end of the application.|Utilized React, Typescript, and TailwindCSS to create responsive web pages based on Figma Designs.|Incorperated Supabase and API's such as Stripe, Prodigi, and Google address verification to create the platform's functionality.",
+    },
+    {
+      position: "Teaching Assistant",
+      company: "Colorado School of Mines",
+      year: "2024",
+      description: "Teaching Assistant for Elements of Game Design and Game Development class at Colorado School of Mines.|Assisted both undergratuate and graduate students, helping them navigate through course material and assignments when needed.|Evaluated and graded assignments providing constructive feedback on performance and what could have been improved.",
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +55,7 @@ function App() {
 
   return (
     <div className="flex flex-col z-10 cursor-none">
-      <Cursor hideCursor={shrinkCursor}/>
+      <Cursor hideCursor={hideCursor}/>
       <header className="fixed top-0 left-0 w-screen h-24 z-50 flex flex-row justify-between px-3 md:px-10 items-center">
         <HomeButton/>
         <NavMenu className="lg:hidden"/>
@@ -53,8 +68,8 @@ function App() {
             <NavMenu/>
           </motion.div>
           <motion.nav
-            onMouseEnter={() => setShrinkCursor(true)} 
-            onMouseLeave={() => setShrinkCursor(false)}  
+            onMouseEnter={() => setHideCursor(true)} 
+            onMouseLeave={() => setHideCursor(false)}  
             className="text-blood-red hidden lg:flex gap-6 h-full justify-center items-center relative"
             initial={{ x: 0, opacity: 1}}
             animate={{ x: navVisiblility ? 0 : '100%', opacity: navVisiblility ? 1 : 0, display: navVisiblility ? 'flex' : 'none' }} // Show on top, hide when scrolling down
@@ -140,8 +155,8 @@ function App() {
             </CardContainer>
             <div className="w-full md:w-1/2 z-30  flex flex-col justify-center items-center h-auto ">
               <div
-                onMouseEnter={() => setShrinkCursor(true)} 
-                onMouseLeave={() => setShrinkCursor(false)}  
+                onMouseEnter={() => setHideCursor(true)} 
+                onMouseLeave={() => setHideCursor(false)}  
                 className="w-full bg-night border-2 py-6 border-night hover:border-blood-red rounded-3xl transition duration-300 ease-in-out hover:shadow-[0_0_20px_5px_#70110A] cursor-auto"
               >
                 <h1 className="font-montserrat text-center text-blood-red font-semibold text-3xl lg:text-4xl mb-5">Skills</h1>
@@ -187,8 +202,8 @@ function App() {
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">MY PROJECTS</h1>
           <div className="w-screen md:w-3/4 xl:w-[60%]">
             <div 
-              onMouseEnter={() => setShrinkCursor(true)} 
-              onMouseLeave={() => setShrinkCursor(false)}  
+              onMouseEnter={() => setHideCursor(true)} 
+              onMouseLeave={() => setHideCursor(false)}  
               className="px-6 md:px-0 mx-auto cursor-pointer overflow-hidden py-20"
             >
               <ProjectLink 
@@ -222,28 +237,31 @@ function App() {
         <div id="Experience" className="w-screen min-h-screen pt-28 flex flex-col items-center">
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">EXPERIENCE</h1>
           <div 
-            onMouseEnter={() => setShrinkCursor(true)} 
-            onMouseLeave={() => setShrinkCursor(false)} 
-            className="relative w-full md:w-3/4 xl:w-[60%] px-8 cursor-auto"
+            onMouseEnter={() => setHideCursor(true)} 
+            onMouseLeave={() => setHideCursor(false)} 
+            className="relative w-full md:w-3/4 xl:w-[60%] px-8 cursor-auto flex flex-row justify-between"
           >
-            <div className="w-1 h-6 bg-blood-red rounded-t-full"/>
-            <Experience 
-              position={"Software Engineering Intern"} 
-              company={"Modyfi"}
-              year={"2024"}
-              isOpen={openExperience === "2"}
-              description={"Developed Modyfi Print, an E-Commerce platform to sell generative art prints with a focus on the front-end of the application.|Utilized React, Typescript, and TailwindCSS to create responsive web pages based on Figma Designs.|Incorperated Supabase and API's such as Stripe, Prodigi, and Google address verification to create the platform's functionality."}
-              toggleExperience={() => toggleExperience("2")} 
-            />
-            <Experience 
-              position={"Teaching Assistant"} 
-              company={"Colorado School of Mines"} 
-              year={"2024"}
-              description={"Developed Modyfi Print, an E-Commerce platform to sell generative art prints with a focus on the front-end of the application.|Utilized React, Typescript, and TailwindCSS to create responsive web pages based on Figma Designs.|Incorperated Supabase and API's such as Stripe, Prodigi, and Google address verification to create the platform's functionality."}
-              isOpen={openExperience === "1"}
-              toggleExperience={() => toggleExperience("1")}  
-            />
-            <div className="w-1 h-6 bg-blood-red rounded-b-full"/>
+            <div className="flex flex-col">
+              <div className="w-1 h-6 bg-blood-red rounded-t-full"/>
+              {experiences.map((exp, index) => (
+                <Experience 
+                  key={index}
+                  position={exp.position}
+                  company={exp.company}
+                  year={exp.year}
+                  description={exp.description}
+                  isOpen={openExperience === index}
+                  toggleExperience={() => toggleExperience(index)}
+                />
+              ))}
+              <div className="w-1 h-6 bg-blood-red rounded-b-full"/>
+            </div>
+            {openExperience !== null && (
+              <div className='border-2 border-blood-red w-96 h-96'>
+
+              </div>
+            )}
+
           </div>
         </div>
         <div id="Contact" className="h-screen text-white">Contact Form Under Construction</div>

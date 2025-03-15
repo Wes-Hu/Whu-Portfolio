@@ -92,6 +92,7 @@ const NavMenu = ({className}) => {
                         onClick={() => setActive((prevState) => !prevState)}
                         className="relative w-16 h-16 rounded-full z-50 bg-blood-red group"
                         animate={active ? "open" : "closed"}
+                        initial={false}
                     >
                         <motion.span
                             className="absolute w-8 h-1 bg-white rounded-full group-hover:bg-burnt-sienna transition-all ease-in-out duration-300"
@@ -266,6 +267,6 @@ const NavMenu = ({className}) => {
     );
 };
 
-export default NavMenu;
+export default React.memo(NavMenu);
 
 
