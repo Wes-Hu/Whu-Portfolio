@@ -4,7 +4,7 @@ import HomeButton from "./components/HomeButton";
 import Cursor from "./components/Cursor";
 import NavMenu from './components/NavMenu';
 import Encrypt from './components/Encrypt';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { OrbitControls, useGLTF, useScroll } from '@react-three/drei';
 import { Canvas} from '@react-three/fiber';
 import Eye from './components/Eye';
@@ -243,24 +243,52 @@ function App() {
           >
             <div className="flex flex-col">
               <div className="w-1 h-6 bg-blood-red rounded-t-full"/>
-              {experiences.map((exp, index) => (
+              {experiences.map((exp, i) => (
                 <Experience 
-                  key={index}
+                  key={i}
                   position={exp.position}
                   company={exp.company}
                   year={exp.year}
                   description={exp.description}
-                  isOpen={openExperience === index}
-                  toggleExperience={() => toggleExperience(index)}
+                  isOpen={openExperience === i}
+                  toggleExperience={() => toggleExperience(i)}
                 />
               ))}
               <div className="w-1 h-6 bg-blood-red rounded-b-full"/>
             </div>
-            {openExperience !== null && (
-              <div className='border-2 border-blood-red w-96 h-96'>
+            <AnimatePresence>
+              {openExperience !== null && (
+                <motion.div
+                  variants={openVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="hidden lg:flex border-2 border-blood-red max-w-[50%] h-auto rounded-3xl p-6"
+                >
+                  <motion.div
+                    variants={containerVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    key={openExperience} 
+                    className="flex flex-col gap-2"
+                  >
+                    {experiences[openExperience].description.split("|").map((section, i) => {
+                      return(
+                        <motion.p
+                          variants={textVariants} 
+                          key={`${openExperience}-${i}`}
+                          className="font-lora text-xl font-semibold text-blood-red"
+                        >
+                          {section}
+                        </motion.p>
+                      );
+                    })}
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
-              </div>
-            )}
 
           </div>
         </div>
@@ -275,6 +303,25 @@ const itemVariants = {
   animate: { opacity: 1, x: 0, scale: 1, scaleX: 1 },
   exit: { opacity: 0, x: +20, scale: 0, scaleX: 0  },
 };
+
+const openVariants = {
+  initial: { scale: 0 },
+  animate: { scale: 1, transition: { staggerChildren: 0.2, delayChildren: 0.5, ease: "easeInOut", duration: 0.5 }},
+  exit: { scale: 0, transition: { ease: "easeInOut", duration: 0.5 } },
+};
+
+const containerVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.5, ease: "easeInOut", duration: 0.5}},
+  exit: { opacity: 0, transition: { ease: "easeInOut", duration: 0.3 } },
+};
+
+const textVariants = {
+  initial: {opacity: 0, x: -15},
+  animate: {opacity: 1, x: 0, transition: { duration: 1, type: "spring"}},
+  exit: {opacity: 0, transition: { duration: 1, type: "spring"}},
+}
+
 
 useGLTF.preload('/public/test.glb');
 

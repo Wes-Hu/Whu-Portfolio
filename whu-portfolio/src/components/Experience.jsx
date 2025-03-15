@@ -3,7 +3,7 @@ import { motion, AnimatePresence, animate } from 'framer-motion';
 import { useState } from 'react';
 
 const Experience = ({position, company, year, description, isOpen, toggleExperience}) => {
-    const outerVariants = {
+    const openVariants = {
         initial: { height: 0 },
         animate: { height: "auto", transition: { staggerChildren: 0.2, delayChildren: 0.5, ease: "easeInOut", duration: 0.5 }},
         exit: { height: 0, transition: { ease: "easeInOut", duration: 0.5 }},
@@ -53,10 +53,10 @@ const Experience = ({position, company, year, description, isOpen, toggleExperie
                     </div>
                 </motion.div>
             </div>
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
                 {isOpen&& (
                     <motion.div
-                        variants={outerVariants}
+                        variants={openVariants}
                         initial="initial"
                         animate="animate"
                         exit="exit"
@@ -68,18 +68,17 @@ const Experience = ({position, company, year, description, isOpen, toggleExperie
                             animate={{ scale: isOpen ? 1 : 0 }}
                             exit={{ scale: 0}}
                             transition={{ duration: 0.5, ease:"easeInOut" }}
-                            style={{ transformOrigin: "Center"}} 
                             className="w-full border-2 flex flex-col gap-2 border-blood-red rounded-3xl p-6"
                         >
                             {description.split("|").map((section, i) => {
                                 return(
-                                    <motion.div
+                                    <motion.p
                                         variants={textVariants}
                                         key={i} 
                                         className="font-lora text-base font-semibold text-blood-red"
                                     >
                                         {section}
-                                    </motion.div>
+                                    </motion.p>
                                 );
                             })}
                         </motion.div>
