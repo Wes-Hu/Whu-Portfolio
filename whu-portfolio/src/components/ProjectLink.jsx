@@ -113,7 +113,7 @@ const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description, techSta
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, type: "spring" }}
             onClick={() => setIsOpen(false)}
-            className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center overflow-hidden cursor-auto select-all"
+            className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center overflow-hidden cursor-auto select-none"
           >
             <motion.div
               initial={{ scale: 0 }}

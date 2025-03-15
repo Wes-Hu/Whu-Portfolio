@@ -292,7 +292,9 @@ function App() {
 
           </div>
         </div>
-        <div id="Contact" className="h-screen text-white">Contact Form Under Construction</div>
+        <div id="Contact" className="w-screen min-h-screen pt-28 flex flex-col items-center">
+          <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">CONTACT ME</h1>
+        </div>
       </main>
     </div>
   );
