@@ -16,6 +16,7 @@ import RippleButton from './components/RippleButton';
 import FlipLink from './components/FlipLink';
 import ProjectLink from './components/ProjectLink';
 import Experience from './components/Experience';
+import ContactForm from './components/ContactForm';
 
 
 function App() {  
@@ -294,6 +295,9 @@ function App() {
         </div>
         <div id="Contact" className="w-screen min-h-screen pt-28 flex flex-col items-center">
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">CONTACT ME</h1>
+          <div className="relative w-full md:w-3/4 xl:w-[60%] px-8 cursor-auto">
+            <ContactForm/>
+          </div>
         </div>
       </main>
     </div>
