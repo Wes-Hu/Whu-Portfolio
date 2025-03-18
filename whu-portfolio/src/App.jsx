@@ -242,7 +242,7 @@ function App() {
             onMouseLeave={() => setHideCursor(false)} 
             className="relative w-full md:w-3/4 xl:w-[60%] px-8 cursor-auto flex flex-row justify-between"
           >
-            <div className="flex flex-col">
+            <div className="flex lg:hidden flex-col">
               <div className="w-1 h-6 bg-blood-red rounded-t-full"/>
               {experiences.map((exp, i) => (
                 <Experience 
@@ -257,6 +257,26 @@ function App() {
               ))}
               <div className="w-1 h-6 bg-blood-red rounded-b-full"/>
             </div>
+            <motion.div
+              initial={{ x: "20vw" }}
+              animate={{ x: openExperience !== null ? "0vw" : "20vw" }}
+              transition={{ duration: 0.5, ease: "easeInOut" }} 
+              className="hidden lg:flex flex-col"
+            >
+              <div className="w-1 h-6 bg-blood-red rounded-t-full"/>
+              {experiences.map((exp, i) => (
+                <Experience 
+                  key={i}
+                  position={exp.position}
+                  company={exp.company}
+                  year={exp.year}
+                  description={exp.description}
+                  isOpen={openExperience === i}
+                  toggleExperience={() => toggleExperience(i)}
+                />
+              ))}
+              <div className="w-1 h-6 bg-blood-red rounded-b-full"/>
+            </motion.div>
             <AnimatePresence>
               {openExperience !== null && (
                 <motion.div
@@ -295,7 +315,11 @@ function App() {
         </div>
         <div id="Contact" className="w-screen min-h-screen pt-28 flex flex-col items-center">
           <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">CONTACT ME</h1>
-          <div className="relative w-full md:w-3/4 xl:w-[60%] px-8 cursor-auto">
+          <div
+          onMouseEnter={() => setHideCursor(true)} 
+          onMouseLeave={() => setHideCursor(false)} 
+            className="relative w-full md:w-3/4 xl:w-1/2 px-8 cursor-auto"
+          >
             <ContactForm/>
           </div>
         </div>

@@ -30,23 +30,33 @@ const ContactForm = () => {
     });
 
     return (
-        <div className="border-blood-red border-2 w-full p-6 rounded-3xl">
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
-                <input 
-                    type="text" {...register("name", { required: true })} 
-                    placeholder="Enter Your Name" 
-                    className="font-raleway font-bold text-base lg:text-xl text-blood-red bg-night placeholder-blood-red border-2 focus:outline-none border-blood-red px-4 py-2 rounded-3xl"
-                />
-                <input 
-                    type="email" {...register("email", { required: true })}
-                    placeholder="Enter Your Email"
-                    className="font-raleway font-bold text-base lg:text-xl text-blood-red bg-night placeholder-blood-red border-2 focus:outline-none border-blood-red px-4 py-2 rounded-3xl"
-                />
-                <textarea 
-                    {...register("message", { required: true })}
-                    placeholder="Enter Your Message"
-                    className="font-raleway font-bold text-base lg:text-xl text-blood-red bg-night placeholder-blood-red border-2 focus:outline-none border-blood-red px-4 py-2 rounded-3xl"
-                />
+        <div className="w-full">
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+                <div className="w-full">
+                    <p className="pl-4 mb-2 font-raleway font-bold text-base lg:text-xl text-blood-red">Full Name</p>
+                    <input 
+                        type="text" {...register("name", { required: true })} 
+                        placeholder="Enter Your Name" 
+                        className="w-full font-raleway font-bold text-base lg:text-xl text-blood-red bg-night hover:text-blood-red-light hover:placeholder-blood-red-light transition-all duration-500 hover:border-blood-red-light placeholder-blood-red border-2 focus:outline-none border-blood-red px-4 py-2 rounded-3xl"
+                    />
+                </div>
+                <div className="w-full">
+                    <p className="pl-4 mb-2 font-raleway font-bold text-base lg:text-xl text-blood-red">Email</p>
+                    <input 
+                        type="email" {...register("email", { required: true })}
+                        placeholder="Enter Your Email"
+                        className="w-full font-raleway font-bold text-base lg:text-xl text-blood-red bg-night hover:text-blood-red-light hover:placeholder-blood-red-light transition-all duration-500 hover:border-blood-red-light placeholder-blood-red border-2 focus:outline-none border-blood-red px-4 py-2 rounded-3xl"
+                    />
+                </div>
+                
+                <div className="w-full">
+                    <p className="pl-4 mb-2 font-raleway font-bold text-base lg:text-xl text-blood-red">Message</p>
+                    <textarea 
+                        {...register("message", { required: true })}
+                        placeholder="Enter Your Message"
+                        className="w-full h-72 font-raleway font-bold text-base lg:text-xl text-blood-red bg-night hover:text-blood-red-light hover:placeholder-blood-red-light transition-all duration-500 hover:border-blood-red-light placeholder-blood-red border-2 focus:outline-none border-blood-red px-4 py-2 rounded-3xl"
+                    />
+                </div>
                 
                 <button type="submit" className="self-center font-bold text-base lg:text-xl font-raleway">
                     <RippleButton>Submit Form</RippleButton>
