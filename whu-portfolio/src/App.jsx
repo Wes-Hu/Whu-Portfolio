@@ -141,7 +141,7 @@ function App() {
                   translateZ="40"
                   className="font-lora text-base lg:text-xl font-semibold leading-relaxed"
                 >
-                  I am a recent graduate from the Colorado School of Mines with a computer science degree. I am passionate about software development, game development, and have recently developed an interest in web development this past year. I am always excited to grow and learn new skills while adapting to new tech stacks and tools. As I prepare for graduation, I look forward to pursuing a career in software development, with a keen interest in exploring opportunities in front-end, full-stack, and other areas of the field.
+                  I am a recent graduate from the Colorado School of Mines with a computer science degree. I am passionate about software development, game development, and have recently developed an interest in web development this past year. I am always excited to grow and learn new skills while adapting to new tech stacks and tools. I look forward to pursuing a career in software development, with a keen interest in exploring opportunities in front-end, full-stack, and other areas of the field.
                 </CardItem>
                 <CardItem
                   as="a"
