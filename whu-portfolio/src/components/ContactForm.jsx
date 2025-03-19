@@ -123,16 +123,17 @@ const SubmitNotification = ({ text, id, removeNotif }) => {
       }, []);
 
     return (
-        <motion.div
+        <motion.button
             layout
             initial={{ y: 15, scale: 0.9, opacity: 0 }}
             animate={{ y: 0, scale: 1, opacity: 1 }}
             exit={{ y: -25, scale: 0.9, opacity: 0 }}
             transition={{ type: "spring" }}
+            onClick={() => removeNotif(id)}
             className="flex flex-row gap-4 font-raleway font-bold text-base text-night p-4 bg-blood-red rounded-3xl fixed z-50 bottom-4 right-4"
         >
             <span>{text}</span>
-        </motion.div>
+        </motion.button>
     );
 };
 
