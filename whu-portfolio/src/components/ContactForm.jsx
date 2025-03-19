@@ -2,12 +2,18 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import useWeb3Forms from "@web3forms/react";
 import RippleButton from "./RippleButton";
+import { motion, AnimatePresence } from "framer-motion";
 
 const ContactForm = () => {
     const { register, reset, handleSubmit, formState: { errors, isSubmitted } } = useForm();
     const [isSuccess, setIsSuccess] = useState(false);
     const [result, setResult] = useState(null);
     const [showError, setShowError] = useState(false);
+    const [notification, setNotification] = useState(null);
+
+    const removeNotif = () => {
+        setNotification(null);
+    };
 
     const accessKey = "924cb22b-a23c-487f-a125-fde1898b5705";
 
@@ -31,11 +37,10 @@ const ContactForm = () => {
 
     useEffect(() => {
         if (result !== null) {
-            if (isSuccess) {
-                alert("Message Sent Successfully!");
-            } else {
-                alert("Message failed to send. Please try again.");
-            }
+            setNotification({
+                text: isSuccess ? "Message sent successfuly!" : "Message failed to send. Please try again.",
+                id: Date.now(),
+            });
             setResult(null);
         }
     }, [result, isSuccess]);
@@ -93,7 +98,41 @@ const ContactForm = () => {
                     </p>
                 )}
             </form>
+            <AnimatePresence>
+                {notification && (
+                    <SubmitNotification
+                        removeNotif={removeNotif}
+                        key={notification.id}
+                        {...notification}
+                    />
+                )}
+            </AnimatePresence>
         </div>
+    );
+};
+
+const NOTIF_TTL = 5000;
+
+const SubmitNotification = ({ text, id, removeNotif }) => {
+    useEffect(() => {
+        const timeoutRef = setTimeout(() => {
+          removeNotif();
+        }, NOTIF_TTL);
+    
+        return () => clearTimeout(timeoutRef);
+      }, []);
+
+    return (
+        <motion.div
+            layout
+            initial={{ y: 15, scale: 0.9, opacity: 0 }}
+            animate={{ y: 0, scale: 1, opacity: 1 }}
+            exit={{ y: -25, scale: 0.9, opacity: 0 }}
+            transition={{ type: "spring" }}
+            className="flex flex-row gap-4 font-raleway font-bold text-base text-night p-4 bg-blood-red rounded-3xl fixed z-50 bottom-4 right-4"
+        >
+            <span>{text}</span>
+        </motion.div>
     );
 };
 
