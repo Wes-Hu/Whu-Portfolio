@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import useWeb3Forms from "@web3forms/react";
 import RippleButton from "./RippleButton";
 import { motion, AnimatePresence } from "framer-motion";
+import { FiAlertCircle } from "react-icons/fi";
 
 const ContactForm = () => {
     const { register, reset, handleSubmit, formState: { errors, isSubmitted } } = useForm();
@@ -132,6 +133,7 @@ const SubmitNotification = ({ text, id, removeNotif }) => {
             onClick={() => removeNotif(id)}
             className="flex flex-row gap-4 font-raleway font-bold text-base text-night p-4 bg-blood-red rounded-3xl fixed z-50 bottom-4 right-4"
         >
+            <FiAlertCircle className="text-3xl absolute -top-3 -left-3 p-2 rounded-full bg-blood-red-light text-night shadow" />
             <span>{text}</span>
         </motion.button>
     );
