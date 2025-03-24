@@ -76,16 +76,32 @@ function App() {
             animate={{ x: navVisiblility ? 0 : '100%', opacity: navVisiblility ? 1 : 0, display: navVisiblility ? 'flex' : 'none' }} // Show on top, hide when scrolling down
             transition={{ duration: 0.5, delay: navVisiblility ? 0.6 : 0 }}
           >
-            <motion.a href="#About" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
+            <motion.a
+              href="#About"
+              variants={itemVariants}
+              onClick={() => setActive((prevState) => !prevState)}
+            >
                 <FlipLink>About</FlipLink>
             </motion.a>
-            <motion.a href="#Projects" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
+            <motion.a 
+              href="#Projects"
+              variants={itemVariants}
+              onClick={() => setActive((prevState) => !prevState)}
+            >
                 <FlipLink>Projects</FlipLink>
             </motion.a>
-            <motion.a href="#Experience" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
+            <motion.a
+              href="#Experience"
+              variants={itemVariants}
+              onClick={() => setActive((prevState) => !prevState)}
+            >
                 <FlipLink>Experience</FlipLink>
             </motion.a>
-            <motion.a href="#Contact" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
+            <motion.a
+              href="#Contact"
+              variants={itemVariants}
+              onClick={() => setActive((prevState) => !prevState)}
+            >
                 <FlipLink>Contact</FlipLink>
             </motion.a>
           </motion.nav>
