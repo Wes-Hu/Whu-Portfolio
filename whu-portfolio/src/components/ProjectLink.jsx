@@ -1,5 +1,5 @@
 import { FaChevronRight } from 'react-icons/fa';
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence, spring } from 'framer-motion';
 import { useRef, useState } from 'react';
 import RippleButton from './RippleButton';
 
@@ -142,17 +142,37 @@ const [isHovered, setIsHovered] = useState(false);
                                 ></motion.span>
                             </div>
                         </button>
-                        <div className="flex flex-col items-center overflow-y-auto max-h-[calc(100vh-8rem)] px-6 py-10 scrollbar-hidden">
-                            <h1 className="text-center font-rubik font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-blood-red transition-colors duration-500 group-hover:text-blood-red mb-10">
+                        <div className="flex flex-col items-center overflow-y-auto max-h-[calc(100vh-8rem)] px-6 lg:px-12 py-10 scrollbar-hidden">
+                            <motion.h1
+                                initial = {{ scale: 0, opacity: 0 }}
+                                animate = {{ scale: 1, opacity: 1 }}
+                                transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }} 
+                                className="text-center font-rubik font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-blood-red transition-colors duration-500 group-hover:text-blood-red mb-10"
+                            >
                                 {heading}
-                            </h1>
+                            </motion.h1>
                             <div className="w-full flex flex-col lg:flex-row justify-center gap-10">
-                                <img src={imgSrc} alt={`Image Representing ${heading}`} className="w-full lg:w-1/2 rounded-3xl object-cover border-2 border-blood-red mb-10"/>
+                                <motion.img
+                                    initial = {{ scale: 0, opacity: 0 }}
+                                    animate = {{ scale: 1, opacity: 1 }}
+                                    transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
+                                    src={imgSrc} alt={`Image Representing ${heading}`} className="w-full lg:w-1/2 rounded-3xl object-cover border-2 border-blood-red mb-10"
+                                />
                                 <div className="w-full lg:w-1/2">
-                                    <h2 className="text-center mb-5 font-montserrat font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl text-blood-red">
-                                    Tech Stack
-                                    </h2>
-                                    <div className="flex gap-3 flex-wrap justify-center items-center mb-10">
+                                    <motion.h2
+                                        initial = {{ y: 20, opacity: 0 }}
+                                        animate = {{ y: 0, opacity: 1 }}
+                                        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.6 }}
+                                        className="text-center mb-5 font-montserrat font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl text-blood-red"
+                                    >
+                                        Tech Stack
+                                    </motion.h2>
+                                    <motion.div
+                                        initial = {{ y: 20, opacity: 0 }}
+                                        animate = {{ y: 0, opacity: 1 }}
+                                        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.8 }} 
+                                        className="flex gap-3 flex-wrap justify-center items-center mb-10"
+                                    >
                                         {techStack.split(",").map((tech, i) => {
                                             return (
                                                 <motion.div
@@ -166,17 +186,27 @@ const [isHovered, setIsHovered] = useState(false);
                                                 </motion.div>
                                             );
                                         })}
-                                    </div>
-                                    <p className="font-lora text-blood-red text-base lg:text-xl font-semibold leading-relaxed mb-10">{description}</p>
+                                    </motion.div>
+                                    <motion.p
+                                        initial = {{ y: 20, opacity: 0 }}
+                                        animate = {{ y: 0, opacity: 1 }}
+                                        transition={{ duration: 0.5, type: "spring", delay: 1 }} 
+                                        className="font-lora text-blood-red text-base lg:text-xl font-semibold leading-relaxed mb-10"
+                                    >
+                                        {description}
+                                    </motion.p>
                                 </div>
                             </div>
-                            <a
+                            <motion.a
+                                initial = {{ scale: 0, opacity: 0 }}
+                                animate = {{ scale: 1, opacity: 1 }}
+                                transition={{ duration: 0.5, type: "spring", delay: 1.2 }} 
                                 href={link}
                                 target="_blank"
                                 className="w-fit block font-bold text-xl lg:text-2xl font-raleway"
                             >
                                 <RippleButton>VISIT</RippleButton>
-                            </a>
+                            </motion.a>
                         </div>
                     </motion.div>
                 </motion.div>
