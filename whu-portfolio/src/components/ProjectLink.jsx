@@ -102,86 +102,86 @@ const ProjectLink = ({ heading, subheading, imgSrc, description, techStack, link
 };
 
 const ProjectModal = ({ isOpen, setIsOpen, heading, imgSrc, description, techStack, link }) => {
-    const [isHovered, setIsHovered] = useState(false);
+const [isHovered, setIsHovered] = useState(false);
 
     return (
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, type: "spring" }}
-            onClick={() => setIsOpen(false)}
-            className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center overflow-hidden cursor-auto select-none"
-          >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0 }}
-              transition={{ duration: 0.5, type: "spring" }}
-              onClick={(e) => e.stopPropagation()}
-              className="max-w-[90%] max-h-[90%] lg:max-w-[75%] bg-night rounded-3xl border-2 border-blood-red overflow-y-auto scrollbar-hidden"
-            >
-              <div className="w-full relative flex flex-col justify-center items-center py-10 px-6 z-10">
-                <button
+        <AnimatePresence>
+            {isOpen && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5, type: "spring" }}
                     onClick={() => setIsOpen(false)}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                    className="scale-50 md:scale-100 absolute top-0 right-0 md:top-5 md:right-5 w-16 h-16 flex items-center justify-center rounded-full bg-blood-red z-20"
+                    className="w-screen h-screen backdrop-blur fixed inset-0 z-50 grid place-items-center overflow-hidden cursor-auto select-none"
                 >
-                    <div className="relative flex items-center justify-center w-full h-full">
-                        <motion.span
-                            initial={{ rotate: "45deg" }}
-                            animate={{ backgroundColor: isHovered ? "#E97451" : "#FFFFFF" }}
-                            className="absolute w-8 h-1 bg-white rounded-full transition-all ease-in-out duration-300"
-                        ></motion.span>
-                        <motion.span
-                            initial={{ rotate: "-45deg" }}
-                            animate={{ backgroundColor: isHovered ? "#E97451" : "#FFFFFF" }}
-                            className="absolute w-8 h-1 bg-white rounded-full transition-all ease-in-out duration-300"
-                        ></motion.span>
-                    </div>
-                </button>
-                <h1 className="text-center font-rubik font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-blood-red transition-colors duration-500 group-hover:text-blood-red mb-10">
-                    {heading}
-                </h1>
-                <div className="w-full flex flex-col lg:flex-row justify-center gap-10">
-                    <img src={imgSrc} alt={`Image Representing ${heading}`} className="w-full lg:w-1/2 rounded-3xl object-cover border-2 border-blood-red mb-10"/>
-                    <div className="w-full lg:w-1/2">
-                        <h2 className="text-center mb-5 font-montserrat font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl text-blood-red">
-                            Tech Stack
-                        </h2>
-                        <div className="flex gap-3 flex-wrap justify-center items-center mb-10">
-                            {techStack.split(",").map((tech, i) => {
-                                return (
-                                    <motion.div
-                                        initial={{ scale: 1, color: "#090A0C", rotate: 0}}
-                                        whileHover={{ scale: 1.2, color: "#EE6C4D", rotate: "3deg" }}
-                                        transition={{ duration: 0.1, ease: 'easeInOut'}} 
-                                        className="bg-blood-red px-3 py-2 italic rounded-xl font-semibold z-30 font-raleway select-none hover:shadow-[0_0_20px_5px_#70110A] shadow-blood-red cursor-pointer" 
-                                        key={i}
-                                    >
-                                        {tech}
-                                    </motion.div>
-                                );
-                            })}
+                    <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                        transition={{ duration: 0.5, type: "spring" }}
+                        onClick={(e) => e.stopPropagation()}
+                        className="max-w-[90%] max-h-[90%] lg:max-w-[75%] bg-night relative rounded-3xl border-2 border-blood-red"
+                    >
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)}
+                            className="scale-50 md:scale-75 lg:scale-100 absolute top-0 right-0 md:top-3 md:right-3 lg:top-5 lg:right-5 w-16 h-16 flex items-center justify-center rounded-full bg-blood-red z-20"
+                        >
+                            <div className="relative flex items-center justify-center w-full h-full">
+                                <motion.span
+                                    initial={{ rotate: "45deg" }}
+                                    animate={{ backgroundColor: isHovered ? "#E97451" : "#FFFFFF" }}
+                                    className="absolute w-8 h-1 bg-white rounded-full transition-all ease-in-out duration-300"
+                                ></motion.span>
+                                <motion.span
+                                    initial={{ rotate: "-45deg" }}
+                                    animate={{ backgroundColor: isHovered ? "#E97451" : "#FFFFFF" }}
+                                    className="absolute w-8 h-1 bg-white rounded-full transition-all ease-in-out duration-300"
+                                ></motion.span>
+                            </div>
+                        </button>
+                        <div className="flex flex-col items-center overflow-y-auto max-h-[calc(100vh-8rem)] px-6 py-10 scrollbar-hidden">
+                            <h1 className="text-center font-rubik font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-blood-red transition-colors duration-500 group-hover:text-blood-red mb-10">
+                                {heading}
+                            </h1>
+                            <div className="w-full flex flex-col lg:flex-row justify-center gap-10">
+                                <img src={imgSrc} alt={`Image Representing ${heading}`} className="w-full lg:w-1/2 rounded-3xl object-cover border-2 border-blood-red mb-10"/>
+                                <div className="w-full lg:w-1/2">
+                                    <h2 className="text-center mb-5 font-montserrat font-semibold text-lg md:text-xl lg:text-2xl xl:text-3xl text-blood-red">
+                                    Tech Stack
+                                    </h2>
+                                    <div className="flex gap-3 flex-wrap justify-center items-center mb-10">
+                                        {techStack.split(",").map((tech, i) => {
+                                            return (
+                                                <motion.div
+                                                    initial={{ scale: 1, color: "#090A0C", rotate: 0}}
+                                                    whileHover={{ scale: 1.2, color: "#EE6C4D", rotate: "3deg" }}
+                                                    transition={{ duration: 0.1, ease: 'easeInOut'}} 
+                                                    className="bg-blood-red px-3 py-2 italic rounded-xl font-semibold z-30 font-raleway select-none hover:shadow-[0_0_20px_5px_#70110A] shadow-blood-red cursor-pointer" 
+                                                    key={i}
+                                                >
+                                                    {tech}
+                                                </motion.div>
+                                            );
+                                        })}
+                                    </div>
+                                    <p className="font-lora text-blood-red text-base lg:text-xl font-semibold leading-relaxed mb-10">{description}</p>
+                                </div>
+                            </div>
+                            <a
+                                href={link}
+                                target="_blank"
+                                className="w-fit block font-bold text-xl lg:text-2xl font-raleway"
+                            >
+                                <RippleButton>VISIT</RippleButton>
+                            </a>
                         </div>
-                        <p className="font-lora text-blood-red text-base lg:text-xl font-semibold leading-relaxed mb-10">{description}</p>
-                    </div>
-                </div>
-                <a
-                    href={link}
-                    target="_blank"
-                    className="w-26 block font-bold text-xl lg:text-2xl font-raleway"
-                >
-                    <RippleButton>VISIT</RippleButton>
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                    </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 };
 
