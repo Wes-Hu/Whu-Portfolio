@@ -24,6 +24,13 @@ function App() {
 
   return (
     <div className="flex flex-col z-10 cursor-none">
+      <motion.span
+        initial={{ y: 0, borderRadius: 0}}
+        animate={{ y: "-100%", borderRadius: "50%"}}
+        transition={{ duration: 1, delay: 1.5, ease: "easeInOut" }} 
+        className="w-screen h-screen bg-blood-red fixed top-0 left-0 z-50"
+      >
+      </motion.span>
       <Cursor hideCursor={hideCursor}/>
       <Header setHideCursor={setHideCursor}/>
       <main className="flex flex-col">
@@ -57,13 +64,13 @@ const Header = ({ setHideCursor }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-screen h-24 z-50 flex flex-row justify-between px-3 md:px-10 items-center">
+    <header className="fixed top-0 left-0 w-screen h-24 z-[48] flex flex-row justify-between px-3 md:px-10 items-center">
       <HomeButton/>
       <NavMenu className="lg:hidden"/>
       <div className="hidden lg:flex">
         <motion.div
           initial={{ x: '100%', opacity: 0}}
-          animate={{ x: navVisiblility ? '100%' : 0, opacity: navVisiblility ? 0 : 1, display: navVisiblility ? 'none' : 'flex' }} // Show on top, hide when scrolling down
+          animate={{ x: navVisiblility ? '100%' : 0, opacity: navVisiblility ? 0 : 1, display: navVisiblility ? 'none' : 'flex' }}
           transition={{ duration: 0.5, delay: navVisiblility ? 0 : 0.6 }}
         >
           <NavMenu/>
@@ -122,7 +129,7 @@ const Home = () => {
         <motion.h1
           initial={{ x: -300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 2.5}}
           className="font-rubik text-blood-red text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold mb-1 select-none"
         >
           WESLEY HU
@@ -130,7 +137,7 @@ const Home = () => {
         <motion.div
           initial={{ x: -300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.5 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 3 }}
         >
           <Encrypt />
         </motion.div>

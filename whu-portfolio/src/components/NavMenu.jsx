@@ -90,7 +90,7 @@ const NavMenu = ({className}) => {
                 >
                     <motion.button
                         onClick={() => setActive((prevState) => !prevState)}
-                        className="relative w-16 h-16 rounded-full z-50 bg-blood-red group"
+                        className="relative w-16 h-16 rounded-full z-[45] bg-blood-red group"
                         animate={active ? "open" : "closed"}
                         initial={false}
                     >
