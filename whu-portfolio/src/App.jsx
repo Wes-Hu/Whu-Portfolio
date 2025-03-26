@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
     const loadingTimer = setTimeout(() => setIsLoading(false), 4000);
-    const contentTimer = setTimeout(() => setShowContent(true), 4000);
+    const contentTimer = setTimeout(() => setShowContent(true), 4200);
     return () => {
       clearTimeout(loadingTimer);
       clearTimeout(contentTimer);
@@ -165,7 +165,8 @@ const Home = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.5 }} 
+        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.5 }}
+        className="w-screen flex justify-center"
       >
         <ScrollDownButton/>
       </motion.div>
