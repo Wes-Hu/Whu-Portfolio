@@ -17,29 +17,39 @@ import FlipLink from './components/FlipLink';
 import ProjectLink from './components/ProjectLink';
 import Experience from './components/Experience';
 import ContactForm from './components/ContactForm';
+import LoadingScreen from './components/LoadingScreen';
 
 
 function App() {  
-  const [hideCursor, setHideCursor] = useState(false);
+  const [ hideCursor, setHideCursor ] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    const loadingTimer = setTimeout(() => setIsLoading(false), 4000);
+    const contentTimer = setTimeout(() => setShowContent(true), 4000);
+    return () => {
+      clearTimeout(loadingTimer);
+      clearTimeout(contentTimer);
+    };
+  }, []);
 
   return (
     <div className="flex flex-col z-10 cursor-none">
-      <motion.span
-        initial={{ y: 0, borderRadius: 0}}
-        animate={{ y: "-100%", borderRadius: "50%"}}
-        transition={{ duration: 1, delay: 1.5, ease: "easeInOut" }} 
-        className="w-screen h-screen bg-blood-red fixed top-0 left-0 z-50"
-      >
-      </motion.span>
+      <AnimatePresence>
+        {isLoading && <LoadingScreen/>}
+      </AnimatePresence>
       <Cursor hideCursor={hideCursor}/>
       <Header setHideCursor={setHideCursor}/>
-      <main className="flex flex-col">
-        <Home/>
-        <About setHideCursor={setHideCursor}/>
-        <Projects setHideCursor={setHideCursor}/>
-        <Experiences setHideCursor={setHideCursor}/>
-        <Contact setHideCursor={setHideCursor}/>
-      </main>
+      {showContent && (
+        <main className="flex flex-col">
+          <Home />
+          <About setHideCursor={setHideCursor} />
+          <Projects setHideCursor={setHideCursor} />
+          <Experiences setHideCursor={setHideCursor} />
+          <Contact setHideCursor={setHideCursor} />
+        </main>
+      )}
     </div>
   );
 }
@@ -80,7 +90,7 @@ const Header = ({ setHideCursor }) => {
           onMouseLeave={() => setHideCursor(false)}  
           className="text-blood-red hidden lg:flex gap-6 h-full justify-center items-center relative"
           initial={{ x: 0, opacity: 1}}
-          animate={{ x: navVisiblility ? 0 : '100%', opacity: navVisiblility ? 1 : 0, display: navVisiblility ? 'flex' : 'none' }} // Show on top, hide when scrolling down
+          animate={{ x: navVisiblility ? 0 : '100%', opacity: navVisiblility ? 1 : 0, display: navVisiblility ? 'flex' : 'none' }}
           transition={{ duration: 0.5, delay: navVisiblility ? 0.6 : 0 }}
         >
           <motion.a
@@ -121,15 +131,15 @@ const Home = () => {
   return(
     <div id="Home" className="w-screen min-h-screen h-screen flex flex-col justify-center items-center px-5 2xl:px-0">
       <motion.div 
-        initial={{x: -300, opacity: 0}}
-        animate={{x: 0, opacity: 1}}
-        transition={{duration: 0.5, ease: "easeInOut"}}
+        initial={{ x: -300, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{duration: 0.5, ease: "easeInOut" }}
         className="w-full md:w-11/12 xl:w-4/5 2xl:w-3/4 pb-64 lg:pb-0"
       >
         <motion.h1
           initial={{ x: -300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeInOut", delay: 2.5}}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.5 }}
           className="font-rubik text-blood-red text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold mb-1 select-none"
         >
           WESLEY HU
@@ -137,17 +147,28 @@ const Home = () => {
         <motion.div
           initial={{ x: -300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeInOut", delay: 3 }}
+          transition={{ duration: 0.5, ease: "easeInOut", delay: 1 }}
         >
           <Encrypt />
         </motion.div>
       </motion.div>
-      <div className="w-screen h-screen absolute"> 
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }} 
+        className="w-screen h-screen absolute"
+      > 
         <Canvas className="">
           <Eye/>
         </Canvas>
-      </div>
-      <ScrollDownButton/>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.5 }} 
+      >
+        <ScrollDownButton/>
+      </motion.div>
     </div>
   );
 };
