@@ -42,12 +42,11 @@ const LoadingScreen = ({ onDone }) => {
                         </div>
                     </div>
                 </motion.div>
-                
             </motion.div>
             <img
                 src="/loading.svg"
                 alt="Loading Screen"
-                className="w-screen h-screen object-cover"
+                className="w-screen h-screen object-cover z-40 -translate-y-10"
             />
       </motion.div>
     );
