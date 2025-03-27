@@ -175,7 +175,6 @@ const NavMenu = ({className}) => {
                                         <MagneticEffect intensity={0.6}>
                                             <FaLinkedin size={50}/>
                                         </MagneticEffect>
-                                       
                                     </motion.div>
                                 </motion.a>
                                 <motion.a href="https://github.com/Wes-Hu" target="_blank" className="text-white" variants={itemVariantsTwo}>
@@ -187,7 +186,6 @@ const NavMenu = ({className}) => {
                                         <MagneticEffect intensity={0.6}>
                                             <FaGithub size={50}/>
                                         </MagneticEffect>
-                                       
                                     </motion.div>
                                 </motion.a>
                                 <motion.a href="mailto:wes.hu@comcast.net" className="text-white" variants={itemVariantsTwo}>
@@ -199,12 +197,9 @@ const NavMenu = ({className}) => {
                                         <MagneticEffect intensity={0.6}>
                                             <MdEmail size={50}/>
                                         </MagneticEffect>
-                                       
                                     </motion.div>
-                                    
                                 </motion.a>
                             </motion.nav>
-
                         </motion.div>
                     )}
                 </AnimatePresence>

@@ -20,6 +20,8 @@ import ContactForm from './components/ContactForm';
 import LoadingScreen from './components/LoadingScreen';
 import { set } from 'react-hook-form';
 import MagneticEffect from './components/MagneticEffect';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { MdEmail} from "react-icons/md";
 
 
 function App() {  
@@ -182,7 +184,7 @@ const About = ({ setHideCursor }) => {
   return(
     <div id="About" className="w-screen min-h-screen pt-28 flex flex-col items-center">
       <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">ABOUT ME</h1>              
-      <div className="w-screen md:w-10/12 xl:w-4/5 px-6 lg:px-0 text-blood-red flex flex-col md:flex-row gap-10 xl:gap-20">
+      <div className="w-screen md:w-10/12 xl:w-4/5 px-6 lg:px-0 text-blood-red flex flex-col md:flex-row gap-10 xl:gap-20 mb-10">
         <CardContainer 
           className="bg-night cursor-pointer w-full border-2 border-night hover:border-blood-red rounded-3xl"
         >
@@ -428,10 +430,48 @@ const Contact = ({ setHideCursor }) => {
       <div
       onMouseEnter={() => setHideCursor(true)} 
       onMouseLeave={() => setHideCursor(false)} 
-        className="relative w-full md:w-3/4 xl:w-1/2 px-8 cursor-auto"
+        className="relative w-full md:w-3/4 xl:w-1/2 px-8 cursor-auto mb-20"
       >
         <ContactForm/>
       </div>
+      <nav
+        onMouseEnter={() => setHideCursor(true)} 
+        onMouseLeave={() => setHideCursor(false)} 
+        className="flex flex-row gap-10">
+          <a href="https://www.linkedin.com/in/wesley-hu-1bb739268/" target="_blank" className="text-blood-red">
+              <motion.div 
+                  className="relative block whitespace-nowrap"
+                  initial={{scale: 1 }}
+                  whileHover={{scale: 1.5}}
+              >
+                  <MagneticEffect intensity={0.6}>
+                      <FaLinkedin size={50}/>
+                  </MagneticEffect>
+              </motion.div>
+          </a>
+          <a href="https://github.com/Wes-Hu" target="_blank" className="text-blood-red">
+              <motion.div 
+                  className="relative block whitespace-nowrap"
+                  initial={{scale: 1 }}
+                  whileHover={{scale: 1.5}}
+              >
+                  <MagneticEffect intensity={0.6}>
+                      <FaGithub size={50}/>
+                  </MagneticEffect>
+              </motion.div>
+          </a>
+          <a href="mailto:wes.hu@comcast.net" className="text-blood-red">
+              <motion.div 
+                  className="relative block whitespace-nowrap"
+                  initial={{scale: 1 }}
+                  whileHover={{scale: 1.5}}
+              >
+                  <MagneticEffect intensity={0.6}>
+                      <MdEmail size={50}/>
+                  </MagneticEffect>
+              </motion.div>
+          </a>
+      </nav>
     </div>
   );
 }
