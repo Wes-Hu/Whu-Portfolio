@@ -18,6 +18,8 @@ import ProjectLink from './components/ProjectLink';
 import Experience from './components/Experience';
 import ContactForm from './components/ContactForm';
 import LoadingScreen from './components/LoadingScreen';
+import { set } from 'react-hook-form';
+import MagneticEffect from './components/MagneticEffect';
 
 
 function App() {  
@@ -35,7 +37,7 @@ function App() {
   }, []);
 
   return (
-    <div className="flex flex-col z-10 cursor-none">
+    <div className="flex flex-col cursor-none">
       <AnimatePresence>
         {isLoading && <LoadingScreen/>}
       </AnimatePresence>
@@ -43,7 +45,7 @@ function App() {
       <Header setHideCursor={setHideCursor}/>
       {showContent && (
         <main className="flex flex-col">
-          <Home />
+          <Home setHideCursor={setHideCursor}/>
           <About setHideCursor={setHideCursor} />
           <Projects setHideCursor={setHideCursor} />
           <Experiences setHideCursor={setHideCursor} />
@@ -74,7 +76,7 @@ const Header = ({ setHideCursor }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-screen h-24 z-[48] flex flex-row justify-between px-3 md:px-10 items-center">
+    <header className="fixed top-0 left-0 w-screen h-24 z-[48] flex flex-row justify-between px-3 md:px-10 items-center cursor-pointer">
       <HomeButton/>
       <NavMenu className="lg:hidden"/>
       <div className="hidden lg:flex">
@@ -127,7 +129,7 @@ const Header = ({ setHideCursor }) => {
   );
 };
 
-const Home = () => {
+const Home = ({ setHideCursor }) => {
   return(
     <div id="Home" className="w-screen min-h-screen h-screen flex flex-col justify-center items-center px-5 2xl:px-0">
       <motion.div 
@@ -166,8 +168,10 @@ const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeInOut", delay: 0.5 }}
+        onMouseEnter={() => setHideCursor(true)} 
+        onMouseLeave={() => setHideCursor(false)}
         className="w-screen flex justify-center"
-      >
+      > 
         <ScrollDownButton/>
       </motion.div>
     </div>
@@ -203,7 +207,10 @@ const About = ({ setHideCursor }) => {
               translateZ="60"
               className="self-center font-bold text-2xl font-raleway"
             >
-              <RippleButton>My Resume</RippleButton>
+              <MagneticEffect intensity={0.4}>
+                <RippleButton>My Resume</RippleButton>
+              </MagneticEffect>
+
             </CardItem>
           </CardBody>
         </CardContainer>
@@ -211,11 +218,11 @@ const About = ({ setHideCursor }) => {
           <div
             onMouseEnter={() => setHideCursor(true)} 
             onMouseLeave={() => setHideCursor(false)}  
-            className="w-full bg-night border-2 py-6 border-night hover:border-blood-red rounded-3xl transition duration-300 ease-in-out hover:shadow-[0_0_20px_5px_#70110A] cursor-auto"
+            className="w-full bg-night border-2 py-6 border-night hover:border-blood-red rounded-3xl transition duration-300 ease-in-out hover:shadow-[0_0_20px_5px_#70110A] cursor-auto overflow-hidden"
           >
             <h1 className="font-montserrat text-center text-blood-red font-semibold text-3xl lg:text-4xl mb-5">Skills</h1>
             <div className="max-w-full overflow-hidden flex text-night">
-              <Marquee autoFill pauseOnClick gradient speed={20} gradientColor="#090A0C" gradientWidth={100}>
+              <Marquee autoFill pauseOnClick gradient speed={20} gradientColor="#090A0C" gradientWidth={100} style={{ overflow: "hidden" }}>
                 <MarqueeChild>Java</MarqueeChild>
                 <MarqueeChild>Python</MarqueeChild>
                 <MarqueeChild>C++</MarqueeChild>
@@ -227,7 +234,7 @@ const About = ({ setHideCursor }) => {
               </Marquee>
             </div>
             <div className="max-w-full overflow-hidden flex text-night">
-              <Marquee autoFill pauseOnClick gradient direction='right' speed={20} gradientColor="#090A0C" gradientWidth={100}>
+              <Marquee autoFill pauseOnClick gradient direction='right' speed={20} gradientColor="#090A0C" gradientWidth={100} style={{ overflow: "hidden" }}>
                 <MarqueeChild>JavaScript</MarqueeChild>
                 <MarqueeChild>TypeScript</MarqueeChild>
                 <MarqueeChild>HTML</MarqueeChild>
@@ -239,12 +246,11 @@ const About = ({ setHideCursor }) => {
               </Marquee>
             </div>
             <div className="max-w-full overflow-hidden flex text-night">
-              <Marquee autoFill pauseOnClick gradient speed={20} gradientColor="#090A0C" gradientWidth={100}>
+              <Marquee autoFill pauseOnClick gradient speed={20} gradientColor="#090A0C" gradientWidth={100} style={{ overflow: "hidden" }}>
                 <MarqueeChild>GameMaker Studio</MarqueeChild>
                 <MarqueeChild>Unity</MarqueeChild>
                 <MarqueeChild>Blender</MarqueeChild>
                 <MarqueeChild>Cascadeur</MarqueeChild>
-
               </Marquee>
             </div>
           </div>

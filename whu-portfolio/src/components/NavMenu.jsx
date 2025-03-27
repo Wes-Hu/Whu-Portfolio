@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, MotionConfig, AnimatePresence, easeIn } from "framer-motion";
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail} from "react-icons/md";
+import MagneticEffect from "./MagneticEffect";
 
 const NavMenu = ({className}) => {
 
@@ -129,7 +130,7 @@ const NavMenu = ({className}) => {
                 <AnimatePresence>
                     {active && (
                         <motion.div
-                            className="fixed top-0 right-0 w-screen md:w-[45%] lg:w-[30%] xl:w-[25%] 2xl:w-1/5 h-screen z-40 bg-blood-red px-10 py-24 flex flex-col justify-between"
+                            className="fixed top-0 right-0 w-screen md:w-[45%] lg:w-[30%] xl:w-[25%] 2xl:w-1/5 h-screen z-40 bg-blood-red px-10 py-24 flex flex-col justify-between cursor-auto"
                             initial={{x: "100%", borderRadius: "50%"}}
                             animate={{x:  0, y: 0, borderRadius: "0%"}}
                             exit={{x: "100%", borderRadius: "50%" }}
@@ -167,37 +168,37 @@ const NavMenu = ({className}) => {
                             >
                                 <motion.a href="https://www.linkedin.com/in/wesley-hu-1bb739268/" target="_blank" className="text-white" variants={itemVariantsTwo}>
                                     <motion.div 
-                                        className="relative block overflow-hidden whitespace-nowrap hover:text-burnt-sienna transition-colors duration-300 ease-in-out"
+                                        className="relative block whitespace-nowrap hover:text-burnt-sienna transition-colors duration-300 ease-in-out"
                                         initial={{scale: 1 }}
-                                        whileHover={{scale: 1.5, rotate: '360deg'}}
+                                        whileHover={{scale: 1.5}}
                                     >
-                                        <motion.div>
+                                        <MagneticEffect intensity={0.6}>
                                             <FaLinkedin size={50}/>
-                                        </motion.div>
+                                        </MagneticEffect>
                                        
                                     </motion.div>
                                 </motion.a>
                                 <motion.a href="https://github.com/Wes-Hu" target="_blank" className="text-white" variants={itemVariantsTwo}>
                                     <motion.div 
-                                        className="relative block overflow-hidden whitespace-nowrap hover:text-burnt-sienna transition-colors duration-300 ease-in-out"
+                                        className="relative block whitespace-nowrap hover:text-burnt-sienna transition-colors duration-300 ease-in-out"
                                         initial={{scale: 1 }}
-                                        whileHover={{scale: 1.5, rotate: '360deg'}}
+                                        whileHover={{scale: 1.5}}
                                     >
-                                        <motion.div>
+                                        <MagneticEffect intensity={0.6}>
                                             <FaGithub size={50}/>
-                                        </motion.div>
+                                        </MagneticEffect>
                                        
                                     </motion.div>
                                 </motion.a>
                                 <motion.a href="mailto:wes.hu@comcast.net" className="text-white" variants={itemVariantsTwo}>
                                 <motion.div 
-                                        className="relative block overflow-hidden whitespace-nowrap hover:text-burnt-sienna transition-colors duration-300 ease-in-out"
+                                        className="relative block whitespace-nowrap hover:text-burnt-sienna transition-colors duration-300 ease-in-out"
                                         initial={{scale: 1 }}
-                                        whileHover={{scale: 1.5, rotate: '360deg'}}
+                                        whileHover={{scale: 1.5}}
                                     >
-                                        <motion.div>
+                                        <MagneticEffect intensity={0.6}>
                                             <MdEmail size={50}/>
-                                        </motion.div>
+                                        </MagneticEffect>
                                        
                                     </motion.div>
                                     

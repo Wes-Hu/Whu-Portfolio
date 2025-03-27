@@ -2,6 +2,7 @@ import { FaChevronRight } from 'react-icons/fa';
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence, spring } from 'framer-motion';
 import { useRef, useState } from 'react';
 import RippleButton from './RippleButton';
+import MagneticEffect from './MagneticEffect';
 
 const ProjectLink = ({ heading, subheading, imgSrc, description, techStack, link}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -175,15 +176,17 @@ const [isHovered, setIsHovered] = useState(false);
                                     >
                                         {techStack.split(",").map((tech, i) => {
                                             return (
-                                                <motion.div
-                                                    initial={{ scale: 1, color: "#090A0C", rotate: 0}}
-                                                    whileHover={{ scale: 1.2, color: "#EE6C4D", rotate: "3deg" }}
-                                                    transition={{ duration: 0.1, ease: 'easeInOut'}} 
-                                                    className="bg-blood-red px-3 py-2 italic rounded-xl font-semibold z-30 font-raleway select-none hover:shadow-[0_0_20px_5px_#70110A] shadow-blood-red cursor-pointer" 
-                                                    key={i}
-                                                >
-                                                    {tech}
-                                                </motion.div>
+                                                <MagneticEffect intensity={0.4}>
+                                                    <motion.div
+                                                        initial={{ scale: 1, color: "#090A0C", rotate: 0}}
+                                                        whileHover={{ scale: 1.1, color: "#EE6C4D", rotate: "3deg" }}
+                                                        transition={{ duration: 0.1, ease: 'easeInOut'}} 
+                                                        className="bg-blood-red px-3 py-2 italic rounded-xl font-semibold z-30 font-raleway select-none hover:shadow-[0_0_20px_5px_#70110A] shadow-blood-red cursor-pointer" 
+                                                        key={i}
+                                                    >
+                                                        {tech}
+                                                    </motion.div>
+                                                </MagneticEffect>
                                             );
                                         })}
                                     </motion.div>
@@ -205,7 +208,9 @@ const [isHovered, setIsHovered] = useState(false);
                                 target="_blank"
                                 className="w-fit block font-bold text-xl lg:text-2xl font-raleway"
                             >
-                                <RippleButton>VISIT</RippleButton>
+                                <MagneticEffect intensity={0.6}>
+                                    <RippleButton>VISIT</RippleButton>
+                                </MagneticEffect>
                             </motion.a>
                         </div>
                     </motion.div>

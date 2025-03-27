@@ -4,6 +4,7 @@ import useWeb3Forms from "@web3forms/react";
 import RippleButton from "./RippleButton";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiAlertCircle } from "react-icons/fi";
+import MagneticEffect from "./MagneticEffect";
 
 const ContactForm = () => {
     const { register, reset, handleSubmit, formState: { errors, isSubmitted } } = useForm();
@@ -91,7 +92,9 @@ const ContactForm = () => {
                     {errors.message && <p className="text-burnt-sienna font-raleway text-base mt-1 pl-4">{errors.message.message}</p>}
                 </div>
                 <button type="submit" className="self-center font-bold text-base lg:text-xl font-raleway">
-                    <RippleButton>Submit Form</RippleButton>
+                    <MagneticEffect intensity={0.6}>
+                        <RippleButton>Submit Form</RippleButton>
+                    </MagneticEffect>
                 </button>
                 {showError && (
                     <p className="text-burnt-sienna font-raleway text-base text-center">
