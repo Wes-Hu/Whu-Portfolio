@@ -1,7 +1,7 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 
-const LoadingScreen = ({ onDone }) => {
+const LoadingScreen = () => {
     const innerControls = useAnimation();
     const outerControls = useAnimation();
 
@@ -10,7 +10,6 @@ const LoadingScreen = ({ onDone }) => {
             await innerControls.start({ opacity: 1, transition: { duration: 1, ease: "easeInOut", } });
             await innerControls.start({ opacity: 0, transition: { duration: 1, ease: "easeInOut", delay: 1 } });
             await outerControls.start({ y: "-100%", transition: { duration: 1.5, ease: "easeInOut" } });
-            onDone();
         };
         sequence();
     }, []);

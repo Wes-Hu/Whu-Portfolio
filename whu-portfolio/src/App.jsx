@@ -1,11 +1,11 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import HomeButton from "./components/HomeButton";
 import Cursor from "./components/Cursor";
 import NavMenu from './components/NavMenu';
 import Encrypt from './components/Encrypt';
-import { AnimatePresence, motion } from 'framer-motion';
-import { OrbitControls, useGLTF, useScroll } from '@react-three/drei';
+import { AnimatePresence, motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas} from '@react-three/fiber';
 import Eye from './components/Eye';
 import ScrollDownButton from './components/ScrollDownButton';
@@ -18,9 +18,8 @@ import ProjectLink from './components/ProjectLink';
 import Experience from './components/Experience';
 import ContactForm from './components/ContactForm';
 import LoadingScreen from './components/LoadingScreen';
-import { set } from 'react-hook-form';
 import MagneticEffect from './components/MagneticEffect';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaEyeDropper, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail} from "react-icons/md";
 
 
@@ -132,12 +131,19 @@ const Header = ({ setHideCursor }) => {
 };
 
 const Home = ({ setHideCursor }) => {
+  const { scrollY } = useScroll();
+  const scrollRange = typeof window !== 'undefined' ? window.innerHeight * 0.25 : 100;
+
+  const titleOpacity = useSpring(useTransform(scrollY, [0, scrollRange], [1, 0]), { stiffness: 60, damping: 15 });
+  const titleX = useSpring(useTransform(scrollY, [0, scrollRange], [0, -scrollRange/2]), {stiffness: 60, damping: 15 });
+
+  const eyeOpacity = useSpring(useTransform(scrollY, [0, scrollRange], [1, 0]), { stiffness: 60, damping: 15 });
+  const eyeX = useSpring(useTransform(scrollY, [0, scrollRange], [0, scrollRange/2]), {stiffness: 60, damping: 15 });
+
   return(
     <div id="Home" className="w-screen min-h-screen h-screen flex flex-col justify-center items-center px-5 2xl:px-0">
-      <motion.div 
-        initial={{ x: -300, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{duration: 0.5, ease: "easeInOut" }}
+      <motion.div
+        style={{ opacity: titleOpacity, x: titleX }}
         className="w-full md:w-11/12 xl:w-4/5 2xl:w-3/4 pb-64 lg:pb-0"
       >
         <motion.h1
@@ -159,7 +165,8 @@ const Home = ({ setHideCursor }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }} 
+        transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
+        style={{ opacity: eyeOpacity, x: eyeX }}
         className="w-screen h-screen absolute"
       > 
         <Canvas className="">
