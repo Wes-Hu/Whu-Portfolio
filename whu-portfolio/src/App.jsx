@@ -76,14 +76,6 @@ const Header = ({ setHideCursor }) => {
     window.addEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (isTransitioning) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  }, [isTransitioning]);
-
   const handleLinkClick = (text, id) => {
     setTransitionText(text);
     setIsTransitioning(true);
@@ -107,19 +99,19 @@ const Header = ({ setHideCursor }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-screen h-24 z-[48] flex flex-row justify-between px-3 md:px-10 items-center cursor-pointer select-none">
+    <header className="fixed top-0 left-0 w-screen h-24 z-[48] flex flex-row justify-between px-3 md:px-10 items-center cursor-pointer select-none overflow-hidden">
       <AnimatePresence>
         {isTransitioning && <TransitionScreen text={transitionText}/>}
       </AnimatePresence>
       <HomeButton/>
-      <NavMenu className="lg:hidden"/>
+      <NavMenu className="lg:hidden" handleLinkClick={handleLinkClick} isTransitioning={isTransitioning}/>
       <div className="hidden lg:flex">
         <motion.div
           initial={{ x: '100%', opacity: 0}}
           animate={{ x: navVisiblility ? '100%' : 0, opacity: navVisiblility ? 0 : 1, display: navVisiblility ? 'none' : 'flex' }}
           transition={{ duration: 0.5, delay: navVisiblility ? 0 : 0.6 }}
         >
-          <NavMenu/>
+          <NavMenu handleLinkClick={handleLinkClick} isTransitioning={isTransitioning}/>
         </motion.div>
         <motion.nav
           onMouseEnter={() => setHideCursor(true)} 

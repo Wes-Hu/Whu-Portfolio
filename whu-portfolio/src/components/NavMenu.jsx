@@ -4,11 +4,12 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail} from "react-icons/md";
 import MagneticEffect from "./MagneticEffect";
 
-const NavMenu = ({className}) => {
-
+const NavMenu = ({className, handleLinkClick, isTransitioning}) => {
     
     const MainMenu = () => {
         const [active, setActive] = useState(false);
+
+        const hamburgerState = isTransitioning ? null : (active ? "open" : "closed");
 
         const BUTTON_VARIANTS = {
             top: {
@@ -92,7 +93,7 @@ const NavMenu = ({className}) => {
                     <motion.button
                         onClick={() => setActive((prevState) => !prevState)}
                         className="relative w-16 h-16 rounded-full z-[45] bg-blood-red group"
-                        animate={active ? "open" : "closed"}
+                        animate={hamburgerState}
                         initial={false}
                     >
                         <motion.span
@@ -145,19 +146,60 @@ const NavMenu = ({className}) => {
                                 initial="initial"
                                 animate="animate"
                                 exit="exit"
-                            >
-                                <motion.a href="#About" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
-                                    <FlipLink>About</FlipLink>
+                            >   
+                                <motion.a
+                                    href="#About"
+                                    variants={itemVariants}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleLinkClick("ABOUT ME", "About");
+                                        setActive(false);
+                                    }}
+                                >
+                                    <MagneticEffect intensity={0.6}>
+                                        <FlipLink>About</FlipLink>
+                                    </MagneticEffect>
                                 </motion.a>
-                                <motion.a href="#Projects" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
-                                    <FlipLink>Projects</FlipLink>
+                                <motion.a
+                                    href="#Projects"
+                                    variants={itemVariants}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleLinkClick("MY PROJECTS", "Projects");
+                                        setActive(false);
+                                    }}
+                                >
+                                    <MagneticEffect intensity={0.6}>
+                                        <FlipLink>Projects</FlipLink>
+                                    </MagneticEffect>
                                 </motion.a>
-                                <motion.a href="#Experience" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
-                                    <FlipLink>Experience</FlipLink>
+                                <motion.a
+                                    href="#Experience"
+                                    variants={itemVariants}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleLinkClick("EXPERIENCE", "Experience");
+                                        setActive(false);
+                                    }}
+                                >
+                                    <MagneticEffect intensity={0.6}>
+                                        <FlipLink>Experience</FlipLink>
+                                    </MagneticEffect>
                                 </motion.a>
-                                <motion.a href="#Contact" variants={itemVariants} onClick={() => setActive((prevState) => !prevState)}>
-                                    <FlipLink>Contact&nbsp;me</FlipLink>
+                                <motion.a
+                                    href="#Contact"
+                                    variants={itemVariants}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleLinkClick("CONTACT ME", "Contact");
+                                        setActive(false);
+                                    }}
+                                >
+                                    <MagneticEffect intensity={0.6}>
+                                        <FlipLink>Contact</FlipLink>
+                                    </MagneticEffect>
                                 </motion.a>
+
                             </motion.nav>
                             <motion.nav
                                 className="flex flex-row justify-between"
