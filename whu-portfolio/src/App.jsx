@@ -99,7 +99,7 @@ const Header = ({ setHideCursor }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-screen h-24 z-[48] flex flex-row justify-between px-3 md:px-10 items-center cursor-pointer select-none overflow-hidden">
+    <header className="fixed top-0 left-0 w-screen h-24 z-[48] flex flex-row justify-between px-3 md:px-10 items-center cursor-pointer select-none">
       <AnimatePresence>
         {isTransitioning && <TransitionScreen text={transitionText}/>}
       </AnimatePresence>
