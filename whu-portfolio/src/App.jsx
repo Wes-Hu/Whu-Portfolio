@@ -19,8 +19,9 @@ import Experience from './components/Experience';
 import ContactForm from './components/ContactForm';
 import LoadingScreen from './components/LoadingScreen';
 import MagneticEffect from './components/MagneticEffect';
-import { FaEyeDropper, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail} from "react-icons/md";
+import TransitionScreen from './components/TransitionScreen';
 
 
 function App() {  
@@ -47,6 +48,8 @@ function App() {
       {showContent && (
         <main className="flex flex-col">
           <Home setHideCursor={setHideCursor}/>
+          <motion.div className="w-screen h-screen">
+          </motion.div>
           <About setHideCursor={setHideCursor} />
           <Projects setHideCursor={setHideCursor} />
           <Experiences setHideCursor={setHideCursor} />
@@ -58,7 +61,10 @@ function App() {
 }
 
 const Header = ({ setHideCursor }) => {
-  const[navVisiblility, setNavVisibility] = useState(true);
+  const[ navVisiblility, setNavVisibility ] = useState(true);
+  const [ transitionText, setTransitionText ] = useState(null);
+  const [ isTransitioning, setIsTransitioning ] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       if(window.scrollY < window.innerHeight / 4) {
@@ -70,6 +76,30 @@ const Header = ({ setHideCursor }) => {
     window.addEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isTransitioning) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isTransitioning]);
+
+  const handleLinkClick = (text, id) => {
+    setTransitionText(text);
+    setIsTransitioning(true);
+
+    setTimeout(() => {
+      const section = document.querySelector(`#${id}`);
+      if (section) {
+        section.scrollIntoView({behavior: 'instant'})
+      }
+    }, 500);
+
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 1500);
+  };
+
   const itemVariants = {
     initial: { opacity: 0, x: -20 , scale: 0, scaleX: 0 },
     animate: { opacity: 1, x: 0, scale: 1, scaleX: 1 },
@@ -77,7 +107,10 @@ const Header = ({ setHideCursor }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-screen h-24 z-[48] flex flex-row justify-between px-3 md:px-10 items-center cursor-pointer">
+    <header className="fixed top-0 left-0 w-screen h-24 z-[48] flex flex-row justify-between px-3 md:px-10 items-center cursor-pointer select-none">
+      <AnimatePresence>
+        {isTransitioning && <TransitionScreen text={transitionText}/>}
+      </AnimatePresence>
       <HomeButton/>
       <NavMenu className="lg:hidden"/>
       <div className="hidden lg:flex">
@@ -99,30 +132,50 @@ const Header = ({ setHideCursor }) => {
           <motion.a
             href="#About"
             variants={itemVariants}
-            onClick={() => setActive((prevState) => !prevState)}
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick("ABOUT ME", "About");
+            }}
           >
-              <FlipLink>About</FlipLink>
+              <MagneticEffect intensity={0.6}>
+                <FlipLink>About</FlipLink>
+              </MagneticEffect>
           </motion.a>
           <motion.a 
             href="#Projects"
             variants={itemVariants}
-            onClick={() => setActive((prevState) => !prevState)}
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick("MY PROJECTS", "Projects");
+            }}
           >
-              <FlipLink>Projects</FlipLink>
+              <MagneticEffect intensity={0.6}>
+                <FlipLink>Projects</FlipLink>
+              </MagneticEffect>
           </motion.a>
           <motion.a
             href="#Experience"
             variants={itemVariants}
-            onClick={() => setActive((prevState) => !prevState)}
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick("EXPERIENCE", "Experience");
+            }}
           >
-              <FlipLink>Experience</FlipLink>
+              <MagneticEffect intensity={0.6}>
+                <FlipLink>Experiences</FlipLink>
+              </MagneticEffect>
           </motion.a>
           <motion.a
             href="#Contact"
             variants={itemVariants}
-            onClick={() => setActive((prevState) => !prevState)}
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick("CONTACT ME", "Contact");
+            }}
           >
-              <FlipLink>Contact</FlipLink>
+              <MagneticEffect intensity={0.6}>
+                <FlipLink>Contact</FlipLink>
+              </MagneticEffect>
           </motion.a>
         </motion.nav>
       </div>
