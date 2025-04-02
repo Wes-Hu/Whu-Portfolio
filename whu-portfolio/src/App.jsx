@@ -28,6 +28,7 @@ function App() {
   const [ hideCursor, setHideCursor ] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
+  const [ activeSection, setActiveSection] = useState("Home");
 
   useEffect(() => {
     const loadingTimer = setTimeout(() => setIsLoading(false), 4000);
@@ -44,7 +45,7 @@ function App() {
         {isLoading && <LoadingScreen/>}
       </AnimatePresence>
       <Cursor hideCursor={hideCursor}/>
-      <Header setHideCursor={setHideCursor}/>
+      <Header setHideCursor={setHideCursor} activeSection={activeSection} setActiveSection={setActiveSection}/>
       {showContent && (
         <main className="flex flex-col">
           <Home setHideCursor={setHideCursor}/>
@@ -60,7 +61,7 @@ function App() {
   );
 }
 
-const Header = ({ setHideCursor }) => {
+const Header = ({ setHideCursor, activeSection, setActiveSection }) => {
   const[ navVisiblility, setNavVisibility ] = useState(true);
   const [ transitionText, setTransitionText ] = useState(null);
   const [ isTransitioning, setIsTransitioning ] = useState(false);
@@ -77,15 +78,18 @@ const Header = ({ setHideCursor }) => {
   }, []);
 
   const handleLinkClick = (text, id) => {
+    if (activeSection === id) return;
+
     setTransitionText(text);
     setIsTransitioning(true);
+    setActiveSection(id);
 
     setTimeout(() => {
       const section = document.querySelector(`#${id}`);
       if (section) {
         section.scrollIntoView({behavior: 'instant'})
       }
-    }, 500);
+    }, 1000);
 
     setTimeout(() => {
       setIsTransitioning(false);
