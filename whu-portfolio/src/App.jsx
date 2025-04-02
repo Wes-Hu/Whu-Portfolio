@@ -99,11 +99,11 @@ const Header = ({ setHideCursor }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-screen h-24 z-[48] flex flex-row justify-between px-3 md:px-10 items-center cursor-pointer select-none">
+    <header className="fixed top-0 left-0 w-screen h-24 z-[48] flex flex-row justify-between px-3 md:px-10 items-center cursor-pointer select-none overflow-hidden">
       <AnimatePresence>
         {isTransitioning && <TransitionScreen text={transitionText}/>}
       </AnimatePresence>
-      <HomeButton/>
+      <HomeButton handleLinkClick={handleLinkClick}/>
       <NavMenu className="lg:hidden" handleLinkClick={handleLinkClick} isTransitioning={isTransitioning}/>
       <div className="hidden lg:flex">
         <motion.div
@@ -186,10 +186,10 @@ const Home = ({ setHideCursor }) => {
   const eyeX = useSpring(useTransform(scrollY, [0, scrollRange], [0, scrollRange/2]), {stiffness: 60, damping: 15 });
 
   return(
-    <div id="Home" className="w-screen min-h-screen h-screen flex flex-col justify-center items-center px-5 2xl:px-0">
+    <div id="Home" className="w-screen min-h-screen h-screen flex flex-col justify-center items-center px-5 2xl:px-0 ">
       <motion.div
         style={{ opacity: titleOpacity, x: titleX }}
-        className="w-full md:w-11/12 xl:w-4/5 2xl:w-3/4 pb-64 lg:pb-0"
+        className="w-full md:w-11/12 xl:w-4/5 2xl:w-3/4 pb-64 lg:pb-0 overflow-hidden"
       >
         <motion.h1
           initial={{ x: -300, opacity: 0 }}
@@ -207,17 +207,19 @@ const Home = ({ setHideCursor }) => {
           <Encrypt />
         </motion.div>
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
-        style={{ opacity: eyeOpacity, x: eyeX }}
-        className="w-screen h-screen absolute"
-      > 
-        <Canvas className="">
-          <Eye/>
-        </Canvas>
-      </motion.div>
+      <div className="w-screen h-screen absolute top-0 left-0 overflow-hidden z-0">
+        <motion.div
+          style={{ opacity: eyeOpacity, x: eyeX }}
+          className="w-full h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
+        >
+          <Canvas className="w-full h-full">
+            <Eye />
+          </Canvas>
+        </motion.div>
+      </div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

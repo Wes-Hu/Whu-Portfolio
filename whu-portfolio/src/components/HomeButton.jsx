@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Drip from "./Drip";
 
-const HomeButton = ({className}) => {
+const HomeButton = ({ className, handleLinkClick}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -12,6 +12,10 @@ const HomeButton = ({className}) => {
       className={`group relative bg-blood-red w-16 h-16 p-2 rounded-xl ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={(e) => {
+          e.preventDefault();
+          handleLinkClick("HOME", "Home");
+      }}
     >
       <img className="w-full h-full" src="/HuLogoWhite.png" alt="Logo" />
       <AnimatePresence>

@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail} from "react-icons/md";
 import MagneticEffect from "./MagneticEffect";
 
-const NavMenu = ({className, handleLinkClick, isTransitioning}) => {
+const NavMenu = ({ className, handleLinkClick, isTransitioning }) => {
     
     const MainMenu = () => {
         const [active, setActive] = useState(false);
