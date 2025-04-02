@@ -30,6 +30,12 @@ function App() {
   const [showContent, setShowContent] = useState(false);
   const [ activeSection, setActiveSection] = useState("Home");
 
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const projectsRef = useRef(null);
+  const experienceRef = useRef(null);
+  const contactRef = useRef(null);
+
   useEffect(() => {
     const loadingTimer = setTimeout(() => setIsLoading(false), 4000);
     const contentTimer = setTimeout(() => setShowContent(true), 4200);
@@ -38,6 +44,43 @@ function App() {
       clearTimeout(contentTimer);
     };
   }, []);
+
+  useEffect(() => {
+    if (!showContent) return;
+
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5
+    };
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          setActiveSection(id);
+        }
+      });
+    }, options);
+  
+    const sections = [
+      homeRef.current,
+      aboutRef.current,
+      projectsRef.current,
+      experienceRef.current,
+      contactRef.current,
+    ];
+  
+    sections.forEach(section => {
+      if (section) observer.observe(section);
+    });
+  
+    return () => {
+      sections.forEach(section => {
+        if (section) observer.unobserve(section);
+      });
+    };
+  }, [showContent]);
 
   return (
     <div className="flex flex-col cursor-none">
@@ -48,13 +91,13 @@ function App() {
       <Header setHideCursor={setHideCursor} activeSection={activeSection} setActiveSection={setActiveSection}/>
       {showContent && (
         <main className="flex flex-col">
-          <Home setHideCursor={setHideCursor}/>
-          <motion.div className="w-screen h-screen">
-          </motion.div>
-          <About setHideCursor={setHideCursor} />
-          <Projects setHideCursor={setHideCursor} />
-          <Experiences setHideCursor={setHideCursor} />
-          <Contact setHideCursor={setHideCursor} />
+          <Home setHideCursor={setHideCursor} sectionRef={homeRef}/>
+          {/* <motion.div className="w-screen h-screen">
+          </motion.div> */}
+          <About setHideCursor={setHideCursor} sectionRef={aboutRef} />
+          <Projects setHideCursor={setHideCursor} sectionRef={projectsRef}/>
+          <Experiences setHideCursor={setHideCursor} sectionRef={experienceRef}/>
+          <Contact setHideCursor={setHideCursor} sectionRef={contactRef}/>
         </main>
       )}
     </div>
@@ -179,7 +222,7 @@ const Header = ({ setHideCursor, activeSection, setActiveSection }) => {
   );
 };
 
-const Home = ({ setHideCursor }) => {
+const Home = ({ setHideCursor, sectionRef }) => {
   const { scrollY } = useScroll();
   const scrollRange = typeof window !== 'undefined' ? window.innerHeight * 0.25 : 100;
 
@@ -190,7 +233,7 @@ const Home = ({ setHideCursor }) => {
   const eyeX = useSpring(useTransform(scrollY, [0, scrollRange], [0, scrollRange/2]), {stiffness: 60, damping: 15 });
 
   return(
-    <div id="Home" className="w-screen min-h-screen h-screen flex flex-col justify-center items-center px-5 2xl:px-0 ">
+    <div ref={sectionRef} id="Home" className="w-screen min-h-screen h-screen flex flex-col justify-center items-center px-5 2xl:px-0 ">
       <motion.div
         style={{ opacity: titleOpacity, x: titleX }}
         className="w-full md:w-11/12 xl:w-4/5 2xl:w-3/4 pb-64 lg:pb-0 overflow-hidden"
@@ -238,9 +281,9 @@ const Home = ({ setHideCursor }) => {
   );
 };
 
-const About = ({ setHideCursor }) => {
+const About = ({ setHideCursor, sectionRef }) => {
   return(
-    <div id="About" className="w-screen min-h-screen pt-28 flex flex-col items-center">
+    <div ref={sectionRef} id="About" className="w-screen min-h-screen pt-28 flex flex-col items-center">
       <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">ABOUT ME</h1>              
       <div className="w-screen md:w-10/12 xl:w-4/5 px-6 lg:px-0 text-blood-red flex flex-col md:flex-row gap-10 xl:gap-20 mb-10">
         <CardContainer 
@@ -320,9 +363,9 @@ const About = ({ setHideCursor }) => {
   );
 }
 
-const Projects = ({ setHideCursor }) => {
+const Projects = ({ setHideCursor, sectionRef }) => {
   return (
-    <div id="Projects" className="w-screen min-h-screen pt-28 flex flex-col items-center">
+    <div ref={sectionRef} id="Projects" className="w-screen min-h-screen pt-28 flex flex-col items-center">
       <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">MY PROJECTS</h1>
       <div className="w-screen md:w-3/4 xl:w-[60%]">
         <div 
@@ -361,7 +404,7 @@ const Projects = ({ setHideCursor }) => {
   );
 }
 
-const Experiences = ({ setHideCursor }) => {
+const Experiences = ({ setHideCursor, sectionRef }) => {
   const [openExperience, setOpenExperience] = useState(null);
 
   const toggleExperience = (position) => {
@@ -402,7 +445,7 @@ const Experiences = ({ setHideCursor }) => {
   }
 
   return(
-    <div id="Experience" className="w-screen min-h-screen pt-28 flex flex-col items-center">
+    <div ref={sectionRef} id="Experience" className="w-screen min-h-screen pt-28 flex flex-col items-center">
       <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">EXPERIENCE</h1>
       <div 
         onMouseEnter={() => setHideCursor(true)} 
@@ -481,9 +524,9 @@ const Experiences = ({ setHideCursor }) => {
   );
 }
 
-const Contact = ({ setHideCursor }) => {
+const Contact = ({ setHideCursor, sectionRef }) => {
   return (
-    <div id="Contact" className="w-screen min-h-screen pt-28 flex flex-col items-center">
+    <div ref={sectionRef} id="Contact" className="w-screen min-h-screen pt-28 flex flex-col items-center">
       <h1 className="font-rubik text-blood-red font-extrabold text-4xl lg:text-5xl text-center mb-10 lg:mb-20">CONTACT ME</h1>
       <div
       onMouseEnter={() => setHideCursor(true)} 
