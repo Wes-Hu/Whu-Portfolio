@@ -61,7 +61,7 @@ const LoadingBar = () => {
             preserveAspectRatio="none"
         >
             {Array.from({ length: 15 }).map((_, i) => {
-                const x = i * 24 - 14;
+                const x = i * 24 - 10;
                 return (
                 <motion.polygon
                     key={i}
